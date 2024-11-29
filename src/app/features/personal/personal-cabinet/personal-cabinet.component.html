@@ -1,0 +1,106 @@
+<section class="left-menu mx-auto w-75 h-25">
+  <div class="d-flex flex-row justify-content-between">
+    <h1>Personal Cabinet</h1>
+    <span>
+      <span>[<a routerLink="info"> информация </a>]</span>
+      <span> [<a (click)="logout()">Выйти</a>] </span>
+    </span>
+  </div>
+  <div class="d-flex flex-row">
+    <nav class="nav-cabinet w-25">
+      <p>
+        <a
+          class="button"
+          routerLink="order"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <img
+            class="icons"
+            src="../../../../assets/img/order.png"
+            alt="order-icon"
+          />
+          Объявления
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" routerLink="stat" routerLinkActive="active-link">
+          <img
+            class="icons"
+            src="../../../../assets/img/statistic-icon.png"
+            alt="order-icon"
+          />
+          Статистика
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" routerLink="favorite" routerLinkActive="active-link">
+          <img
+            class="icons"
+            src="../../../../assets/img/plus-icon.png"
+            alt="order-icon"
+          />
+          Запись на просмотр
+        </a>
+      </p>
+      <!-- <p class="button">
+        <a class="button" routerLink="editing" routerLinkActive="active-link">
+          Редактирование
+        </a>
+      </p> -->
+      <p class="button">
+        <a class="button" routerLink="profile" routerLinkActive="active-link">
+          <img
+            class="icons"
+            src="../../../../assets/img/profile-icon.png"
+            alt="order-icon"
+          />
+          Профиль
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" href="">
+          <img
+            class="icons"
+            src="../../../../assets/img/complaints-icon.png"
+            alt="order-icon"
+          />
+          Жалобы
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" href="">
+          <img
+            class="icons"
+            src="../../../../assets/img/setting-icons.png"
+            alt="order-icon"
+          />
+          Настройки
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" routerLink="politic" routerLinkActive="active-link">
+          <img
+            class="icons"
+            src="../../../../assets/img/help-icon.png"
+            alt="order-icon"
+          />
+          Помощь
+        </a>
+      </p>
+      <p class="button">
+        <a class="button" href="">
+          <img
+            class="icons"
+            src="../../../../assets/img/logout-icon.png"
+            alt="order-icon"
+          />
+          Выйти
+        </a>
+      </p>
+    </nav>
+    <div class="w-75">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

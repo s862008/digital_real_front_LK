@@ -1,0 +1,255 @@
+
+.gk-page section {
+  margin-bottom: 100px;
+}
+
+.gk-header {
+
+}
+
+.gk-banner {
+  height: 466px;
+  position: relative;
+  top:40px;
+  margin-bottom: 100px;
+}
+
+.gk-banner__back {
+  background-image: url("/assets/img/стел жк 11.png");
+  border-radius: 30px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gk-banner__bageLogo {
+  position: absolute;
+  background: #f4f4f4;
+  border-radius: 10px;
+  width: 137px;
+  height: 110px;
+  margin-left: 30px;
+  border: 0;
+  top: -23px;
+  right: 103px;
+}
+
+.gk-title {
+  margin-bottom: 100px;
+}
+
+.gk-title__company {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 80px;
+  color: #000;
+}
+
+.gk-title__district, .gk-title__address {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 40px;
+  color: #000;
+}
+
+.gk-project {
+  min-height: 500px;
+  background: rgba(16, 102, 129, 0.05);
+
+}
+
+.gk-project__content {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 25px;
+  color: #000;
+  line-height: 130%;
+}
+
+.gk-project__rate {
+  width: 450px;
+  height: 413px;
+  display: block;
+  position: relative;
+  top: -144px;
+  left: 0;
+}
+
+.features {
+
+}
+
+.features__list {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.features__list .nav-pills .nav-link {
+  border-radius: 30px;
+  font-weight: 300;
+  font-size: 20px;
+  color: #000;
+}
+
+.features__list .nav-pills .nav-link.active {
+  border-radius: 30px;
+  background: rgba(39, 116, 124, 0.2);
+}
+
+
+.features__details {
+  min-height: 413px;
+}
+
+.details__item {
+  border-radius: 50px;
+  width: 100%;
+  min-height: 413px;
+  background: rgba(16, 102, 129, 0.05);
+}
+
+.details__item__img {
+  background-image: url('/assets/img/площадки 1.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: top center;
+  background-size: 100%;
+  border-radius: 50px;
+  border: 0;
+  height: 100%
+}
+
+.details__item__info {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  min-height: 413px;
+  padding: 20px 30px;
+}
+
+.gk-choice .filter-section__header {
+  margin-bottom: 50px;
+}
+
+
+.result-search__items {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 115px 110px;
+
+}
+
+.result-search__item {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 15px;
+  min-height: 200px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.r-item-img {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.50px solid #999;
+  border-radius: 5px;
+  width: 169px;
+  height: 200px;
+  background: #fffefe;
+}
+
+.r-item-img img {
+
+  /*max-height: 300px;*/
+  /*max-width: 100px;*/
+  width: 100%;
+  height: 100%;
+  object-fit: contain
+}
+
+.r-item-info {
+  width: 60%;
+}
+
+.cards-block__price {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 36px;
+  color: #000;
+
+}
+
+.cards-block__price-sqr {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 26px;
+  color: #999;
+}
+
+.percent-h2 {
+  font-family: var(--font-family-bold);
+  font-weight: 800;
+  font-size: 48px;
+  color: #106681 !important;
+}
+
+.r-item__title-info, .price {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  color: #000;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.r-item__price-block {
+  margin-top: 17px;
+}
+
+.r-item__company {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 19px;
+  color: #000;
+  padding-top: 7vh;
+}
+
+.price {
+  margin-bottom: 0px;
+  line-height: 90%;
+}
+
+.price-squad {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.price-squad span {
+  color: gray;
+}
+
+.r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 146%;
+  color: #999;
+}
+
+
+.r-item__categories {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 200px auto;
+  line-height: 100%;
+  font-size: 13px;
+}

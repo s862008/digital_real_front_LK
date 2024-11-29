@@ -1,0 +1,228 @@
+.apartment-section {
+  top: 40px;
+  position: relative;
+  margin-bottom: 100px;
+
+}
+
+
+.as__gallery-side {
+  border-radius: 25px;
+  min-height: 545px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  background: #fff;
+  padding: 40px 30px;
+
+}
+
+.as__toogle {
+  width: 350px;
+  height: 30px;
+  border: 0;
+  border-radius: 7px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #fffefe;
+  font-weight: 400;
+  font-size: 13px;
+  color: #707070;
+}
+
+.r-item__title-info, .price {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  color: #000;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+
+.as__main-img {
+
+  border: 0.50px solid #999;
+  border-radius: 7px;
+  max-width: 700px;
+  height: 310px;
+  background: #fffefe;
+}
+
+.as__main-img img {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.as__group-imgs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.as__group-imgs img {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+
+}
+
+.btn-check:checked + .btn.as__toogle {
+  background: rgba(16, 102, 129, 0.1);
+  border: 0;
+  color: #707070;
+}
+
+.as__info-side {
+  font-family: var(--font-family);
+  border-radius: 25px;
+  min-height: 456px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  background: #fff;
+  padding: 40px 20px;
+  max-width: 363px;
+}
+
+.as__price-block {
+  margin-bottom: 30px;
+}
+
+.as__price-block .price-squad {
+  font-weight: 500;
+  font-size: 20px;
+  color: #999;
+}
+
+.as-info__items {
+  line-height: 140%;
+}
+
+.as-item__type-build {
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+}
+
+.as-item__address {
+  font-weight: 400;
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.as-item__categories {
+  display: grid;
+  grid-template-columns: 160px auto;
+  line-height: 200%;
+  font-weight: 400;
+  font-size: 13px;
+  color: #999;
+}
+
+.as-item__categories span {
+  font-weight: 400;
+  font-size: 13px;
+  color: #000;
+}
+
+.apartment-build-info, .ab-info {
+  margin-bottom: 100px;
+  height: 100%;
+}
+
+.ab-info__content {
+  border-radius: 25px;
+  max-width: 1020px;
+  min-height: 740px;
+  background: rgba(16, 102, 129, 0.05);
+  border: 0;
+  padding: 30px;
+}
+
+.ab-info__content > .row:nth-of-type(1) {
+  margin-bottom: 60px;
+}
+
+.ab-info__text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 200%;
+  color: #333;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.ab-info__img {
+  background-image: url("/assets/img/стел жк 10.png");
+  border-radius: 20px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 447px;
+  height: 395px;
+  position: relative;
+}
+
+.ab-info__content iframe {
+  min-height: 250px;
+}
+
+.apartment-similar {
+
+
+}
+
+.apartment-similar > div:nth-of-type(1) {
+  height: 1200px;
+  overflow-y: scroll;
+
+}
+
+.img-block {
+  height: 326px;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; /*центрируем элемент по горизонтали */
+  align-items: center; /* и вертикали */
+  border: 0.50px solid #999;
+  border-radius: 5px;
+}
+.percent-h2 {
+  font-family: var(--font-family-bold);
+  font-weight: 800;
+  font-size: 48px;
+  color: #106681 !important;
+}
+.cards-block__price {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 36px;
+  color: #000;
+
+}
+
+.cards-block__price-sqr {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 26px;
+  color: #999;
+}
+.cards-block__item {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 20px 0 0 17px;
+  padding: 16px 0px 31px 20px;
+  grid-gap: 52px;
+  justify-content: space-evenly;
+  border: 1px solid rgba(153, 153, 153, 0.01);
+  border-radius: 10px;
+  box-shadow: -1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(217, 217, 217, 0);
+  cursor: pointer;
+}
+.float-img {
+  float: right; /* Или right, если хотите, чтобы текст обтекал справа */
+  margin-right: 15px; /* Отступ справа от изображения */
+  margin-bottom: 15px; /* Отступ снизу от изображения */
+  width: 447px;
+  height: 395px;
+}

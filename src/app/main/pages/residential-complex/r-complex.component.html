@@ -1,0 +1,258 @@
+<main class="gk-page">
+  <div class="wrapper-back-banner">
+  </div>
+  <section class="gk-header">
+    <div class="container-main">
+      <div class="gk-banner">
+        <div class="gk-banner__back" [ngStyle]="{'background-image': 'url(' + rcomplex.titlePicture + ')'}">
+          <button class="bageSoon">
+            {{rcomplex.dueQuart}} кв.{{rcomplex.dueYear}}
+          </button>
+          <div class="logo_img">
+            <button class="gk-banner__bageLogo">
+              <img alt="img" style="cursor: pointer;"
+                   [src]="rcomplex.logo">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="gk-title">
+        <h1 class="gk-title__company">{{rcomplex.name}}</h1>
+        <div class="gk-title__district"><i class="bi bi-geo-alt-fill"> </i>
+          <svg width="49" height="49" viewBox="0 0 19 19" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9.5" cy="9.5" r="9.5" fill="#174449"/>
+            <path
+              d="M12 8.69231C12 10.3077 10.5 13 9.5 13C8.5 13 7 10.1792 7 8.69231C7 7.20539 8.11929 6 9.5 6C10.8807 6 12 7.20539 12 8.69231Z"
+              fill="white"/>
+            <circle cx="9.5" cy="8.5" r="0.5" fill="#174449"/>
+          </svg>
+<!--          Коминтерновский-->
+        </div>
+        <div class="gk-title__address">{{rcomplex.address}}</div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <section class="gk-project">
+    <div class="container-main">
+      <div class="row py-4">
+        <div class="col-7">
+          <div class="title--h2">О проекте</div>
+          <div class="gk-project__content">
+            {{rcomplex.info}}
+          </div>
+
+        </div>
+        <div class="col-5">
+          <img class="gk-project__rate" src="./assets/img/РРА 7.png" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="features">
+    <div class="container-main">
+      <h2 class="title--h2">Особенности ЖК</h2>
+      <div class="features__list">
+        <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                    data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                    aria-selected="true"> Социальная инфраструктура
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                    data-bs-target="#profile-tab-pane" type="button" role="tab"
+                    aria-controls="profile-tab-pane" aria-selected="false">Подземный паркинг
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                    data-bs-target="#contact-tab-pane" type="button" role="tab"
+                    aria-controls="contact-tab-pane" aria-selected="false">Благоустройство
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="features__details">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+               tabindex="0">
+            <div class="details__item">
+              <div class="row h-100">
+                <div class="col-6">
+                  <div class="details__item__img">
+
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="details__item__info">
+                    <h4 class="title--h4">
+                      Социальная инфраструктура
+                    </h4>
+                    <div class="text">
+                      Вся территория ЖК «Композитор» - это безопасное <br>приватное пространство,
+                      которое оснащено детскими и <br>спортивными игровыми площадками и
+                      благоустроенными <br>зонами отдыха.<br>
+                      Гуляйте с детьми, тренируйтесь, читайте книгу в тени <br>деревьев или просто
+                      отдыхайте!<br>
+                      В проекте благоустройства двора использованы<br> современные объекты и
+                      покрытия, которые соответствуют <br>международным стандартам качества, <br>нетоксичны
+                      и устойчивы к климатическим воздействиям.
+                      Вся территория ЖК «Композитор» - это безопасное <br>приватное пространство,
+                      которое оснащено детскими и <br>спортивными игровыми площадками и
+                      благоустроенными <br>зонами отдыха.<br>
+                      Гуляйте с детьми, тренируйтесь, читайте книгу в тени <br>деревьев или просто
+                      отдыхайте!<br>
+                      В проекте благоустройства двора использованы<br> современные объекты и
+                      покрытия, которые соответствуют <br>международным стандартам качества, <br>нетоксичны
+                      и устойчивы к климатическим воздействиям.
+
+                      Вся территория ЖК «Композитор» - это безопасное <br>приватное пространство,
+                      которое оснащено детскими и <br>спортивными игровыми площадками и
+                      благоустроенными <br>зонами отдыха.<br>
+                      Гуляйте с детьми, тренируйтесь, читайте книгу в тени <br>деревьев или просто
+                      отдыхайте!<br>
+                      В проекте благоустройства двора использованы<br> современные объекты и
+                      покрытия, которые соответствуют <br>международным стандартам качества, <br>нетоксичны
+                      и устойчивы к климатическим воздействиям.
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+               tabindex="1">
+            <div class="details__item">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+               tabindex="2">
+            <div class="details__item">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="gk-choice">
+    <div class="container">
+      <h2 class="title--h2">Выбрать планировку</h2>
+      <div class="filter-section__header">
+        <div class="row">
+          <div class="col-xxl-4">
+            <div class="block-filter">
+              <label for="cnt-room-input"> Количество комнат</label>
+              <div aria-label="Группа кнопок по умолчанию" class="btn-group my-btn-lg" id="cnt-room-input"
+                   role="group">
+
+                <input autocomplete="off" class="btn-check" id="btnradio1" name="btnradio"
+                       type="radio">
+                <label class="btn btn-outline-dark" for="btnradio1">Cтудия</label>
+
+                <input autocomplete="off" class="btn-check" id="btnradio2" name="btnradio"
+                       type="radio">
+                <label class="btn btn-outline-dark" for="btnradio2">1</label>
+
+                <input autocomplete="off" checked class="btn-check" id="btnradio3"
+                       name="btnradio" type="radio">
+                <label class="btn btn-outline-dark" for="btnradio3">2</label>
+
+                <input autocomplete="off" class="btn-check" id="btnradio4" name="btnradio"
+                       type="radio">
+                <label class="btn btn-outline-dark" for="btnradio4">3</label>
+                <input autocomplete="off" class="btn-check" id="btnradio5" name="btnradio"
+                       type="radio">
+                <label class="btn btn-outline-dark" for="btnradio5">4</label>
+                <input autocomplete="off" class="btn-check" id="btnradio6" name="btnradio"
+                       type="radio">
+                <label class="btn btn-outline-dark" for="btnradio6">5+</label>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xxl-3">
+            <div class="block-filter">
+              <label for="cost-input"> Цена, руб. </label>
+              <div class="cost block-inputs">
+                <input class="my-input-lg" id="cost-input" placeholder="от" type="text">
+                <input class="my-input-lg" placeholder="до" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 ">
+            <div class="block-filter">
+              <label for="area-input"> Площадь, м </label>
+              <div class="area block-inputs">
+                <input class="d-block my-input-lg" id="area-input" placeholder="от" type="text">
+                <input class="d-block my-input-lg" placeholder="до" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="col-xxl-2 ">
+            <a href="search.html">
+              <button class="filter-button _show vertical-bottom"> Показать</button>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="filter-section_content">
+        <div class="filter-section_content_inner">
+          <div class="row">
+            <div class="result-search__items">
+
+              <div class="result-search__item" *ngFor="let item of apartments" [routerLink]="['/apartment', item.id]">
+                <div class="r-item-img">
+                  <img src="./img/image 8.png">
+                </div>
+                <div class="r-item-info">
+                  <h2 class="r-item__title-info">{{item.numberOfRooms}} {{item.areaTotal}} </h2>
+                  <div class="r-item__type-build">{{item.houseType}}</div>
+                  <div class="r-item__address">{{item.address}}</div>
+                  <div class="r-item__categories">
+                    <div>Кухня: . . . . . . . . . . . . . .</div>
+                    <span>{{item.areaKitchen}}</span>
+                    <div>Этаж . . . . . . . . . . . . . . .</div>
+                    <span>{{item.floor}}</span>
+                    <div>Срок сдачи . . . . . . . . . .</div>
+                    <span>{{item.dueYear}}</span>
+                  </div>
+
+                  <div class="r-item__price-block">
+                    <div class="price">6 342 534</div>
+                    <div class="price-squad">77 205 <span> р/м<sup>2</sup></span></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-center my-5 ">
+        <button class="show-button mx-5"> показать все варианты</button>
+        <button class="show-button mx-5"> Использовать Smart-подбор</button>
+      </div>
+    </div>
+
+
+  </section>
+
+</main>

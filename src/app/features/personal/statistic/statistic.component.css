@@ -1,0 +1,61 @@
+.filters {
+  border-bottom: 0.5px solid rgb(153, 153, 153);
+  padding: 0px 20px;
+  padding-bottom: 27px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.select-option {
+  box-sizing: border-box;
+  border: 1px solid rgb(153, 153, 153);
+  border-radius: 10px;
+  width: 151.43px;
+  height: 41.79px;
+  outline: none;
+  background: rgb(255, 254, 254);
+  color: rgb(0, 0, 0);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+.results {
+  padding: 0px 20px;
+}
+.results h2 {
+  margin-bottom: 26px;
+  margin-top: 25px;
+  color: rgb(0, 0, 0);
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.statistic-watch {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.statistic-watch h3 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(0, 0, 0);
+  font-family: Inter, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+.statistic-watch h3 span {
+  margin-bottom: 14px;
+  color: rgb(0, 0, 0);
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.statistic-watch h3 p {
+  margin-top: 9px;
+  color: rgb(187, 187, 187);
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+}

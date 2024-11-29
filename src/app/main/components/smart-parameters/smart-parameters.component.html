@@ -1,0 +1,1537 @@
+<form class="form-param" #formParam>
+  <div class="container">
+    <div class="form-param__title">
+      <div class="row row-cols-2">
+        <div class="col-11"><h1 class="title--h1">ПРИМЕНЕНИЕ УМНОГО ФИЛЬТРА</h1></div>
+        <div class="col-1">
+          <button type="button" class="form__close btn-close" aria-label="Закрыть" (click)="onCancel()"></button>
+        </div>
+      </div>
+    </div>
+    <div class="form-param__choosed">
+      <!--      <div class="d-flex flex-wrap gap-3 justify-content-start align-content-start fp-choosed fp-choosed--temp"-->
+      <!--           id="choosed-block">-->
+      <!--      </div>-->
+
+      <div class="d-flex flex-wrap gap-3 justify-content-start align-content-start fp-choosed fp-choosed--temp">
+        <ng-container *ngFor="let param of choosedItems">
+          <div class="fp-choosed__item">
+            <span> {{ labelParameter(param.id)}}</span>
+            <label *ngIf="param.type !== 'checkbox'" class="link-danger"  (click)="removeParameter(param.id)">X</label>
+            <label *ngIf="param.type =='checkbox'" class="link-danger" for="{{param.id}}" >X</label>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="d-flex justify-content-end" *ngIf="choosedItems.length > 0">
+        <a class="link--base" (click)="clearFilter()"> Очистить </a>
+      </div>
+    </div>
+    <hr>
+    <div class="form-param__filter fp-filter">
+      <h2 class="fp-filter__title title--h2">ВСЕ ФИЛЬТРЫ</h2>
+      <div class="fp-filter__items">
+
+        <div class="fp-filter__item fp-common">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseCommon" aria-expanded="true" aria-controls="collapseCommon">
+            Общие
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseCommon">
+            <div class="fp-filter-item__inner">
+              <div class="fp-common__type-build">
+                <h4 class="title--h4">Тип жилья</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.apartmentTypeWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFlat" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ccvbfg">
+                  <span></span>
+                  <span class="fp-label--tx">Квартира</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isApartments" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fgde">
+                  <span></span>
+                  <span class="fp-label--tx">Апартаменты</span>
+                </label>
+
+              </div>
+
+
+              <!-- Планировка -->
+
+              <div class="fp-common__planner">
+                <h4 class="title--h4">Планировка</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.planWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBlandPlan" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="uit">
+                  <span></span>
+                  <span class="fp-label--tx">Смежная</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isIsolatePlan" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gh">
+                  <span></span>
+                  <span class="fp-label--tx">Изолированная</span>
+                </label>
+              </div>
+
+              <!-- "Этаж" -->
+
+              <div class="fp-common__roof">
+                <h4 class="title--h4">Этаж</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.floorWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <div class="fp-preference justify-content-start gap-3 my-2">
+                  <input *ngIf="!smart" type="text" id="area-input" class="d-block fp-input fp-input--sm"
+                         placeholder="от" [(ngModel)]="smartParameters.floorMin" [ngModelOptions]="{standalone: true}">
+                  <input *ngIf="!smart" type="text" class="d-block fp-input fp-input--sm" placeholder="до"
+                         [(ngModel)]="smartParameters.floorMax" [ngModelOptions]="{standalone: true}">
+
+                  <input *ngIf="smart" type="number" id="он6" class="d-block fp-input fp-input--sm"
+                         [(ngModel)]="smartParameters.floorPreference" [ngModelOptions]="{standalone: true}">
+
+                  <div *ngIf="smart" class="flex-column">
+                    <div class="flex-row justify-content-between">
+                      <span class="mx-2">{{ smartParameters.floorMin }} </span>
+                      -
+                      <span class="mx-2">{{ smartParameters.floorMax }} </span>
+                    </div>
+                    <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.floorMax"
+                           [min]="smartParameters.floorMin" step="1" id="tn0m"
+                           [(ngModel)]="smartParameters.floorPreference" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <label class="fp-label">
+                  <input class="fp-label--check" type="checkbox" name="" id="erff"
+                         [(ngModel)]="smartParameters.isNotFirstFloor" [ngModelOptions]="{standalone: true}">
+                  <span></span>
+                  <span class="fp-label--tx">Не первый</span>
+                </label>
+                <label class="fp-label">
+                  <input class="fp-label--check" type="checkbox" name="" id="webm"
+                         [(ngModel)]="smartParameters.isNotLastFloor" [ngModelOptions]="{standalone: true}">
+                  <span></span>
+                  <span class="fp-label--tx">Не последний</span>
+                </label>
+                <label class="fp-label">
+                  <input class="fp-label--check" type="checkbox" name="" id="4rt"
+                         [(ngModel)]="smartParameters.isLastFloor" [ngModelOptions]="{standalone: true}">
+                  <span></span>
+                  <span class="fp-label--tx">Только последний</span>
+                </label>
+              </div>
+
+              <!-- "Количество этаже в доме/подьезд" -->
+
+              <div class="fp-common__roof-in-build">
+                <h4 class="title--h4">Этажей в доме</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.countFloorWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <div class="fp-preference  justify-content-between gap-3 my-2">
+                  <input *ngIf="!smart" type="text" id="gt5" class="d-block fp-input fp-input--long"
+                         placeholder="от" [(ngModel)]="smartParameters.countFloorMin"
+                         [ngModelOptions]="{standalone: true}">
+                  <input *ngIf="!smart" type="text" id="6yhtr" class="d-block fp-input fp-input--long"
+                         placeholder="до" [(ngModel)]="smartParameters.countFloorMax"
+                         [ngModelOptions]="{standalone: true}">
+                  <input *ngIf="smart" type="number" id="онb6" class="d-block fp-input fp-input--sm"
+                         [(ngModel)]="smartParameters.countFloorPreference" [ngModelOptions]="{standalone: true}">
+
+                  <div *ngIf="smart" class="flex-column">
+                    <div class="flex-row justify-content-between">
+                      <span class="mx-2">{{ smartParameters.countFloorMin }} </span>
+                      -
+                      <span class="mx-2">{{ smartParameters.countFloorMax }} </span>
+                    </div>
+                    <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.countFloorMax"
+                           [min]="smartParameters.countFloorMin" step="1" id="tne0m"
+                           [(ngModel)]="smartParameters.countFloorPreference" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <select [(ngModel)]="smartParameters.company" [ngModelOptions]="{standalone: true}"
+                        class="form-select fp-select" required aria-label="select company" id="cmp">
+                  <option value="0">Выбрать застройщика</option>
+                  <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+                </select>
+
+                <select [(ngModel)]="smartParameters.companyExcp" [ngModelOptions]="{standalone: true}"
+                        class="form-select fp-select" required aria-label="select company excepted" id="cmpEx">
+                  <option value="0">Исключить застройщика</option>
+                  <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- "Площадь" -->
+
+        <div class="fp-filter__item fp-common-gray">
+          <img alt="back-logo" class="banner__back-logo" src="./assets/img/back_baner_logo.png">
+          <div class="fp-filter-item__inner">
+            <div class="fp-cmn-gray__square">
+              <div class="slider slider--long">
+                <h4 class="title--h4">Площадь</h4>
+                <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete>
+                  <input matSliderThumb [(ngModel)]="smartParameters.areaWeight" [ngModelOptions]="{standalone: true}">
+                </mat-slider>
+                <img class="slider__help--marg" *ngIf="smart" src="./assets/img/ant-design_info-circle-outlined.svg"
+                     alt="help"
+                     containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+              </div>
+              <p class="fp-label--tx">Общая</p>
+              <div class="d-flex flex-row justify-content-between my-2">
+                <input *ngIf="!smart" type="text" id="он" class="d-block fp-input fp-input--base "
+                       placeholder="от" [(ngModel)]="smartParameters.areaTotalMin"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="!smart" type="text" id="гше" class="d-block fp-input fp-input--base "
+                       placeholder="до" [(ngModel)]="smartParameters.areaTotalMax"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="smart" type="number" id="онbh" class="d-block fp-input fp-input--sm"
+                       [(ngModel)]="smartParameters.areaTotalPreference" [ngModelOptions]="{standalone: true}">
+                <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                  <div class="flex-row justify-content-between">
+                    <span class="mx-2">{{ smartParameters.areaTotalMin }}м<sup>2</sup></span>
+                    -
+                    <span class="mx-2">{{ smartParameters.areaTotalMax }}м<sup>2</sup></span>
+                  </div>
+                  <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.areaTotalMax"
+                         [min]="smartParameters.areaTotalMin" step="10" id="tn5em54"
+                         [(ngModel)]="smartParameters.areaTotalPreference" [ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+              <p class="fp-label--tx">Жилая</p>
+              <div class="d-flex flex-row justify-content-between my-2">
+                <input *ngIf="!smart" type="text" id="гнур7" class="d-block fp-input fp-input--base "
+                       placeholder="от" [(ngModel)]="smartParameters.areaLivingMin"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="!smart" type="text" id="4ny" class="d-block fp-input fp-input--base "
+                       placeholder="до" [(ngModel)]="smartParameters.areaLivingMax"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="smart" type="number" id="онb6h" class="d-block fp-input fp-input--sm"
+                       [(ngModel)]="smartParameters.areaLivingPreference" [ngModelOptions]="{standalone: true}">
+                <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                  <div class="flex-row justify-content-between">
+                    <span class="mx-2">{{ smartParameters.areaLivingMin }}м<sup>2</sup></span>
+                    -
+                    <span class="mx-2">{{ smartParameters.areaLivingMax }}м<sup>2</sup></span>
+                  </div>
+                  <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.areaLivingMax"
+                         [min]="smartParameters.areaLivingMin" step="10" id="tn4em54"
+                         [(ngModel)]="smartParameters.areaLivingPreference" [ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+              <p class="fp-label--tx">Кухня</p>
+              <div class="d-flex flex-row justify-content-between  my-2">
+                <input *ngIf="!smart" type="text" id="е5но" class="d-block fp-input fp-input--base "
+                       placeholder="от" [(ngModel)]="smartParameters.areaKitchenMin"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="!smart" type="text" id="е5" class="d-block fp-input fp-input--base "
+                       placeholder="до" [(ngModel)]="smartParameters.areaKitchenMax"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="smart" type="number" id="о67нb6h" class="d-block fp-input fp-input--sm"
+                       [(ngModel)]="smartParameters.areaKitchenPreference" [ngModelOptions]="{standalone: true}">
+                <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                  <div class="flex-row justify-content-between">
+                    <span class="mx-2">{{ smartParameters.areaKitchenMin }}м<sup>2</sup></span>
+                    -
+                    <span class="mx-2">{{ smartParameters.areaKitchenMax }}м<sup>2</sup></span>
+                  </div>
+                  <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.areaKitchenMax"
+                         [min]="smartParameters.areaKitchenMin" step="10" id="tnem534"
+                         [(ngModel)]="smartParameters.areaKitchenPreference" [ngModelOptions]="{standalone: true}">
+                </div>
+              </div>
+            </div>
+
+            <!-- "Стоимость / Цена" -->
+
+            <div class="fp-cmn-gray__cost">
+              <div class="slider slider--long">
+                <h4 class="title--h4">Стоимость, ₽</h4>
+
+                <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                  <input matSliderThumb [(ngModel)]="smartParameters.priceWeight" [ngModelOptions]="{standalone: true}">
+                </mat-slider>
+                <img class="slider__help--marg" *ngIf="smart" src="./assets/img/ant-design_info-circle-outlined.svg"
+                     alt="help"
+                     containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+              </div>
+              <div class="d-flex flex-row justify-content-between">
+                <input *ngIf="!smart" type="text" id="tern" class="d-block fp-input fp-input--base "
+                       placeholder="от" [(ngModel)]="smartParameters.priceMin" [ngModelOptions]="{standalone: true}">
+                <input *ngIf="!smart" type="text" id="ty48" class="d-block fp-input fp-input--base "
+                       placeholder="до" [(ngModel)]="smartParameters.priceMax" [ngModelOptions]="{standalone: true}">
+                <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                  <input type="text"  id="о6b6h" class="d-inline-block fp-input fp-input--long"> ₽
+                  <div class="flex-row justify-content-between my-3">
+                    <span class="mx-2">{{ smartParameters.priceMin }} руб.</span>
+                    -
+                    <span class="mx-2">{{ smartParameters.priceMax }} руб.</span>
+                  </div>
+                  <input type="range" class="form-range my-form-range"  [max]="smartParameters.priceMax"
+                         [min]="smartParameters.priceMin" step="100000" id="tne7m534"
+                         [(ngModel)]="smartParameters.pricePreference" (ngModelChange)="onRangeChange($event)" [ngModelOptions]="{standalone: true}">
+                </div>
+
+              </div>
+            </div>
+            <div class="fp-cmn-gray__price">
+              <div class="slider slider--long">
+                <h4 class="title--h4">Цена за, м<sup>2</sup></h4>
+                <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                  <input matSliderThumb [(ngModel)]="smartParameters.areaPriceWeight"
+                         [ngModelOptions]="{standalone: true}">
+                </mat-slider>
+                <img class="slider__help--marg" *ngIf="smart" src="./assets/img/ant-design_info-circle-outlined.svg"
+                     alt="help"
+                     containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+              </div>
+
+              <div class="d-flex flex-row justify-content-between">
+                <input *ngIf="!smart" type="text" id="m6r7" class="d-block fp-input fp-input--base "
+                       placeholder="от" [(ngModel)]="smartParameters.areaPriceMin"
+                       [ngModelOptions]="{standalone: true}">
+                <input *ngIf="!smart" type="text" id="eyue47y" class="d-block fp-input fp-input--base "
+                       placeholder="до" [(ngModel)]="smartParameters.areaPriceMax"
+                       [ngModelOptions]="{standalone: true}">
+
+                <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                  <input type="number" id="о67b6h" class="d-block fp-input fp-input--long"
+                         [(ngModel)]="smartParameters.areaPricePreference" [ngModelOptions]="{standalone: true}">
+
+                  <div class="flex-row justify-content-between my-3">
+                    <span class="mx-2">{{ smartParameters.areaPriceMin }} руб.</span>
+                    -
+                    <span class="mx-2">{{ smartParameters.areaPriceMax }} руб.</span>
+                  </div>
+                  <input type="range" class="form-range my-form-range" #slider [max]="smartParameters.areaPriceMax"
+                         [min]="smartParameters.areaPriceMin" step="1000" id="tn534"
+                         [(ngModel)]="smartParameters.areaPricePreference" [ngModelOptions]="{standalone: true}">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="fp-filter__item fp-about-apart">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseAboutApart" aria-expanded="true"
+              aria-controls="collapseAboutApart">
+            О квартире
+
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseAboutApart">
+            <div class="fp-filter-item__inner">
+              <div class="fp-about-apart__count-room">
+                <h4 class="title--h4">Количество комнат</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.numberOfRoomsWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAtelier" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="brty">
+                  <span></span>
+                  <span class="fp-label--tx">Студия</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isOne" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="nd66">
+                  <span></span>
+                  <span class="fp-label--tx">1 комната</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isOneEuro" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rty54">
+                  <span></span>
+                  <span class="fp-label--tx">Еврооднушка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isTwo" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rn4">
+                  <span></span>
+                  <span class="fp-label--tx">2 комнаты</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isTwoEuro" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rn44">
+                  <span></span>
+                  <span class="fp-label--tx">Евродвушка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isThree" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="5nd">
+                  <span></span>
+                  <span class="fp-label--tx">3 комнаты</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isThreeEuro" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fn5">
+                  <span></span>
+                  <span class="fp-label--tx">Евротрешка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFour" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rn4y">
+                  <span></span>
+                  <span class="fp-label--tx">4 комнаты</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFivePlus" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="57457f">
+                  <span></span>
+                  <span class="fp-label--tx">5 комнат и более</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFreeLayout" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="n44">
+                  <span></span>
+                  <span class="fp-label--tx">Свободная планировка</span>
+                </label>
+
+              </div>
+              <div class="fp-about-apart__view">
+                <h4 class="title--h4">Вид из окна</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="456y">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.viewFromWindowsWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isViewYard" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rytr">
+                  <span></span>
+                  <span class="fp-label--tx">Во двор</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isViewStreet" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="h56">
+                  <span></span>
+                  <span class="fp-label--tx">На улицу</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isViewBothSide" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="r5ty4">
+                  <span></span>
+                  <span class="fp-label--tx">На две стороны</span>
+                </label>
+              </div>
+
+              <div class="fp-about-apart__balcony-type">
+                <h4 class="title--h4">Балкон</h4>
+                <div class="slider" *ngIf="smart">
+
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.balconyWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBalcony" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sdr45">
+                  <span></span>
+                  <span class="fp-label--tx">Балкон</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isLoggia" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ad3">
+                  <span></span>
+                  <span class="fp-label--tx">Лоджия</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isInsulatedBalcony" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="xc33">
+                  <span></span>
+                  <span class="fp-label--tx">Утепленый балкон</span>
+                </label>
+              </div>
+
+              <!-- "Санузел" -->
+
+              <div class="fp-about-apart__bathroom">
+                <h4 class="title--h4">Санузел</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="zr63">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.bathroomWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCombined" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zcd3e">
+                  <span></span>
+                  <span class="fp-label--tx">Совмещенный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isSeparate" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zasw3">
+                  <span></span>
+                  <span class="fp-label--tx">Разделенный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isTwoBath" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="axc334">
+                  <span></span>
+                  <span class="fp-label--tx">2 и более</span>
+                </label>
+              </div>
+              <div class="fp-about-apart__stove">
+                <h4 class="title--h4">Плита на кухне</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="zxsa33">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.stoveWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isGasStove" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zasd43">
+                  <span></span>
+                  <span class="fp-label--tx">Газовая</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isElectricStove" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="szxza3">
+                  <span></span>
+                  <span class="fp-label--tx">Электрическая</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-filter__item fp-finishing">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseFinishing" aria-expanded="true" aria-controls="collapseFinishing">
+            Отделка и ремонт
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseFinishing">
+            <div class="fp-filter-item__inner">
+              <div class="fp-finishing__main">
+                <h4 class="title--h4">Отделка</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="xcvwe">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.decorationWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPreFinishing" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="dsd4">
+                  <span></span>
+                  <span class="fp-label--tx">Предчистовая</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFinishing" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sdf44">
+                  <span></span>
+                  <span class="fp-label--tx">Чистовая</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isEconomyClass" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gdg">
+                  <span></span>
+                  <span class="fp-label--tx">Эконом-класс</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isComfortClass" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sf4">
+                  <span></span>
+                  <span class="fp-label--tx">Комфорт-класс</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBusinessClass" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sse43">
+                  <span></span>
+                  <span class="fp-label--tx">Бизнес-класс</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutFinishing" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="cvf4">
+                  <span></span>
+                  <span class="fp-label--tx">Без отделки</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__wall">
+                <h4 class="title--h4">Отделка стен</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="bvdcg">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.decorationWallWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWallpaper" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="bxfff">
+                  <span></span>
+                  <span class="fp-label--tx">Обои</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPaint" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="bdfdr">
+                  <span></span>
+                  <span class="fp-label--tx">Краска</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPanelWall" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="bdfg">
+                  <span></span>
+                  <span class="fp-label--tx">Панели</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isLincrusta" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="drr7896">
+                  <span></span>
+                  <span class="fp-label--tx">Линкруст</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPlaster" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="hh46">
+                  <span></span>
+                  <span class="fp-label--tx">Декоративная штукатурка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBrickWall" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fg55">
+                  <span></span>
+                  <span class="fp-label--tx">Декоративный кирпич</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutWall" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="dfg5">
+                  <span></span>
+                  <span class="fp-label--tx">Без покрытия</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__ceiling">
+                <h4 class="title--h4">Отделка потолка</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="cdf">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.decorationCeilingWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWhiteCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="cdfg">
+                  <span></span>
+                  <span class="fp-label--tx">Побелка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isColorCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="4ty">
+                  <span></span>
+                  <span class="fp-label--tx">Покраска</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isTilesCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="b34">
+                  <span></span>
+                  <span class="fp-label--tx">Потолочная плитка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFalseCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="93d">
+                  <span></span>
+                  <span class="fp-label--tx">Подвесной потолок</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isStretchCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="l076">
+                  <span></span>
+                  <span class="fp-label--tx">Натяжной потолок</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutCeiling" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="dscfasf">
+                  <span></span>
+                  <span class="fp-label--tx">Без покрытия</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__floor">
+                <h4 class="title--h4">Покрытие пола</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="cdfz">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.floorCoveringWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isLinoleum" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="cwfc">
+                  <span></span>
+                  <span class="fp-label--tx">Линолеум</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isLaminate" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="cdd">
+                  <span></span>
+                  <span class="fp-label--tx">Ламинат</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isParquet" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="cdwqz">
+                  <span></span>
+                  <span class="fp-label--tx">Паркет</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isStoneware" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zxcs">
+                  <span></span>
+                  <span class="fp-label--tx">Керамогранит</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isQuartzvinyl" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zbvfrrt">
+                  <span></span>
+                  <span class="fp-label--tx">Кварцвинил</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutFloor" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="zert">
+                  <span></span>
+                  <span class="fp-label--tx">Без покрытия</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__type">
+                <h4 class="title--h4">Ремонт</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="ti5">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.repairTypeWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCosmeticRep" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="tuer4">
+                  <span></span>
+                  <span class="fp-label--tx">Косметический</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isEuroRep" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ret45">
+                  <span></span>
+                  <span class="fp-label--tx">Евро</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isDisignRep" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gre5">
+                  <span></span>
+                  <span class="fp-label--tx">Дизайнерский</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutRep" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gety43">
+                  <span></span>
+                  <span class="fp-label--tx">Без ремонта</span>
+                </label>
+
+              </div>
+              <div class="fp-finishing__glazing">
+                <h4 class="title--h4">Остекление балкона/лоджии</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="fggr">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.glazingWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPVH" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gfe">
+                  <span></span>
+                  <span class="fp-label--tx">ПВХ</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAluminum" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gfr">
+                  <span></span>
+                  <span class="fp-label--tx">Алюминий</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isVitrazh" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="grrt">
+                  <span></span>
+                  <span class="fp-label--tx">Витражное остекление</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutGlazing" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gffe">
+                  <span></span>
+                  <span class="fp-label--tx">Без остекления</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__bath">
+                <h4 class="title--h4">Отделка санузла</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--   <input type="range" class="form-range" min="0" max="5" id="g5re">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.decorationBathroomWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithoutDecBathroom" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="je3">
+                  <span></span>
+                  <span class="fp-label--tx">Без отделки</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithDecBathroom" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ethdx">
+                  <span></span>
+                  <span class="fp-label--tx">С отделкой</span>
+                </label>
+              </div>
+
+              <div class="fp-finishing__radiator">
+                <h4 class="title--h4">Радиаторы</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="custnge2">-->
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.radiatorsWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBimetalRadtr" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="27">
+                  <span></span>
+                  <span class="fp-label--tx">Биметал</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isSteelRadtr" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="674">
+                  <span></span>
+                  <span class="fp-label--tx">Стальные</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAluminumRadtr" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="989">
+                  <span></span>
+                  <span class="fp-label--tx">Алюминивые</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-filter__item fp-about-build">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseAboutBuild" aria-expanded="true"
+              aria-controls="collapseAboutBuild">
+            О доме
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseAboutBuild">
+            <div class="fp-filter-item__inner">
+              <div class="fp-about-build__type">
+                <h4 class="title--h4">Тип дома</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.buildWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBrickBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="tyn4">
+                  <span></span>
+                  <span class="fp-label--tx">Кирпичный</span>
+                  <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isMonolithicBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="n456">
+                  <span></span>
+                  <span class="fp-label--tx">Монолитный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPanelBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fny63">
+                  <span></span>
+                  <span class="fp-label--tx">Панельный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isMnlBrckBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="65756yg">
+                  <span></span>
+                  <span class="fp-label--tx">Кирпично-монолитный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isBlockBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="7756">
+                  <span></span>
+                  <span class="fp-label--tx">Блочный</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAnotherBuild" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="9933">
+                  <span></span>
+                  <span class="fp-label--tx">Другой</span>
+                  <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </label>
+              </div>
+              <div class="fp-about-build__class">
+                <h4 class="title--h4 d-inline-block">Класс цифровизации дома</h4>
+                <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                     containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="e7">-->
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.classWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClassA" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="vew44">
+                  <span></span>
+                  <span class="fp-label--tx">A</span>
+                  <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClassB" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fgh56">
+                  <span></span>
+                  <span class="fp-label--tx">B</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClassC" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rth479">
+                  <span></span>
+                  <span class="fp-label--tx">C</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClassD" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="4567grt">
+                  <span></span>
+                  <span class="fp-label--tx">D</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClassE" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="4568rrf">
+                  <span></span>
+                  <span class="fp-label--tx">E</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__seismic">
+                <h4 class="title--h4">Сейсмоустойчивость</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--<input type="range" class="form-range" min="0" max="5" id="6jyy7">-->
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.asesmicWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAsesmic5" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ms4">
+                  <span></span>
+                  <span class="fp-label--tx">до 5 баллов</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAsesmic6" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rtmy">
+                  <span></span>
+                  <span class="fp-label--tx">до 6 баллов</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isAsesmic7" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="fgff">
+                  <span></span>
+                  <span class="fp-label--tx">7 и выше</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__date">
+                <h4 class="title--h4">Срок сдачи</h4>
+                <div class="slider" *ngIf="smart">
+                  <!-- <input type="range" class="form-range" min="0" max="5" id="6j7">-->
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.dueWeight" [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <div class="d-flex flex-row justify-content-between  my-2">
+                  <input [(ngModel)]="smartParameters.dueYearMin" [ngModelOptions]="{standalone: true}" type="number"
+                         id="g8" class="d-block fp-input fp-input--long"
+                         placeholder="2024">
+                  <input [(ngModel)]="smartParameters.dueYearMax" [ngModelOptions]="{standalone: true}" type="number"
+                         id="r5" class="d-block fp-input fp-input--long"
+                         placeholder="2025">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isDone" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="rtart">
+                  <span></span>
+                  <span class="fp-label--tx">Дом сдан</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__height-floor">
+                <h4 class="title--h4">Высота потолков</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="6jhj7">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.ceilingHeightWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCeilHeightFrom2_7" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="msj4">
+                  <span></span>
+                  <span class="fp-label--tx">от 2.7м</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCeilHeightTo2_7" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="we">
+                  <span></span>
+                  <span class="fp-label--tx">до 2.7м</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCeilHeightFrom3" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="3">
+                  <span></span>
+                  <span class="fp-label--tx">от 3м</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCeilHeightTFrom3_5" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="3k">
+                  <span></span>
+                  <span class="fp-label--tx">от 3.5м</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__count-elevator">
+                <h4 class="title--h4">Количество лифтов</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="6hj7">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.numberElevatorsWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isElevator1" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sj4">
+                  <span></span>
+                  <span class="fp-label--tx">1</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isElevator2" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="wge">
+                  <span></span>
+                  <span class="fp-label--tx">2</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isElevator3" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="3o">
+                  <span></span>
+                  <span class="fp-label--tx">3 и более</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__smart-home">
+                <h4 class="title--h4">Умный дом</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="hj7">-->
+                  <mat-slider min="1" max="10" step="1" discrete>
+                    <input matSliderThumb [(ngModel)]="smartParameters.smartHomeWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isSmart" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="j4">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNotSmart" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="ge">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__count-apart">
+                <h4 class="title--h4">Количество квартир на этаже</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.numberOfApartmentsWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <div class="d-flex flex-row justify-content-between  my-2">
+                  <input *ngIf="!smart" [(ngModel)]="smartParameters.numberOfApartmentsMin"
+                         [ngModelOptions]="{standalone: true}"
+                         type="text" id="75" class="d-block fp-input fp-input--long"
+                         placeholder="2">
+                  <input *ngIf="!smart" [(ngModel)]="smartParameters.numberOfApartmentsMax"
+                         [ngModelOptions]="{standalone: true}"
+                         type="text" id="ki8" class="d-block fp-input fp-input--long"
+                         placeholder="5">
+                  <div *ngIf="smart" class="flex-column flex-fill mx-5">
+                    <input type="number" id="онb1" class="d-block fp-input fp-input--long"
+                           [(ngModel)]="smartParameters.numberOfApartmentsPreference"
+                           [ngModelOptions]="{standalone: true}">
+
+                    <div class="flex-row justify-content-between my-3">
+                      <span class="mx-2">{{ smartParameters.numberOfApartmentsMin }} </span>
+                      -
+                      <span class="mx-2">{{ smartParameters.numberOfApartmentsMax }} </span>
+                    </div>
+                    <input type="range" class="form-range my-form-range" #slider
+                           [max]="smartParameters.numberOfApartmentsMax"
+                           [min]="smartParameters.numberOfApartmentsMin" step="1" id="tne7m4"
+                           [(ngModel)]="smartParameters.numberOfApartmentsPreference"
+                           [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+
+              </div>
+              <div class="fp-about-build__elevator">
+                <h4 class="title--h4">Лифт</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="6nhj7">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.elevatorTypeWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPassenger" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="swj4">
+                  <span></span>
+                  <span class="fp-label--tx">Пассажирский</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isCargo" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="wg3e">
+                  <span></span>
+                  <span class="fp-label--tx">Грузовой</span>
+                </label>
+              </div>
+
+              <div class="fp-about-build__boiler">
+                <h4 class="title--h4">Своя котельная</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="6nш">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.selfBoilerWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isSelfBoiler" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="sмwj4">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoSelfBoiler" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="wg3цe">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-filter__item fp-comfort">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseComfort" aria-expanded="true"
+              aria-controls="collapseComfort">
+            Комфорт жизни
+
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseComfort">
+            <div class="fp-filter-item__inner">
+              <div class="fp-comfort__nearby">
+                <h4 class="title--h4">Рядом</h4>
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="867">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.nearbyWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyShop" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="bdfgh">
+                  <span></span>
+                  <span class="fp-label--tx">ТЦ</span>
+                  <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyFitness" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gdbbb">
+                  <span></span>
+                  <span class="fp-label--tx">Фитнес</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyPark" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="345g">
+                  <span></span>
+                  <span class="fp-label--tx">Парк</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbySchool" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="g53nc">
+                  <span></span>
+                  <span class="fp-label--tx">Школа</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyKindergarten" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="57r6">
+                  <span></span>
+                  <span class="fp-label--tx">Детский сад</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyPolyclinic" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="9w133">
+                  <span></span>
+                  <span class="fp-label--tx">Поликлинника</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyBusStation" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="91p33">
+                  <span></span>
+                  <span class="fp-label--tx">Остановка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNearbyCarService" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="t9133">
+                  <span></span>
+                  <span class="fp-label--tx">Автосервис</span>
+                </label>
+              </div>
+
+              <div class="fp-comfort__parking">
+                <h4 class="title--h4 d-inline-block">Парковка</h4>
+                <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                     containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                <div class="slider" *ngIf="smart">
+                  <!--                  <input type="range" class="form-range" min="0" max="5" id="et7">-->
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.parkingWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                  <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isUnderground" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="veyw44">
+                  <span></span>
+                  <span class="fp-label--tx">Подземная</span>
+
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isSurface" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="34kt">
+                  <span></span>
+                  <span class="fp-label--tx">Наземная многоуровневая</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isOpenParking" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="yu5">
+                  <span></span>
+                  <span class="fp-label--tx">Открытая во дворе</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClosedParking" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="wetr">
+                  <span></span>
+                  <span class="fp-label--tx d-inline">Закрытая территория двора</span>
+                </label>
+              </div>
+
+              <div class="fp-comfort__courtyard">
+                <h4 class="title--h4">Закрытый двор</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.closedYardWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isClosedYard" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="nyted">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoClosedYard" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="faq">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+
+              <div class="fp-comfort__furniture">
+                <h4 class="title--h4">Меблировка</h4>
+                <div class="slider" *ngIf="smart">
+                  <mat-slider min="1" max="10" step="1" discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="smartParameters.furnitureWeight"
+                           [ngModelOptions]="{standalone: true}">
+                  </mat-slider>
+
+                </div>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoFurniture" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="кеуа">
+                  <span></span>
+                  <span class="fp-label--tx">Без мебели</span>
+
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFurnitureKitch" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="мыа">
+                  <span></span>
+                  <span class="fp-label--tx">Мебель на кухне</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isFurniture" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="кен">
+                  <span></span>
+                  <span class="fp-label--tx">Во всей квартире</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fp-filter__item fp-deal">
+          <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
+              data-bs-target="#collapseDeal" aria-expanded="true"
+              aria-controls="collapseDeal">
+            Сделка
+          </h3>
+          <div class="collapse collapse-horizontal show" id="collapseDeal">
+            <div class="fp-filter-item__inner">
+              <div class="fp-deal__sale-type">
+                <h4 class="title--h4">Способ продажи</h4>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isDDU" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="ddu" id="ddu">
+                  <span></span>
+                  <span class="fp-label--tx">ДДУ</span>
+                  <img class="label__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
+                       containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isGSK" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="dogovor">
+                  <span></span>
+                  <span class="fp-label--tx">Договор ЖСК</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isPereustpka" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="te5gh">
+                  <span></span>
+                  <span class="fp-label--tx">Переуступка</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isDKP" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="dkp">
+                  <span></span>
+                  <span class="fp-label--tx">ДКП</span>
+                </label>
+              </div>
+              <div class="fp-deal__warranty">
+                <h4 class="title--h4 d-inline-block">Гарантия на квартиру</h4>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWarranty" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="gveyw44">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoWarranty" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="u34kt">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+              <div class="fp-deal__online-booking">
+                <h4 class="title--h4">Онлайн-бронирование</h4>
+
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithOnlineBook" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="nyfted">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isWithOutOnlineBook" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="faqo">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+              <div class="fp-deal__el-registration">
+                <h4 class="title--h4">Электронная регистрация сделки</h4>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isElectronReg" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="кiеуа">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoElectronReg" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="мыаu">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+              <div class="fp-deal__promo">
+                <h4 class="title--h4">АКЦИИ</h4>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isStoke" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="кjiеуа">
+                  <span></span>
+                  <span class="fp-label--tx">Да</span>
+                </label>
+                <label class="fp-label">
+                  <input [(ngModel)]="smartParameters.isNoStoke" [ngModelOptions]="{standalone: true}"
+                         class="fp-label--check" type="checkbox" name="" id="мыаuj">
+                  <span></span>
+                  <span class="fp-label--tx">Нет</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center">
+        <input [disabled]="isChoosedItemsEmpty()" type="submit" class="fp-submit" value="Подоборать обьекты"
+               (click)="onSubmit()">
+        <span class="flex-lg-grow-0 mx-2"></span>
+        <input type="reset" class="fp-reset" value="Сброс">
+      </div>
+      <div class="fp-scroll fp-scroll--bottom" (click)="scrollToBottom()">
+        <svg width="96" height="100" viewBox="0 0 96 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M95.202 49.6186C95.202 76.7633 73.9853 98.7372 47.851 98.7372C21.7167 98.7372 0.5 76.7633 0.5 49.6186C0.5 22.4739 21.7167 0.5 47.851 0.5C73.9853 0.5 95.202 22.4739 95.202 49.6186Z"
+            stroke="#174449"/>
+          <path d="M59.9177 45.0077L46.4568 56.4189L35.4618 44.6955" stroke="#174449" stroke-width="4"/>
+        </svg>
+      </div>
+      <div class="fp-scroll fp-scroll--top" *ngIf="showElement" (click)="scrollToTop()">
+        <svg width="96" height="100" viewBox="0 0 96 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M95.202 49.6186C95.202 76.7633 73.9853 98.7372 47.851 98.7372C21.7167 98.7372 0.5 76.7633 0.5 49.6186C0.5 22.4739 21.7167 0.5 47.851 0.5C73.9853 0.5 95.202 22.4739 95.202 49.6186Z"
+            stroke="#174449"/>
+          <path d="M36.0843 54.9908L49.5451 43.5796L60.5402 55.303" stroke="#174449" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</form>
+
+

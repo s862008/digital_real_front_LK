@@ -1,0 +1,72 @@
+﻿Придерживаемся наименования переменных в стиле camelCase.
+версия от 19.08.2024
+
+ ID квартиры   - (bigint) apartmentId
+ Номер квартиры  -  (int) apartmentNumber
+ Количество комнат  -  (int) numberOfRooms
+ Подъезд  -  (int) entrance
+ Название планировки  -  (string) planning
+ Тип жилья  -  (string) apartmentType
+ Этаж  - (int) floor
+ Площадь полная  - (dbl) areaFull
+ Площадь жилая  - (dbl) areaLiving
+ Площадь общая - (dbl) areaTotal
+ Площадь кухни - (dbl) areaKithcen
+ Цена объекта - (bigint) price
+ Цена за кв метр - (bigint) priceSqmt
+ Вид из окон - (string) viewFromWindows
+ Балкон - (string) balcony
+ Санузел - (string) bathroom
+ Отделка - (string) decoration
+ Отделка стен - (string) decorationWall
+ Отделка потолка - (string) decorationCeiling
+ Отделка сан узла - (boolean) isDecorationBathroom
+ Покрытие пола - (string) floorCovering
+ Ремонт, тип - (string) repairType
+ Остекление - (string) glazing
+ Количество квартир на этаже - (int) numberOfApartmentsPerFloor
+ Мебелировка - (string) furniture
+ Электронная регистрация -  (string) electronReg
+ Тип продажи - (string) saleType
+ Онлайн бронь - (bool) isOnlineBooking
+ Акции - (string) stocks
+ Сертификаты -  certificates
+ Жилой комплекс id - (int) residentialComplexId
+ Компания продавец id - (int) companyId
+ Дополнительная информация - (string) info
+ телефон компании/риелтора  - (string) phone;
+ Адрес объекта  -  (string) address;
+ Дополнительная информация  -  (string) info;
+ Этажей в доме  - (int) numberOfFloor;
+ Плита  -  (string) stove;
+ Радиаторы  -  (string) radiators;
+ Отопление  -  (bool) isHeating;
+ Кол-во лифтов в подъезде  -   (int) numberElevators;
+ Сейсмоустойчивость  -  (string) asesmic;
+ Класс цифровизации  -  (string) digitClass;
+ Высота потолка  -   (dbl) ceilingHeight;
+ Умный дом  -   (bool) isSmartHome
+ Закрытый двор  - (bool) isClosedYard;
+ Рядом с домом -  (string) nearby;
+ Парковка  -  (string) parking;
+ Лифт - (string) elevator
+ Рядом с домом  (bool) :
+	TЦ -  isNearbyShop
+	фитнесс - isNearbyFitness
+	парк - isNearbyPark;
+	школа -  isNearbySchool
+	детский сад - isNearbyKindergarten
+	поликлиника- isNearbyPolyclinic
+	автобусная остановка - isNearbyBusStation
+	авто сервис - isNearbyCarService
+
+
+
+ Статус - (string) status
+ Теги - (string) tags
+ Cделка - deal
+ isWarrantry - (bool) гарантия
+ dueDate - (string) Срок сдачи полная дата
+ dueYear - (string) Срок сдачи Год
+ dueQuart - (int) Срок сдачи квартал
+

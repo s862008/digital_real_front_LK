@@ -1,0 +1,36 @@
+.nav-cabinet {
+  align-items: center;
+  border-right: 1px solid rgb(153, 153, 153);
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.button {
+  border: none;
+  outline: none;
+  width: 170px;
+  height: 42px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgb(0, 0, 0);
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+.button img {
+  width: 20px;
+  height: 20px;
+}
+.active-link {
+  background: linear-gradient(
+    180deg,
+    rgb(16, 102, 129) 1.308%,
+    rgb(3, 47, 48) 155.507%
+  );
+  color: white;
+}

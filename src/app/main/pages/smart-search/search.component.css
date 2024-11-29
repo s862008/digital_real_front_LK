@@ -1,0 +1,235 @@
+.search-section {
+  position: relative;
+  top: 40px;
+  margin: 0 auto;
+  border-radius: 25px;
+  max-width: 1796px;
+  padding: 40px 50px;
+  min-height: 972px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  background: #fff;
+}
+
+.search-section__inner {
+  padding: 38px 18px;
+}
+
+.search-section__filter-side .fp-filter__item {
+  min-width: 90%;
+}
+
+.search-section__filter-side div {
+  margin: 0;
+}
+
+.search-section__filter-side h2, .search-section__filter-side h3 {
+  padding: 10px 0;
+}
+
+.search-section__filter-side .fp-filter-item__inner {
+  grid-gap: 1vh 1vw;
+}
+
+.search-section__filter-side {
+  border-right: 1px solid #b5b6b7;
+}
+
+.search-section__card-side .cards-block {
+  padding: 50px;
+}
+
+.cards-block > div:nth-of-type(1) {
+  height: 2800px;
+}
+
+.cards-block__item {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 20px 0 0 17px;
+  padding: 16px 0px 31px 20px;
+  grid-gap: 52px;
+  justify-content: space-evenly;
+  border: 1px solid rgba(153, 153, 153, 0.01);
+  border-radius: 10px;
+  box-shadow: -1px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(217, 217, 217, 0);
+  cursor: pointer;
+}
+.slider {
+  height: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+}
+.slider h4{
+  margin-right: 5%;
+  flex-basis: max-content;
+  flex-shrink: 0;
+}
+.slider__help {
+  cursor: pointer;
+  margin: 0 5px;
+  flex-basis: 20px;
+}
+.slider:hover {
+  opacity: 1;
+}
+
+mat-slider {
+  width: 80% !important;
+}
+
+.fp-select {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: #000;
+  background-size: 24px 21px;
+  border-radius: 10px;
+
+}
+
+.fp-label {
+  display: flex;
+  justify-content: start;
+  padding: 8px 0px;
+  align-items: center;
+  line-height: 150%;
+}
+
+.fp-label--check {
+  display: none;
+}
+
+.fp-label--check + span {
+  display: inline-block;
+  border: 1px solid #999;
+  border-radius: 10px;
+  width: 43px;
+  height: 45px;
+  margin: 0px 18px 0 5px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.fp-label--check:checked + span::after {
+  content: '';
+  display: block;
+  border: 0;
+  background-color: #106580;
+  position: relative;
+  top: 3px;
+  left: 3px;
+  border-radius: 8px;
+  width: 35px;
+  height: 37px;
+}
+
+.fp-input {
+  padding: 8px 10px;
+  border: 1px solid #999;
+  border-radius: 10px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: #000;
+  opacity: 0.5;
+  width:16vw;
+
+}
+.fp-input--sm {
+  width:6vw;
+  height: 42px;
+}
+.fp-input--long {
+  width:12vw;
+  height: 42px;
+}
+.fp-reset{
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  width: 6vw;
+  height: 35px;
+  font-weight: 400;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background: #a8afb0;
+}
+.img-block {
+  height: 326px;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; /*центрируем элемент по горизонтали */
+  align-items: center; /* и вертикали */
+  border: 0.50px solid #999;
+  border-radius: 5px;
+}
+
+.r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 146%;
+  color: #999;
+}
+
+.r-item__categories {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 200px auto;
+  line-height: 100%;
+}
+.r-item__title-info, .price {
+  font-family: 'Lato SemiBold', sans-serif;
+  font-weight: 500;
+  font-size: 23px;
+  color: #000;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+.r-item__company {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 19px;
+  color: #000;
+  padding-top: 7vh;
+}
+
+.r-item-info {
+   width: 60%;
+ }
+
+.cards-block__price {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 36px;
+  color: #000;
+
+}
+
+.cards-block__price-sqr {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 26px;
+  color: #999;
+}
+.phone-btn {
+  width: 90%;
+  border: 0;
+  border-radius: 7px;
+  padding: 15px 15px;
+  height: 61px;
+  background: linear-gradient(180deg, #27758d 0%, #1c4344 100%);
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  z-index: 999;
+
+}

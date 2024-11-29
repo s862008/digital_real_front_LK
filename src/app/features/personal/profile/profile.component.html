@@ -1,0 +1,68 @@
+<div class="profile-block">
+  <form [formGroup]="profileForm" class="container text-center">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Имя</mat-label>
+          <input matInput formControlName="name" name="name" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Телефон</mat-label>
+          <input matInput formControlName="phone" name="phone" autocomplete="off">
+          <mat-error>
+            Неверный формат
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Фамилия</mat-label>
+          <input matInput formControlName="surname" name="surname" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Почта</mat-label>
+          <input matInput formControlName="email" name="email" autocomplete="off">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Отчество</mat-label>
+          <input matInput formControlName="patronymic" name="patronymic" autocomplete="off">
+        </mat-form-field>
+      </div>
+<!--      <div class="col">-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Дата рождения</mat-label>-->
+<!--          <input matInput formControlName="date" name="date" [matDatepicker]="picker" autocomplete="off">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker></mat-datepicker>-->
+<!--          <mat-error>-->
+<!--            Неверная дата-->
+<!--          </mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="button-div">
+          <button mat-raised-button type="submit" (click)="saveProfile()"
+                  class="mat-raised-button-primary-color profile-button">
+            Сохранить данные
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col invisible-mobile"></div>
+    </div>
+
+  </form>
+</div>

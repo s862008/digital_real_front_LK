@@ -1,0 +1,813 @@
+<!--<div *ngIf="activeParameters.length > 0">-->
+<div>
+<!--  <h3>Выбранные параметры:  {{activeParameters().length}} </h3>-->
+<!--        <ng-container *ngFor="let param of parametersActive">-->
+<!--  &lt;!&ndash;      <div *ngIf="param.value != null && param.condition">&ndash;&gt;-->
+<!--        <div class="d-inline-block my-1 mx-2 " *ngIf="param.condition">-->
+<!--          <span> {{ param.label }} {{ param.value }}</span>-->
+<!--          <a class="link-danger mx-2" (click)="resetParameter(param.key)">X</a>-->
+<!--        </div>-->
+<!--      </ng-container>-->
+
+  <h3>Выбранные параметры: </h3>
+  <div class="d-inline-block my-1 mx-2 " *ngIf="smartParameters.isAtelier">
+    <input [(ngModel)]="smartParameters.isAtelier" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="brty" hidden>
+    <span class="fp-label--tx">Студия</span>
+    <label for="brty" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2 " *ngIf="smartParameters.isOne">
+    <input [(ngModel)]="smartParameters.isOne" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="nd66" hidden>
+    <span class="fp-label--tx">1 комната</span>
+    <label for="nd66" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isOneEuro">
+    <input [(ngModel)]="smartParameters.isOneEuro" type="checkbox" id="rty54" hidden>
+    <span class="fp-label--tx">Еврооднушка</span>
+    <label for="rty54" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isTwo">
+    <input [(ngModel)]="smartParameters.isTwo" (change)="onCheckboxChange($event)" type="checkbox" id="rn4" hidden>
+    <span class="fp-label--tx">2 комнаты</span>
+    <label for="rn4" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isTwoEuro">
+    <input [(ngModel)]="smartParameters.isTwoEuro" (change)="onCheckboxChange($event)" type="checkbox" id="rn44" hidden>
+    <span class="fp-label--tx">Евродвушка</span>
+    <label for="rn44" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isThree">
+    <input [(ngModel)]="smartParameters.isThree" (change)="onCheckboxChange($event)" type="checkbox" id="5nd" hidden>
+    <span class="fp-label--tx">3 комнаты</span>
+    <label for="5nd" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isThreeEuro">
+    <input [(ngModel)]="smartParameters.isThreeEuro" (change)="onCheckboxChange($event)"
+          type="checkbox" id="fn5" hidden>
+    <span class="fp-label--tx">Евротрешка</span>
+    <label for="fn5" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFour">
+    <input [(ngModel)]="smartParameters.isFour" (change)="onCheckboxChange($event)" type="checkbox" id="rn4y" hidden>
+    <span class="fp-label--tx">4 комнаты</span>
+    <label for="rn4y" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFivePlus">
+    <input [(ngModel)]="smartParameters.isFivePlus" (change)="onCheckboxChange($event)" type="checkbox" id="57457f"
+           hidden>
+    <span class="fp-label--tx">5 комнат и более</span>
+    <label for="57457f" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFreeLayout">
+    <input [(ngModel)]="smartParameters.isFreeLayout" (change)="onCheckboxChange($event)" type="checkbox" id="n44"
+           hidden>
+    <span class="fp-label--tx">Свободная планировка</span>
+    <label for="n44" class="link-danger mx-2">X</label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isViewYard">
+    <input [(ngModel)]="smartParameters.isViewYard" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="rytr" hidden>
+    <span class="fp-label--tx">Во двор</span>
+    <label for="rytr" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isViewYard">
+    <input [(ngModel)]="smartParameters.isViewStreet" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="h56" hidden>
+    <span class="fp-label--tx">На улицу</span>
+    <label for="h56" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isViewBothSide">
+    <input [(ngModel)]="smartParameters.isViewBothSide" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="r5ty4" hidden>
+    <span class="fp-label--tx">На две стороны</span>
+    <label for="r5ty4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBalcony">
+    <input [(ngModel)]="smartParameters.isBalcony" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="sdr45" hidden>
+    <span class="fp-label--tx">Балкон</span>
+    <label for="sdr45" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isLoggia">
+    <input [(ngModel)]="smartParameters.isLoggia" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ad3" hidden>
+    <span class="fp-label--tx">Лоджия</span>
+    <label for="ad3" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isInsulatedBalcony">
+    <input [(ngModel)]="smartParameters.isInsulatedBalcony" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="xc33" hidden>
+    <span class="fp-label--tx">Утепленый балкон</span>
+    <label for="xc33" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCombined">
+    <input [(ngModel)]="smartParameters.isCombined" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zcd3e" hidden>
+    <span class="fp-label--tx">Совмещенный санузел</span>
+    <label for="zcd3e" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isSeparate">
+    <input [(ngModel)]="smartParameters.isSeparate" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zasw3" hidden>
+    <span class="fp-label--tx">Разделенный санузел</span>
+    <label for="zasw3" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isTwoBath">
+    <input [(ngModel)]="smartParameters.isTwoBath" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="axc334" hidden>
+    <span class="fp-label--tx">2 и более санузла</span>
+    <label for="axc334" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isGasStove">
+    <input [(ngModel)]="smartParameters.isGasStove" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zasd43" hidden>
+    <span class="fp-label--tx">Газовая плита</span>
+    <label for="zasd43" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isElectricStove">
+    <input [(ngModel)]="smartParameters.isElectricStove" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="szxza3" hidden>
+    <span class="fp-label--tx">Электрическая плита</span>
+    <label for="szxza3" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPreFinishing">
+    <input [(ngModel)]="smartParameters.isPreFinishing" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="dsd4" hidden>
+    <span class="fp-label--tx">Предчистовая отделка</span>
+    <label for="dsd4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isEconomyClass">
+    <input [(ngModel)]="smartParameters.isEconomyClass" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gdg" hidden>
+    <span class="fp-label--tx">Эконом-клас отделка</span>
+    <label for="gdg" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isComfortClass">
+    <input [(ngModel)]="smartParameters.isComfortClass" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="sf4" hidden>
+    <span class="fp-label--tx">Комфорт-класс отделка</span>
+    <label for="sf4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBusinessClass">
+    <input [(ngModel)]="smartParameters.isBusinessClass" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="sse43" hidden>
+    <span class="fp-label--tx">Бизнес-класс отделка</span>
+    <label for="sse43" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutFinishing">
+    <input [(ngModel)]="smartParameters.isWithoutFinishing" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="cvf4" hidden>
+    <span class="fp-label--tx">Без отделки</span>
+    <label for="cvf4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWallpaper">
+    <input [(ngModel)]="smartParameters.isWallpaper" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="bxfff" hidden>
+    <span class="fp-label--tx">Обои</span>
+    <label for="bxfff" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPaint">
+    <input [(ngModel)]="smartParameters.isPaint" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="bdfdr" hidden>
+    <span class="fp-label--tx">Краска(стены)</span>
+    <label for="bdfdr" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPanelWall">
+    <input [(ngModel)]="smartParameters.isPanelWall" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="bdfg" hidden>
+    <span class="fp-label--tx">Панели(стены)</span>
+    <label for="bdfg" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isLincrusta">
+    <input [(ngModel)]="smartParameters.isLincrusta" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="drr7896" hidden>
+    <span class="fp-label--tx">Линкруст(стены)</span>
+    <label for="drr7896" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPlaster">
+    <input [(ngModel)]="smartParameters.isPlaster" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="hh46" hidden>
+    <span class="fp-label--tx">Декоративная штукатурка</span>
+    <label for="hh46" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBrickWall">
+    <input [(ngModel)]="smartParameters.isBrickWall" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="fg55" hidden>
+    <span class="fp-label--tx">Декоративный кирпич(стены)</span>
+    <label for="fg55" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBrickWall">
+    <input [(ngModel)]="smartParameters.isBrickWall" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="dfg5" hidden>
+    <span class="fp-label--tx">Без отделки стен</span>
+    <label for="dfg5" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWhiteCeiling">
+    <input [(ngModel)]="smartParameters.isWhiteCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="cdfg" hidden>
+    <span class="fp-label--tx">Побелка потолка</span>
+    <label for="cdfg" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isColorCeiling">
+    <input [(ngModel)]="smartParameters.isColorCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="4ty" hidden>
+    <span class="fp-label--tx">Покраска потолка</span>
+    <label for="4ty" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isTilesCeiling">
+    <input [(ngModel)]="smartParameters.isTilesCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="b34" hidden>
+    <span class="fp-label--tx">Потолочная плитка</span>
+    <label for="b34" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFalseCeiling">
+    <input [(ngModel)]="smartParameters.isFalseCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="93d" hidden>
+    <span class="fp-label--tx">Подвесной потолок</span>
+    <label for="93d" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isStretchCeiling">
+    <input [(ngModel)]="smartParameters.isStretchCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="l076" hidden>
+    <span class="fp-label--tx">Натяжной потолок</span>
+    <label for="l076" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutCeiling">
+    <input [(ngModel)]="smartParameters.isWithoutCeiling" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="dscfasf" hidden>
+    <span class="fp-label--tx">Без отделки потолка</span>
+    <label for="dscfasf" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isLinoleum">
+    <input [(ngModel)]="smartParameters.isLinoleum" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="cwfc" hidden>
+    <span class="fp-label--tx">Линолеум</span>
+    <label for="cwfc" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isLaminate">
+    <input [(ngModel)]="smartParameters.isLaminate" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="cdd" hidden>
+    <span class="fp-label--tx">Ламинат</span>
+    <label for="cdd" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isParquet">
+    <input [(ngModel)]="smartParameters.isParquet" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="cdwqz" hidden>
+    <span class="fp-label--tx">Паркет</span>
+    <label for="cdwqz" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isStoneware">
+    <input [(ngModel)]="smartParameters.isStoneware" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zxcs" hidden>
+    <span class="fp-label--tx">Керамогранит</span>
+    <label for="zxcs" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isQuartzvinyl">
+    <input [(ngModel)]="smartParameters.isQuartzvinyl" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zbvfrrt" hidden>
+    <span class="fp-label--tx">Кварцвинил</span>
+    <label for="zbvfrrt" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutFloor">
+    <input [(ngModel)]="smartParameters.isWithoutFloor" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="zert" hidden>
+    <span class="fp-label--tx">Без отделки пола</span>
+    <label for="zert" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCosmeticRep">
+    <input [(ngModel)]="smartParameters.isCosmeticRep" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="tuer4" hidden>
+    <span class="fp-label--tx">Косметический ремонт</span>
+    <label for="tuer4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isEuroRep">
+    <input [(ngModel)]="smartParameters.isEuroRep" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ret45" hidden>
+    <span class="fp-label--tx">Евро ремонт</span>
+    <label for="ret45" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isDisignRep">
+    <input [(ngModel)]="smartParameters.isDisignRep" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gre5" hidden>
+    <span class="fp-label--tx">Дизайнерский ремонт</span>
+    <label for="gre5" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutRep">
+    <input [(ngModel)]="smartParameters.isWithoutRep" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gety43" hidden>
+    <span class="fp-label--tx">Без ремонта</span>
+    <label for="gety43" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPVH">
+    <input [(ngModel)]="smartParameters.isPVH" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gfe" hidden>
+    <span class="fp-label--tx">Остекление ПВХ</span>
+    <label for="gfe" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isAluminum">
+    <input [(ngModel)]="smartParameters.isAluminum" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gfr" hidden>
+    <span class="fp-label--tx">Остекление Алюминий</span>
+    <label for="gfr" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isVitrazh">
+    <input [(ngModel)]="smartParameters.isVitrazh" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="grrt" hidden>
+    <span class="fp-label--tx">Витражное остекление</span>
+    <label for="grrt" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutGlazing">
+    <input [(ngModel)]="smartParameters.isWithoutGlazing" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gffe" hidden>
+    <span class="fp-label--tx">Без остекления</span>
+    <label for="gffe" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithoutDecBathroom">
+    <input [(ngModel)]="smartParameters.isWithoutDecBathroom" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="je3" hidden>
+    <span class="fp-label--tx">Без отделки санузла</span>
+    <label for="je3" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithDecBathroom">
+    <input [(ngModel)]="smartParameters.isWithDecBathroom" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ethdx" hidden>
+    <span class="fp-label--tx">С отделкой санузла</span>
+    <label for="ethdx" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBimetalRadtr">
+    <input [(ngModel)]="smartParameters.isBimetalRadtr" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="27" hidden>
+    <span class="fp-label--tx">Радиаторы-биметал</span>
+    <label for="27" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isSteelRadtr">
+    <input [(ngModel)]="smartParameters.isSteelRadtr" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="674" hidden>
+    <span class="fp-label--tx">Радиаторы-стальные</span>
+    <label for="674" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isAluminumRadtr">
+    <input [(ngModel)]="smartParameters.isAluminumRadtr" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="989" hidden>
+    <span class="fp-label--tx">Радиаторы-алюминивые</span>
+    <label for="989" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isBrickBuild">
+    <input [(ngModel)]="smartParameters.isBrickBuild" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="tyn4" hidden>
+    <span class="fp-label--tx">Кирпичный дом</span>
+    <label for="tyn4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isMonolithicBuild">
+    <input [(ngModel)]="smartParameters.isMonolithicBuild" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="n456" hidden>
+    <span class="fp-label--tx">Монолитный дом</span>
+    <label for="n456" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPanelBuild">
+    <input [(ngModel)]="smartParameters.isPanelBuild" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="fny63" hidden>
+    <span class="fp-label--tx">Панельный дом</span>
+    <label for="fny63" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isMnlBrckBuild">
+    <input [(ngModel)]="smartParameters.isMnlBrckBuild" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="65756yg" hidden>
+    <span class="fp-label--tx">Кирпично-монолитный дом</span>
+    <label for="65756yg" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isAnotherBuild">
+    <input [(ngModel)]="smartParameters.isAnotherBuild" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="9933" hidden>
+    <span class="fp-label--tx">Тип дома: Другой</span>
+    <label for="9933" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClassA">
+    <input [(ngModel)]="smartParameters.isClassA" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="vew44" hidden>
+    <span class="fp-label--tx">Класс цифровизации дома: A</span>
+    <label for="vew44" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClassB">
+    <input [(ngModel)]="smartParameters.isClassB" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="fgh56" hidden>
+    <span class="fp-label--tx">Класс цифровизации дома: B</span>
+    <label for="fgh56" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClassC">
+    <input [(ngModel)]="smartParameters.isClassC" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="rth479" hidden>
+    <span class="fp-label--tx">Класс цифровизации дома: C</span>
+    <label for="rth479" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClassD">
+    <input [(ngModel)]="smartParameters.isClassD" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="4567grt" hidden>
+    <span class="fp-label--tx">Класс цифровизации дома: D</span>
+    <label for="4567grt" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClassE">
+    <input [(ngModel)]="smartParameters.isClassE" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="4568rrf" hidden>
+    <span class="fp-label--tx">Класс цифровизации дома: E</span>
+    <label for="4568rrf" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isAsesmic5">
+    <input [(ngModel)]="smartParameters.isAsesmic5" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ms4" hidden>
+    <span class="fp-label--tx">Сейсмоустойчивость: до 5 баллов</span>
+    <label for="ms4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isAsesmic6">
+    <input [(ngModel)]="smartParameters.isAsesmic6" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="rtmy" hidden>
+    <span class="fp-label--tx">Сейсмоустойчивость: до 6 баллов</span>
+    <label for="rtmy" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="isSrock && (smartParameters.dueYearMin >0 || smartParameters.dueYearMax>0)">
+
+    <input [(ngModel)]="isSrock"  (change)="onCheckboxChange($event)" type="checkbox" name="" id="f1gff" hidden>
+    <span class="fp-label--tx">Выбранный период: {{smartParameters.dueYearMin}}  - {{smartParameters.dueYearMax}}</span>
+    <label for="f1gff" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isDone">
+    <input [(ngModel)]="smartParameters.isDone" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="rtart" hidden>
+    <span class="fp-label--tx">Дом сдан</span>
+    <label for="rtart" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCeilHeightFrom2_7">
+    <input [(ngModel)]="smartParameters.isCeilHeightFrom2_7" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="msj4" hidden>
+    <span class="fp-label--tx">Высота потолков: от 2.7м</span>
+    <label for="msj4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCeilHeightTo2_7">
+    <input [(ngModel)]="smartParameters.isCeilHeightTo2_7" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="we" hidden>
+    <span class="fp-label--tx">Высота потолков: до 2.7м</span>
+    <label for="we" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCeilHeightFrom3">
+    <input [(ngModel)]="smartParameters.isCeilHeightFrom3" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="we3" hidden>
+    <span class="fp-label--tx">Высота потолков: от 3м</span>
+    <label for="we3" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCeilHeightTFrom3_5">
+    <input [(ngModel)]="smartParameters.isCeilHeightTFrom3_5" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="3k" hidden>
+    <span class="fp-label--tx">Высота потолков: от 3.5м</span>
+    <label for="3k" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isElevator1">
+    <input [(ngModel)]="smartParameters.isElevator1" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="sj4" hidden>
+    <span class="fp-label--tx">Количество лифтов: 1</span>
+    <label for="sj4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isElevator2">
+    <input [(ngModel)]="smartParameters.isElevator2" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="wge" hidden>
+    <span class="fp-label--tx">Количество лифтов: 2</span>
+    <label for="wge" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isElevator3">
+    <input [(ngModel)]="smartParameters.isElevator3" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="3o" hidden>
+    <span class="fp-label--tx">Количество лифтов: 3 и более</span>
+    <label for="3o" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isSmart">
+    <input [(ngModel)]="smartParameters.isSmart" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="j4" hidden>
+    <span class="fp-label--tx">Умный дом: Да</span>
+    <label for="j4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNotSmart">
+    <input [(ngModel)]="smartParameters.isNotSmart" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ge" hidden>
+    <span class="fp-label--tx">Умный дом: Нет</span>
+    <label for="ge" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="isCountApartment && (smartParameters.numberOfApartmentsPreference == null) && (smartParameters.numberOfApartmentsMin >0 || smartParameters.numberOfApartmentsMax>0)">
+    <input [(ngModel)]="isCountApartment" (change)="onCheckboxChange($event)" type="checkbox" name="" id="gff" hidden>
+    <span class="fp-label--tx">Количество квартир на этаже: {{smartParameters.numberOfApartmentsMin}}  - {{smartParameters.numberOfApartmentsMax}}</span>
+    <label for="gff" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="isCountApartment && (smartParameters.numberOfApartmentsPreference! > 0 )">
+    <input [(ngModel)]="isCountApartment" (change)="onCheckboxChange($event)" type="checkbox" name="" id="gffS" hidden>
+    <span class="fp-label--tx">Количество квартир на этаже: {{smartParameters.numberOfApartmentsPreference}}</span>
+    <label for="gffS" class="link-danger mx-2"> X </label>
+  </div>
+
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPassenger">
+    <input [(ngModel)]="smartParameters.isPassenger" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="swj4" hidden>
+    <span class="fp-label--tx">Лифт пассажирский </span>
+    <label for="swj4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isCargo">
+    <input [(ngModel)]="smartParameters.isCargo" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="wg3e" hidden>
+    <span class="fp-label--tx">Лифт грузовой </span>
+    <label for="wg3e" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isSelfBoiler">
+    <input [(ngModel)]="smartParameters.isSelfBoiler" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="sмwj4" hidden>
+    <span class="fp-label--tx">Своя котельная: Да </span>
+    <label for="sмwj4" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoSelfBoiler">
+    <input [(ngModel)]="smartParameters.isNoSelfBoiler" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="wg3цe" hidden>
+    <span class="fp-label--tx">Своя котельная: Нет </span>
+    <label for="wg3цe" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyShop">
+    <input [(ngModel)]="smartParameters.isNearbyShop" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="bdfgh" hidden>
+    <span class="fp-label--tx">Рядом: ТЦ </span>
+    <label for="bdfgh" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyFitness">
+    <input [(ngModel)]="smartParameters.isNearbyFitness" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gdbbb" hidden>
+    <span class="fp-label--tx">Рядом: Фитнес </span>
+    <label for="gdbbb" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyPark">
+    <input [(ngModel)]="smartParameters.isNearbyPark" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="345g" hidden>
+    <span class="fp-label--tx">Рядом: Парк </span>
+    <label for="345g" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbySchool">
+    <input [(ngModel)]="smartParameters.isNearbySchool" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="g53nc" hidden>
+    <span class="fp-label--tx">Рядом: Школа </span>
+    <label for="g53nc" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyKindergarten">
+    <input [(ngModel)]="smartParameters.isNearbyKindergarten" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="57r6" hidden>
+    <span class="fp-label--tx">Рядом: Детский сад </span>
+    <label for="57r6" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyPolyclinic">
+    <input [(ngModel)]="smartParameters.isNearbyPolyclinic" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="9w133" hidden>
+    <span class="fp-label--tx">Рядом: Поликлинника </span>
+    <label for="9w133" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyBusStation">
+    <input [(ngModel)]="smartParameters.isNearbyBusStation" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="91p33" hidden>
+    <span class="fp-label--tx">Рядом: Остановка </span>
+    <label for="91p33" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNearbyCarService">
+    <input [(ngModel)]="smartParameters.isNearbyCarService" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="t9133" hidden>
+    <span class="fp-label--tx">Рядом: Автосервис </span>
+    <label for="t9133" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isUnderground">
+    <input [(ngModel)]="smartParameters.isUnderground" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="veyw44" hidden>
+    <span class="fp-label--tx">Парковка: Подземная </span>
+    <label for="veyw44" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isSurface">
+    <input [(ngModel)]="smartParameters.isSurface" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="34kt" hidden>
+    <span class="fp-label--tx">Парковка: Наземная многоуровневая </span>
+    <label for="34kt" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isOpenParking">
+    <input [(ngModel)]="smartParameters.isOpenParking" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="yu5" hidden>
+    <span class="fp-label--tx">Парковка: Открытая во дворе </span>
+    <label for="yu5" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClosedParking">
+    <input [(ngModel)]="smartParameters.isClosedParking" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="wetr" hidden>
+    <span class="fp-label--tx">Парковка: Закрытая территория двора </span>
+    <label for="wetr" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isClosedYard">
+    <input [(ngModel)]="smartParameters.isClosedYard" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="nyted" hidden>
+    <span class="fp-label--tx">Закрытый двор: Да</span>
+    <label for="nyted" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoClosedYard">
+    <input [(ngModel)]="smartParameters.isNoClosedYard" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="faq" hidden>
+    <span class="fp-label--tx">Закрытый двор: Нет</span>
+    <label for="faq" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoFurniture">
+    <input [(ngModel)]="smartParameters.isNoFurniture" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="кеуа" hidden>
+    <span class="fp-label--tx">Без мебели</span>
+    <label for="кеуа" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFurnitureKitch">
+    <input [(ngModel)]="smartParameters.isFurnitureKitch" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="мыа" hidden>
+    <span class="fp-label--tx">Мебель на кухне</span>
+    <label for="мыа" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isFurniture">
+    <input [(ngModel)]="smartParameters.isFurniture" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="кен" hidden>
+    <span class="fp-label--tx">Мебель во всей квартирее</span>
+    <label for="кен" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isDDU">
+    <input [(ngModel)]="smartParameters.isDDU" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="ddu" hidden>
+    <span class="fp-label--tx">ДДУ</span>
+    <label for="ddu" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isGSK">
+    <input [(ngModel)]="smartParameters.isGSK" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="dogovor" hidden>
+    <span class="fp-label--tx">Договор ЖСК</span>
+    <label for="dogovor" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isPereustpka">
+    <input [(ngModel)]="smartParameters.isPereustpka" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="te5gh" hidden>
+    <span class="fp-label--tx">Переуступка</span>
+    <label for="te5gh" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isDKP">
+    <input [(ngModel)]="smartParameters.isDKP" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="dkp" hidden>
+    <span class="fp-label--tx">ДКП</span>
+    <label for="dkp" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWarranty">
+    <input [(ngModel)]="smartParameters.isWarranty" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="gveyw44" hidden>
+    <span class="fp-label--tx">Гарантия: Да</span>
+    <label for="gveyw44" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoWarranty">
+    <input [(ngModel)]="smartParameters.isNoWarranty" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="u34kt" hidden>
+    <span class="fp-label--tx">Гарантия: Нет</span>
+    <label for="u34kt" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithOnlineBook">
+    <input [(ngModel)]="smartParameters.isWithOnlineBook" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="nyfted" hidden>
+    <span class="fp-label--tx">Онлайн-бронирование: Да</span>
+    <label for="nyfted" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isWithOutOnlineBook">
+    <input [(ngModel)]="smartParameters.isWithOutOnlineBook" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="faqo" hidden>
+    <span class="fp-label--tx">Онлайн-бронирование: Нет</span>
+    <label for="faqo" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isElectronReg">
+    <input [(ngModel)]="smartParameters.isElectronReg" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="кiеуа" hidden>
+    <span class="fp-label--tx">Электронная регистрация: Да</span>
+    <label for="кiеуа" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoElectronReg">
+    <input [(ngModel)]="smartParameters.isNoElectronReg" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="мыаu" hidden>
+    <span class="fp-label--tx">Электронная регистрация: Нет</span>
+    <label for="мыаu" class="link-danger mx-2"> X </label>
+  </div>
+
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isStoke">
+    <input [(ngModel)]="smartParameters.isStoke" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="кjiеуа" hidden>
+    <span class="fp-label--tx">АКЦИИ: Да</span>
+    <label for="кjiеуа" class="link-danger mx-2"> X </label>
+  </div>
+  <div class="d-inline-block my-1 mx-2" *ngIf="smartParameters.isNoStoke">
+    <input [(ngModel)]="smartParameters.isNoStoke" (change)="onCheckboxChange($event)"
+           type="checkbox" name="" id="мыаuj" hidden>
+    <span class="fp-label--tx">АКЦИИ: Нет</span>
+    <label for="мыаuj" class="link-danger mx-2"> X </label>
+  </div>
+
+
+
+</div>

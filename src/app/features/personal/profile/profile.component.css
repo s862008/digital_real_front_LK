@@ -1,0 +1,94 @@
+.profile-block {
+  padding: 30px 0;
+}
+
+.col mat-form-field {
+  min-width: 200px;
+  width: 300px;
+}
+
+.col .button-div {
+  padding: 10px 0;
+  margin: auto auto;
+}
+
+.profile-button {
+  width: 300px;
+}
+
+.invisible-mobile {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .col mat-form-field {
+    min-width: 200px;
+    width: 500px;
+  }
+
+  .profile-button {
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .col mat-form-field {
+    min-width: 200px;
+    width: 600px;
+  }
+
+  .profile-button {
+    width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .col mat-form-field {
+    min-width: 200px;
+    width: 400px;
+  }
+
+  .profile-button {
+    width: 400px;
+  }
+
+  .invisible-mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col mat-form-field {
+    min-width: 200px;
+    width: 450px;
+  }
+
+  .profile-button {
+    width: 450px;
+  }
+
+  .invisible-mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .col mat-form-field {
+    min-width: 550px;
+    width: 550px;
+  }
+
+  .profile-button {
+    width: 550px;
+  }
+
+  .invisible-mobile {
+    display: block;
+  }
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

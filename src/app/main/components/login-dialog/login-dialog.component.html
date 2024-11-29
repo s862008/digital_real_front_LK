@@ -1,0 +1,55 @@
+<div class="login-dialog">
+  <div class="login-form">
+    <div>
+      <img src="assets/img/logo.svg" alt="logo" />
+      <h1>Войти</h1>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Скрыть пароль'"
+          [attr.aria-pressed]="hide"
+        >
+          <!--                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="submit"
+        (click)="login()"
+        class="mat-raised-button-primary-color login-button"
+      >
+        Продолжить
+      </button>
+    </form>
+    <button
+      mat-raised-button--
+      class="mat-raised-button-color login-button"
+      (click)="openRegistrationDialog()"
+    >
+      Зарегистрироваться
+    </button>
+  </div>
+</div>

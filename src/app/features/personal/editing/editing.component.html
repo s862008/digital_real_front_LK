@@ -1,0 +1,437 @@
+<section class="edit-section">
+  <div class="container">
+    <div class="filters">
+      <select class="select-option">
+        <option value="Вчера">Вчера</option>
+        <option value="Последние 7 дней">Последние 7 дней</option>
+        <option value="За весь период">За весь период</option>
+        <option value="За весь период">За весь период</option>
+      </select>
+      <select class="select-option">
+        <option value="Все ЖК">Все ЖК</option>
+        <option value="ЖК Современник">ЖК Современник</option>
+        <option value="ЖК Звезда">ЖК Звезда</option>
+        <option value="ЖК Композитор">ЖК Композитор</option>
+      </select>
+      <button>Обновить данные</button>
+    </div>
+    <div class="results">
+      <div class="information">
+        <h1>
+          ЖК Композитор <br />
+          <span>ул. Независимости, 55л</span>
+        </h1>
+        <h2>№ 12 456</h2>
+      </div>
+      <div *ngFor="let listing of listing" class="card">
+        <div class="image-block">
+          <img [src]="listing.img" alt="Apartment image" />
+        </div>
+        <div class="details">
+          <h3>{{ listing.title }}</h3>
+          <p>{{ listing.address }}</p>
+          <p>{{ listing.kitchen }}</p>
+          <p>{{ listing.floor }}</p>
+          <p>{{ listing.deadline }}</p>
+        </div>
+        <div class="prices">
+          <h2>5 550 500 ₽</h2>
+          <h3>250 000₽/м2</h3>
+        </div>
+      </div>
+      <div class="pictures">
+        <h4 class="title">Фото и планировка</h4>
+        <div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+        </div>
+        <div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+          <div class="image-blocks">
+            <img src="../../../../assets/img/house.png" alt="Apartment image" />
+          </div>
+        </div>
+        <p class="info">
+          На фото не должно быть людей, животных, алкоголя, табака, оружия.  Не
+          добавляйте чужие фото, картинки с водяными знаками и рекламу.
+        </p>
+        <div class="upload-file">
+          <input type="file" />
+          <span>или перетащите сюда JPG, PNG или GIF до 10Мб каждый</span>
+        </div>
+      </div>
+      <div class="apartment-parameters">
+        <h3 class="title">Параметры квартиры</h3>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Тип жилья</h5>
+            <mat-checkbox class="example-margin">Квартира</mat-checkbox>
+            <mat-checkbox class="example-margin">Апартаменты</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Планировка</h5>
+            <mat-checkbox class="example-margin">Смежная</mat-checkbox>
+            <mat-checkbox class="example-margin">Изолированная</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Этаж</h5>
+            <input class="sub-input" type="text" placeholder="5" />
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Этажей в доме</h5>
+            <input class="sub-input" type="text" placeholder="15" />
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Количество комнат</h5>
+            <mat-checkbox class="example-margin">Студия</mat-checkbox>
+            <mat-checkbox class="example-margin">1 комната</mat-checkbox>
+            <mat-checkbox class="example-margin">Еврооднушка</mat-checkbox>
+            <mat-checkbox class="example-margin">2 комнаты</mat-checkbox>
+            <mat-checkbox class="example-margin">3 комнаты</mat-checkbox>
+            <mat-checkbox class="example-margin">Евротрешка</mat-checkbox>
+            <mat-checkbox class="example-margin">4 комнаты</mat-checkbox>
+            <mat-checkbox class="example-margin">5 комнат и более</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Свободная планировка</mat-checkbox
+            >
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Вид из окна</h5>
+            <mat-checkbox class="example-margin">Во двор</mat-checkbox>
+            <mat-checkbox class="example-margin">На улицу</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >На солнечную сторону</mat-checkbox
+            >
+            <mat-checkbox class="example-margin">На две стороны</mat-checkbox>
+            <mat-checkbox class="example-margin">Западная сторона</mat-checkbox>
+            <mat-checkbox class="example-margin">Северная сторона</mat-checkbox>
+            <mat-checkbox class="example-margin">Южная сторона</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Восточная сторона</mat-checkbox
+            >
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Балкон</h5>
+            <mat-checkbox class="example-margin">Балкон</mat-checkbox>
+            <mat-checkbox class="example-margin">Лоджия</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Утепленный балкон</mat-checkbox
+            >
+            <h5 class="sub-title" style="margin-top: 20px">Плита на кухне</h5>
+            <mat-checkbox class="example-margin">Газовая</mat-checkbox>
+            <mat-checkbox class="example-margin">Электрическая</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Санузел</h5>
+            <mat-checkbox class="example-margin">Совмещённый</mat-checkbox>
+            <mat-checkbox class="example-margin">Раздельный</mat-checkbox>
+            <mat-checkbox class="example-margin">2 и более</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Отделка</h5>
+            <mat-checkbox class="example-margin">Предчистовая</mat-checkbox>
+            <mat-checkbox class="example-margin">Чистовая</mat-checkbox>
+            <mat-checkbox class="example-margin">Еврооднушка</mat-checkbox>
+            <mat-checkbox class="example-margin">Эконом-класс</mat-checkbox>
+            <mat-checkbox class="example-margin">Комфорт-класс</mat-checkbox>
+            <mat-checkbox class="example-margin">Евротрешка</mat-checkbox>
+            <mat-checkbox class="example-margin">Бизнес-класс</mat-checkbox>
+            <mat-checkbox class="example-margin">Без отделки</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Отделка стен</h5>
+            <mat-checkbox class="example-margin">Обои</mat-checkbox>
+            <mat-checkbox class="example-margin">Краска</mat-checkbox>
+            <mat-checkbox class="example-margin">Панели</mat-checkbox>
+            <mat-checkbox class="example-margin">Линкруст</mat-checkbox>
+            <mat-checkbox class="example-margin">Дек. штукатурка</mat-checkbox>
+            <mat-checkbox class="example-margin">Дек. кирпич</mat-checkbox>
+            <mat-checkbox class="example-margin">Без покрытия</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Отделка потолка</h5>
+            <mat-checkbox class="example-margin">Побелка</mat-checkbox>
+            <mat-checkbox class="example-margin">Покраска</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Потолочная плитка</mat-checkbox
+            >
+            <mat-checkbox class="example-margin"
+              >Подвесной потолок</mat-checkbox
+            >
+
+            <mat-checkbox class="example-margin">Натяжной потолок</mat-checkbox>
+            <mat-checkbox class="example-margin">Без покрытия</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Покрытие пола</h5>
+            <mat-checkbox class="example-margin">Линолеум</mat-checkbox>
+            <mat-checkbox class="example-margin">Ламинат</mat-checkbox>
+            <mat-checkbox class="example-margin">Паркет</mat-checkbox>
+            <mat-checkbox class="example-margin">Керамогранит</mat-checkbox>
+            <mat-checkbox class="example-margin">Кварцвинил</mat-checkbox>
+            <mat-checkbox class="example-margin">Без покрытия</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Ремонт</h5>
+            <mat-checkbox class="example-margin">Косметический</mat-checkbox>
+            <mat-checkbox class="example-margin">Евро</mat-checkbox>
+            <mat-checkbox class="example-margin">Дизайнерский</mat-checkbox>
+            <mat-checkbox class="example-margin">Без ремонта</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Остекление балкона</h5>
+            <mat-checkbox class="example-margin">ПВХ</mat-checkbox>
+            <mat-checkbox class="example-margin">Алюминий</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Витражное остекление</mat-checkbox
+            >
+            <mat-checkbox class="example-margin">Без остекления</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Отделка санузла</h5>
+            <mat-checkbox class="example-margin">Без отделки</mat-checkbox>
+            <mat-checkbox class="example-margin">С отделкой</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Радиоторы</h5>
+            <mat-checkbox class="example-margin">Биметал</mat-checkbox>
+            <mat-checkbox class="example-margin">Стальные</mat-checkbox>
+            <mat-checkbox class="example-margin">Алюминивые</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Ремонт</h5>
+            <mat-checkbox class="example-margin">Косметический</mat-checkbox>
+            <mat-checkbox class="example-margin">Евро</mat-checkbox>
+            <mat-checkbox class="example-margin">Дизайнерский</mat-checkbox>
+            <mat-checkbox class="example-margin">Без ремонта</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Остекление балкона</h5>
+            <mat-checkbox class="example-margin">ПВХ</mat-checkbox>
+            <mat-checkbox class="example-margin">Алюминий</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Витражное остекление</mat-checkbox
+            >
+            <mat-checkbox class="example-margin">Без остекления</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Отделка санузла</h5>
+            <mat-checkbox class="example-margin">Без отделки</mat-checkbox>
+            <mat-checkbox class="example-margin">С отделкой</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Радиоторы</h5>
+            <mat-checkbox class="example-margin">Биметал</mat-checkbox>
+            <mat-checkbox class="example-margin">Стальные</mat-checkbox>
+            <mat-checkbox class="example-margin">Алюминивые</mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="apartment-parameters">
+        <h3 class="title">Параметры дома</h3>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Тип жилья</h5>
+            <mat-checkbox class="example-margin">Квартира</mat-checkbox>
+            <mat-checkbox class="example-margin">Монолитный</mat-checkbox>
+            <mat-checkbox class="example-margin">Панельный</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Кирпично-монолитный</mat-checkbox
+            >
+            <mat-checkbox class="example-margin">Блочный</mat-checkbox>
+            <mat-checkbox class="example-margin">Другой</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Класс цифровизации</h5>
+            <mat-checkbox class="example-margin">A</mat-checkbox>
+            <mat-checkbox class="example-margin">B</mat-checkbox>
+            <mat-checkbox class="example-margin">C</mat-checkbox>
+            <mat-checkbox class="example-margin">D</mat-checkbox>
+            <mat-checkbox class="example-margin">E</mat-checkbox>
+            <mat-checkbox class="example-margin"></mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Сейсмоустойчивость</h5>
+
+            <mat-checkbox class="example-margin">до 3 баллов</mat-checkbox>
+            <mat-checkbox class="example-margin">до 5 баллов</mat-checkbox>
+            <mat-checkbox class="example-margin">до 6 баллов</mat-checkbox>
+            <mat-checkbox class="example-margin">7 и выше</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Срок сдачи</h5>
+            <div style="display: flex">
+              <input class="sub-input" type="text" placeholder="2024" />
+              <input class="sub-input" type="text" placeholder="2025" />
+            </div>
+            <mat-checkbox class="example-margin">Дом сдан</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Высота потолков</h5>
+            <mat-checkbox class="example-margin">от 2.7м</mat-checkbox>
+            <mat-checkbox class="example-margin">до 2.7м</mat-checkbox>
+            <mat-checkbox class="example-margin">от 3м</mat-checkbox>
+            <mat-checkbox class="example-margin">от 3.5м</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Количество лифтов</h5>
+            <mat-checkbox class="example-margin">1</mat-checkbox>
+            <mat-checkbox class="example-margin">2 </mat-checkbox>
+            <mat-checkbox class="example-margin">3 и более</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Умный дом</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Квартир на этаже</h5>
+            <div style="display: flex">
+              <input class="sub-input" type="text" placeholder="2" />
+              <input class="sub-input" type="text" placeholder="5" />
+            </div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Лифт</h5>
+            <mat-checkbox class="example-margin">Пассажирский</mat-checkbox>
+            <mat-checkbox class="example-margin">Грузовой</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Своя котельная</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Рядом</h5>
+            <mat-checkbox class="example-margin">ТЦ</mat-checkbox>
+            <mat-checkbox class="example-margin">Фитнес</mat-checkbox>
+            <mat-checkbox class="example-margin">Парк</mat-checkbox>
+            <mat-checkbox class="example-margin">Школа</mat-checkbox>
+            <mat-checkbox class="example-margin">Детский сад</mat-checkbox>
+            <mat-checkbox class="example-margin">Поликлинника</mat-checkbox>
+            <mat-checkbox class="example-margin">Остановка</mat-checkbox>
+            <mat-checkbox class="example-margin">Автосервис</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Закрытый двор</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Меблировка</h5>
+            <mat-checkbox class="example-margin">Без мебели</mat-checkbox>
+            <mat-checkbox class="example-margin">Мебель на кухне</mat-checkbox>
+            <mat-checkbox class="example-margin">Во всей квартире</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Парковка</h5>
+            <mat-checkbox class="example-margin">Подземная</mat-checkbox>
+            <mat-checkbox class="example-margin"
+              >Наземная многоуровневая</mat-checkbox
+            >
+            <mat-checkbox class="example-margin"
+              >Открытая во дворе</mat-checkbox
+            >
+            <mat-checkbox class="example-margin"
+              >Закрытая территория двора</mat-checkbox
+            >
+          </div>
+        </div>
+      </div>
+      <div class="apartment-parameters">
+        <h3 class="title">Цена и условия сделки</h3>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">Способ продажи</h5>
+            <mat-checkbox class="example-margin">ДДУ</mat-checkbox>
+            <mat-checkbox class="example-margin">Договор ЖСК</mat-checkbox>
+            <mat-checkbox class="example-margin">Переуступка</mat-checkbox>
+            <mat-checkbox class="example-margin">ДКП</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Гарантия на квартиру</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+            <mat-checkbox class="example-margin"></mat-checkbox>
+            <mat-checkbox class="example-margin"></mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Бронирование</h5>
+
+            <mat-checkbox class="example-margin">Онлайн</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+            <mat-checkbox class="example-margin"></mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Электронная сделка</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+          </div>
+        </div>
+        <div class="list">
+          <div class="sub-list">
+            <h5 class="sub-title">АКЦИИ</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+            <mat-checkbox class="example-margin">от 3м</mat-checkbox>
+            <mat-checkbox class="example-margin">от 3.5м</mat-checkbox>
+          </div>
+          <div class="sub-list">
+            <h5 class="sub-title">Ипотека</h5>
+            <mat-checkbox class="example-margin">Да</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет </mat-checkbox>
+            <mat-checkbox class="example-margin">3 и более</mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="add-information">
+        <div class="d-flex">
+          <div>
+            <label for="lprice">Стоимость квартиры</label>
+            <input type="text" id="lprice" />
+          </div>
+          <div>
+            <label for="lpricem">Цена, м2</label>
+            <input type="text" id="lpricem" placeholder="250 000" />
+          </div>
+        </div>
+        <label for="lsertificate"> Использование сертификатов </label>
+        <input type="text" placeholder="Перечислите" id="lsertificate" />
+        <label for="lcontacts">Контакты менеджера</label>
+        <input type="text" id="lcontacts" placeholder="+7 " />
+        <input
+          type="email"
+          style="margin-top: 14px"
+          placeholder="pochta@mail.ru"
+        />
+        <button class="save-change">Сохранить изменения</button>
+      </div>
+    </div>
+  </div>
+</section>

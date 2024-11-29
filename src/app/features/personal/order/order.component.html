@@ -1,0 +1,66 @@
+<section class="order-section">
+  <div class="container">
+    <div class="filters">
+      <div class="all-select">
+        <select class="select-option">
+          <option value="По релевантности">По релевантности</option>
+          <option value="По дате">По дате</option>
+        </select>
+        <select class="select-option two">
+          <option value="По релевантности">Все ЖК</option>
+          <option value="По дате">Не все ЖК</option>
+        </select>
+      </div>
+      <button class="add-order">Добавить объявление</button>
+    </div>
+    <div class="results">
+      <div *ngFor="let listing of listings" class="card">
+        <div class="image-block">
+          <img [src]="listing.img" alt="Apartment image" />
+        </div>
+        <div class="details">
+          <h3>{{ listing.title }}</h3>
+          <p>{{ listing.address }}</p>
+          <p>{{ listing.kitchen }}</p>
+          <p>{{ listing.floor }}</p>
+          <p>{{ listing.deadline }}</p>
+          <p>{{ listing.price }}</p>
+        </div>
+        <div class="func">
+          <div class="link-btn">
+            <button>
+              <img
+                src="../../../../assets/img/staticbtn.png"
+                alt="static-button"
+              />
+            </button>
+            <button>
+              <img src="../../../../assets/img/xbtn.png" alt="" />
+            </button>
+          </div>
+          <button routerLink="/personal-cabinet/editing" class="edit-btn">
+            Редактировать
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="btns">
+        <button>
+          <img src="../../../../assets/img/next-page-vector.svg" alt="" />
+        </button>
+        <button class="active-page">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button class="next-page">
+          <img src="../../../../assets/img/next-page-vector.svg" alt="" />
+        </button>
+        <button class="view-all">ПОКАЗАТЬ ВСЕ</button>
+      </div>
+      <div class="page-information">
+        <p>Показаны 1-7 из 50</p>
+        <p>Обновлено 06.05.2024 в 9:00</p>
+      </div>
+    </div>
+  </div>
+</section>

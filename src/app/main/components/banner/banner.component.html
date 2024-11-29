@@ -1,0 +1,26 @@
+<section class="banner">
+  <img class="banner__back-logo" src="./assets/img/back_baner_logo.png" alt="back-logo">
+  <app-container>
+    <div class="row flex-nowrap">
+      <a [routerLink]="['/filter-search']" class="banner__img-part"></a>
+      <div class="banner__text-part">
+        <div class="banner-title">
+          ВЫБОР ЗА ТОБОЙ!
+        </div>
+        <div class="banner-info">
+          Квартира в новостройке напрямую от застройщика <br> в Воронеже
+        </div>
+        <div class="banner__smart-part">
+          <a (click)="openDialog()" >
+            <button class="smart-part__button">SMART-ПОДБОР</button>
+          </a>
+          <div class="smart-part__info">
+            Умный поиск для более точного подбора недвижимости
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </app-container>
+
+</section>

@@ -1,0 +1,197 @@
+.registration-dialog {
+  width: 561px !important;
+  height: 750px !important;
+  display: flex;
+  padding: 55px 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 220px;
+  margin: 0 auto;
+}
+
+.registration-dialog h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registration-dialog img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+}
+.mat-raised-button-primary-color {
+  background: linear-gradient(
+    180deg,
+    rgb(39, 117, 141) -26.923%,
+    rgb(28, 67, 68) 157.692%
+  ) !important;
+}
+
+.registration-button {
+  width: 100% !important;
+  height: 52px;
+  display: block;
+  color: white;
+  border-radius: 8px;
+  color: rgb(255, 254, 254);
+  font-family: Lato, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: rgb(192, 192, 192);
+}
+
+@media (min-width: 576px) {
+  .registration-dialog {
+    width: 440px;
+    height: 730px;
+    display: flex;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 440px;
+    margin: 0 auto;
+  }
+
+  .registration-dialog h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .registration-dialog img {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .registration-button {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .registration-dialog {
+    width: 440px;
+    height: 730px;
+    display: flex;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 440px;
+    margin: 0 auto;
+  }
+
+  .registration-dialog h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .registration-dialog img {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .registration-button {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .registration-dialog {
+    width: 440px;
+    height: 730px;
+    display: flex;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 440px;
+    margin: 0 auto;
+  }
+
+  .registration-dialog h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .registration-dialog img {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .registration-button {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .registration-dialog {
+    width: 440px;
+    height: 730px;
+    display: flex;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 440px;
+    margin: 0 auto;
+  }
+
+  .registration-dialog h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .registration-dialog img {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .registration-button {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .registration-dialog {
+    width: 440px;
+    height: 730px;
+    display: flex;
+    align-items: center;
+  }
+
+  mat-form-field {
+    width: 440px;
+    margin: 0 auto;
+  }
+
+  .registration-dialog h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .registration-dialog img {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  .registration-button {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+  }
+}

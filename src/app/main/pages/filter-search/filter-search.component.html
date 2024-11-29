@@ -1,0 +1,231 @@
+<main class="filter-page">
+  <app-banner></app-banner>
+  <section class="filter-section">
+    <div class="container-main">
+      <div class="filter-section__header">
+        <div class="row ">
+          <div class="col-xxl-5  ">
+            <div class="block-filter">
+              <label for="cnt-room-input"> Количество комнат</label>
+              <div aria-label="Группа кнопок по умолчанию" class="btn-group my-btn-lg" id="cnt-room-input"
+                   role="group">
+
+                <input [(ngModel)]="filter.isAtelier" autocomplete="off" class="btn-check" id="btnradio1"
+                       name="btnradio"
+                       type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio1">Cтудия</label>
+
+                <input [(ngModel)]="filter.isOne" autocomplete="off" class="btn-check" id="btnradio2" name="btnradio"
+                       type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio2">1</label>
+
+                <input [(ngModel)]="filter.isTwo" autocomplete="off" checked class="btn-check" id="btnradio3"
+                       name="btnradio" type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio3">2</label>
+
+                <input [(ngModel)]="filter.isThree" autocomplete="off" class="btn-check" id="btnradio4" name="btnradio"
+                       type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio4">3</label>
+                <input [(ngModel)]="filter.isFour" autocomplete="off" class="btn-check" id="btnradio5" name="btnradio"
+                       type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio5">4</label>
+                <input [(ngModel)]="filter.isFivePlus" autocomplete="off" class="btn-check" id="btnradio6"
+                       name="btnradio"
+                       type="checkbox">
+                <label class="btn btn-outline-dark" for="btnradio6">5+</label>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-xxl-4">
+            <div class="block-filter">
+              <label for="cost-input"> Цена, руб. </label>
+              <div class="cost block-inputs">
+                <input [(ngModel)]="filter.priceMin" class="d-block my-input-lg" id="cost-input" placeholder="от"
+                       type="text">
+                <input [(ngModel)]="filter.priceMax" class="d-block my-input-lg" placeholder="до" type="text">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xxl-3 ">
+            <div class="block-filter">
+              <label for="area-input"> Площадь, м </label>
+              <div class="area block-inputs">
+                <input [(ngModel)]="filter.areaTotalMin" class="d-block my-input-lg" id="area-input" placeholder="от"
+                       type="text">
+                <input [(ngModel)]="filter.areaTotalMax" class="d-block my-input-lg" placeholder="до" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-2">
+            <button class="filter-button _show vertical-center" (click)="filterSearch()">
+              Показать {{countForBtn}} </button>
+          </div>
+          <div class="col-3">
+            <button class="filter-button _cancel vertical-center " (click)="clearSearch()"> X Сбросить фильтр</button>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-xxl-3 ">
+            <div class="form-group">
+
+              <select class="form-control my-select my-select--filter" id="selectordering">
+                <option>Сначала дешевле</option>
+                <option>Сначала дорогие</option>
+              </select>
+              <svg fill="none" height="10" viewBox="0 0 20 14" width="16"
+                   xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7822 1.55799L10.8939 10.5453L2.00072 2.3106" stroke="#174449"
+                      stroke-width="4"/>
+              </svg>
+            </div>
+
+          </div>
+          <div class="col-xxl-4">
+            <div class="form-check">
+              <input class="form-check-input" id="group_obj" type="checkbox" value="">
+              <label class="form-check-label" for="group_obj">
+                Группировка по обьектам
+              </label>
+            </div>
+
+          </div>
+          <div class="col-xxl-4">
+            <div class="toogle-btn"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section_content">
+        <div class="filter-section_content_inner">
+          <div class="filter-banner">
+            <div class="w-50">
+              <div class="img_section">
+                <div class="title_img">
+                  <button class="bageSoon">
+                    {{srok}}
+                  </button>
+
+                </div>
+                <div class="logo_img">
+                  <button class="bageLogo">
+                    <svg width="75" height="53" viewBox="0 0 115 53" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_68_37)">
+                        <path d="M92.1092 32.5488H20.9971V53.0002H92.1092V32.5488Z"
+                              fill="#3E54FF"/>
+                        <path d="M30.2051 5.91279H38.5935V23.724H44.6811V5.91279H52.8431V0.530273H30.2051V5.91279Z"
+                              fill="black"/>
+                        <path
+                          d="M71.9249 0.000136452C70.2067 -0.00766859 68.5034 0.319434 66.91 0.963207C65.3538 1.59029 63.9403 2.52616 62.7547 3.71452L66.4992 7.73806C67.184 7.03054 68.0003 6.46387 68.9022 6.06993C69.808 5.70453 70.7775 5.52381 71.7539 5.53835C73.0219 5.50696 74.2688 5.86729 75.3252 6.57037C76.3429 7.27094 77.1029 8.28677 77.4883 9.4618H68.2848V14.5151H77.5927C77.2277 15.7555 76.4602 16.8386 75.4118 17.5934C74.3417 18.3445 73.0603 18.7341 71.7539 18.7055C70.7553 18.7237 69.7646 18.5265 68.8489 18.1272C67.8652 17.6476 66.9753 16.9952 66.2216 16.2011L62.4082 20.2246C63.6432 21.5057 65.1197 22.5286 66.7524 23.2339C68.3905 23.9179 70.1502 24.2614 71.9249 24.2437C75.4784 24.2437 78.3863 23.1027 80.6487 20.8207C82.9111 18.5387 84.0445 15.6472 84.049 12.1464C84.049 8.61587 82.9156 5.70961 80.6487 3.4276C78.3819 1.14559 75.474 0.00310203 71.9249 0.000136452Z"
+                          fill="black"/>
+                        <path
+                          d="M14.9402 18.0161C14.1151 18.4121 13.21 18.6123 12.2951 18.601C11.4998 18.6135 10.7111 18.454 9.98288 18.1335C9.25466 17.813 8.60402 17.339 8.07532 16.7439C6.92932 15.5161 6.35558 13.9822 6.3541 12.142C6.35262 10.3019 6.91895 8.75386 8.05311 7.49794C8.5836 6.89908 9.23772 6.42283 9.97016 6.10216C10.7026 5.78148 11.4959 5.62405 12.2951 5.64075C13.1849 5.6324 14.0663 5.81439 14.8803 6.17455C15.7478 6.58513 16.5335 7.15038 17.1989 7.84268L20.9501 3.71461C19.8044 2.54666 18.4479 1.607 16.9524 0.945501C15.4817 0.312111 13.896 -0.00972596 12.2951 0.000223854C8.79342 0.000223854 5.86845 1.15828 3.52018 3.47439C1.17191 5.79051 -0.00147922 8.67972 1.39945e-06 12.142C1.39945e-06 15.6043 1.1734 18.4876 3.52018 20.7919C5.86697 23.0961 8.79194 24.2468 12.2951 24.2438C13.9479 24.2634 15.5861 23.9313 17.1012 23.2696C18.6816 22.5345 20.1054 21.5006 21.2943 20.2247L17.481 16.0966C16.7454 16.8722 15.887 17.5208 14.9402 18.0161Z"
+                          fill="black"/>
+                        <path
+                          d="M106.547 0.527344H100.561L92.1084 23.7233H98.0938L103.402 8.1118L108.677 23.7233H115L106.547 0.527344Z"
+                          fill="black"/>
+                        <path
+                          d="M31.3287 44.4419V39.4619H29.1211V47.7136H31.3287L34.7734 42.7159V47.7136H36.9632V39.4619H34.7734L31.3287 44.4419Z"
+                          fill="white"/>
+                        <path
+                          d="M44.9498 42.4646H41.7005V39.4619H39.333V47.7136H41.7005V44.513H44.9498V47.7136H47.3017V39.4619H44.9498V42.4646Z"
+                          fill="white"/>
+                        <path
+                          d="M73.7123 45.5651C73.4228 45.7022 73.1064 45.7729 72.7862 45.7719C72.5125 45.7788 72.2406 45.7269 71.9885 45.6199C71.7365 45.5129 71.5102 45.3531 71.3248 45.1514C70.9325 44.73 70.7225 44.1703 70.7407 43.5945C70.7211 43.0137 70.931 42.4487 71.3248 42.022C71.5102 41.8202 71.7365 41.6605 71.9885 41.5535C72.2406 41.4465 72.5125 41.3946 72.7862 41.4014C73.0705 41.4009 73.3517 41.4592 73.6124 41.5727C73.8992 41.7021 74.1609 41.8813 74.3853 42.102L75.9111 40.5451C75.4819 40.1476 74.9866 39.8285 74.4475 39.6021C73.6455 39.2776 72.7678 39.1889 71.9172 39.3465C71.0667 39.5041 70.2787 39.9014 69.6458 40.4917C68.8505 41.3204 68.4062 42.4251 68.4062 43.5745C68.4062 44.7238 68.8505 45.8286 69.6458 46.6572C70.0588 47.0614 70.5491 47.3781 71.0871 47.5883C71.6252 47.7985 72.2 47.8979 72.7773 47.8805C73.3959 47.8874 74.0097 47.7709 74.5829 47.5379C75.1536 47.298 75.6669 46.9395 76.0887 46.4859L74.563 44.929C74.3192 45.1897 74.0312 45.4051 73.7123 45.5651Z"
+                          fill="white"/>
+                        <path d="M76.8086 39.4619V41.5126H79.5537V47.7136H81.9234V41.5126H84.6685V39.4619H76.8086Z"
+                              fill="white"/>
+                        <path
+                          d="M63.0594 39.2844C62.5015 39.2709 61.9468 39.3741 61.431 39.5874C60.9151 39.8007 60.4493 40.1195 60.0634 40.5232C59.6673 40.9284 59.3563 41.409 59.1488 41.9366C58.9413 42.4641 58.8415 43.028 58.8552 43.5948C58.8389 44.1659 58.9415 44.7341 59.1563 45.2633C59.3712 45.7924 59.6937 46.2711 60.1034 46.6687C60.5162 47.0732 61.0063 47.3901 61.5445 47.6004C62.0826 47.8106 62.6575 47.9097 63.2349 47.892C63.8633 47.8974 64.4872 47.7843 65.0738 47.5583C65.6363 47.3406 66.147 47.0072 66.5729 46.5797L65.407 45.0695C65.106 45.3614 64.7565 45.5985 64.3742 45.7701C64.0134 45.9207 63.6258 45.9964 63.2349 45.9925C62.7453 46.0032 62.2658 45.8515 61.8712 45.561C61.4853 45.2707 61.2071 44.8598 61.0806 44.3933H67.2059C67.2059 44.3199 67.2303 44.2132 67.2414 44.0686C67.2525 43.924 67.2592 43.7705 67.2592 43.6015C67.2742 43.0347 67.1757 42.4707 66.9693 41.9427C66.7629 41.4148 66.4529 40.9336 66.0577 40.5277C65.6719 40.1228 65.2059 39.8031 64.6896 39.589C64.1733 39.3749 63.6181 39.2711 63.0594 39.2844ZM61.1228 42.7052C61.244 42.2658 61.5014 41.8764 61.8579 41.5931C62.2053 41.3295 62.6292 41.1869 63.065 41.1869C63.5008 41.1869 63.9247 41.3295 64.2721 41.5931C64.6232 41.8796 64.8769 42.2682 64.9983 42.7052H61.1228Z"
+                          fill="white"/>
+                        <path
+                          d="M55.683 43.4544C56.128 43.3132 56.5254 43.0515 56.8312 42.6982C57.0909 42.3864 57.2311 41.9921 57.2265 41.5861C57.2345 41.2783 57.1636 40.9735 57.0205 40.701C56.8774 40.4284 56.667 40.1971 56.4092 40.0292C55.8643 39.6466 55.1374 39.4546 54.2283 39.4531H49.6709V47.7048H53.924C55.1085 47.7048 56.0146 47.5069 56.6424 47.111C56.9391 46.9384 57.1835 46.6883 57.3493 46.3874C57.5152 46.0866 57.5963 45.7462 57.5841 45.4028C57.5872 45.1793 57.5451 44.9575 57.4604 44.7507C57.3756 44.5439 57.25 44.3564 57.091 44.1995C56.6959 43.8306 56.2099 43.5735 55.683 43.4544ZM51.9851 41.1479H53.6197C53.9475 41.1282 54.2749 41.1933 54.5703 41.337C54.6698 41.3887 54.7528 41.4675 54.8098 41.5643C54.8667 41.661 54.8953 41.7719 54.8923 41.8842C54.8969 42.0006 54.8693 42.116 54.8124 42.2177C54.7556 42.3193 54.6718 42.4033 54.5703 42.4602C54.2766 42.6096 53.9485 42.6779 53.6197 42.6582H51.9851V41.1479ZM54.8301 45.8187C54.482 45.9763 54.1011 46.0473 53.7197 46.0256H51.9962V44.3552H53.7197C54.1011 44.3335 54.482 44.4045 54.8301 44.5621C54.946 44.6216 55.0423 44.7132 55.1077 44.826C55.173 44.9387 55.2047 45.0679 55.1988 45.1982C55.2033 45.3261 55.1709 45.4527 55.1055 45.5627C55.0402 45.6727 54.9446 45.7616 54.8301 45.8187Z"
+                          fill="white"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_68_37">
+                          <rect width="115" height="53" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="w-50">
+              <div class="info_section">
+                <div class="text-black"> ЖК Композитор</div>
+                <div class="text-black-50 small">ул. Независимости, 55л</div>
+
+                <div class="row justify-content-center">
+                  <div class=col-1>
+                    <i class="bi bi-geo-alt-fill"> </i>
+                    <svg class="bi bi-geo-alt-fill" fill="currentColor" height="16"
+                         viewBox="0 0 16 16"
+                         width="16" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                    </svg>
+                  </div>
+                  <div class=col>
+                    <span> Коминтерновский </span>
+                  </div>
+                </div>
+
+                <div class="text-black-50 small"> от 3,45млн до 12,5млн</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="mx-auto " *ngIf="!isApartmen">
+            <p class="alert alert-dark text-center">По вашему запросу ничего не найдено!</p>
+           </div>
+            <div *ngIf="loading">Загрузка...</div>
+            <div class="result-search__items" *ngIf="!loading">
+
+              <div class="result-search__item" *ngFor="let  item of apartments; let i=index"
+                   [routerLink]="['/apartment', item.id]">
+                <div class="r-item-img">
+                  <img [src]="item.photoDefaultPath ? item.photoDefaultPath : item.photoMainPath">
+                </div>
+                <div class="r-item-info">
+                  <h2 class="r-item__title-info">{{formatRoom(item.numberOfRooms)}} {{item.areaTotal}} м² </h2>
+                  <div class="r-item__type-build">{{nameApartType(item.apartmentType)}}</div>
+                  <div class="r-item__address">{{item.address}}</div>
+                  <div class="r-item__categories">
+                    <div>Кухня: . . . . . . . . . . . . . .</div>
+                    <span>{{item.areaKitchen}} м²</span>
+                    <div>Этаж . . . . . . . . . . . . . . .</div>
+                    <span>{{item.floor}}</span>
+                    <div>Срок сдачи . . . . . . . . . .</div>
+                    <span>{{item.dueYear}}</span>
+                  </div>
+
+                  <div class="r-item__price-block">
+                    <div class="price">{{item.priceAfterFormat}}</div>
+                    <div class="price-squad">{{item.priceSqmtAfterFormat}} <span> р/м<sup>2</sup></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="d-flex justify-content-end my-5 mx-5">
+        <button class="show-button"> показать все варианты</button>
+      </div>
+    </div>
+
+  </section>
+
+
+</main>

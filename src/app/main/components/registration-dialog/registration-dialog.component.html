@@ -1,0 +1,125 @@
+<div class="registration-dialog">
+  <div class="registration-form">
+    <div>
+      <img src="assets/img/logo.svg" alt="logo" />
+      <h1>Регистрация</h1>
+    </div>
+
+    <form [formGroup]="registrationForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error
+          *ngIf="registrationForm.get('username')?.hasError('required')"
+        >
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Номер телефона</mat-label>
+        <input matInput formControlName="phone" />
+        <mat-error *ngIf="registrationForm.get('phone')?.hasError('required')">
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Почта</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error
+          *ngIf="
+            registrationForm.get('email')?.hasError('email') &&
+            !registrationForm.get('email')?.hasError('required')
+          "
+        >
+          Пожалуйста, введите действительный адрес электронной почты
+        </mat-error>
+        <mat-error *ngIf="registrationForm.get('email')?.hasError('required')">
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Пароль</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Скрыть пароль'"
+          [attr.aria-pressed]="hide"
+        >
+          <!--                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+        </button>
+        <mat-error
+          *ngIf="
+            registrationForm.get('password')?.hasError('passwordStrength') &&
+            !registrationForm.get('password')?.hasError('required')
+          "
+        >
+          Пароль должен содержать <strong>строчные</strong>,
+          <strong>прописные</strong> и <strong>цифровые</strong> символы
+        </mat-error>
+        <mat-error
+          *ngIf="registrationForm.get('password')?.hasError('required')"
+        >
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Подтверждение пароля</mat-label>
+        <input
+          matInput
+          [type]="hide2 ? 'password' : 'text'"
+          formControlName="confirmPassword"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide2 = !hide2"
+          [attr.aria-label]="'Скрыть пароль'"
+          [attr.aria-pressed]="hide2"
+        >
+          <!--                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+        </button>
+        <mat-error
+          *ngIf="
+            registrationForm
+              .get('confirmPassword')
+              ?.hasError('passwordConfirmation') &&
+            !registrationForm.get('password')?.hasError('required')
+          "
+        >
+          Пароли <strong>не совпадают</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="registrationForm.get('confirmPassword')?.hasError('required')"
+        >
+          Это поле <strong>обязательно</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        type="submit"
+        (click)="registration()"
+        class="mat-raised-button-primary-color registration-button"
+      >
+        Зарегистрироваться
+      </button>
+    </form>
+    <button
+      mat-raised-button
+      class="mat-raised-button-secondary-color registration-button"
+      [mat-dialog-close]="true"
+    >
+      Уже есть аккаунт? Войти
+    </button>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<header>
+  <mat-toolbar>
+    <div class="logo">
+      <img
+        routerLink="/"
+        src="/assets/img/logo.png"
+        src="/assets/img/logo.png"
+        alt="logo"
+      />
+    </div>
+
+    <h1 class="header-text-main">ЦИФРОВАЯ НЕДВИЖИМОСТЬ</h1>
+
+    <span class="header-spacer"></span>
+
+    <button
+      (click)="routingOrLogin('new-object')"
+      mat-button
+      class="small-header-hide"
+    >
+      <span
+        ><svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M23 31.875C23.5431 31.875 23.9986 31.695 24.3666 31.335C24.7333 30.9762 24.9167 30.5312 24.9167 30V24.375H30.6667C31.2097 24.375 31.6646 24.195 32.0313 23.835C32.3993 23.4762 32.5833 23.0312 32.5833 22.5C32.5833 21.9688 32.3993 21.5231 32.0313 21.1631C31.6646 20.8044 31.2097 20.625 30.6667 20.625H24.9167V15C24.9167 14.4688 24.7333 14.0231 24.3666 13.6631C23.9986 13.3044 23.5431 13.125 23 13.125C22.4569 13.125 22.0021 13.3044 21.6353 13.6631C21.2673 14.0231 21.0833 14.4688 21.0833 15V20.625H15.3333C14.7903 20.625 14.3348 20.8044 13.9668 21.1631C13.6 21.5231 13.4167 21.9688 13.4167 22.5C13.4167 23.0312 13.6 23.4762 13.9668 23.835C14.3348 24.195 14.7903 24.375 15.3333 24.375H21.0833V30C21.0833 30.5312 21.2673 30.9762 21.6353 31.335C22.0021 31.695 22.4569 31.875 23 31.875ZM9.58333 39.375C8.52917 39.375 7.62642 39.0081 6.87508 38.2744C6.12503 37.5394 5.75 36.6562 5.75 35.625V9.375C5.75 8.34375 6.12503 7.46062 6.87508 6.72562C7.62642 5.99187 8.52917 5.625 9.58333 5.625H36.4167C37.4708 5.625 38.3736 5.99187 39.1249 6.72562C39.875 7.46062 40.25 8.34375 40.25 9.375V35.625C40.25 36.6562 39.875 37.5394 39.1249 38.2744C38.3736 39.0081 37.4708 39.375 36.4167 39.375H9.58333ZM9.58333 35.625H36.4167V9.375H9.58333V35.625ZM9.58333 35.625V9.375V35.625Z"
+            fill="#174449"
+          /></svg
+      ></span>
+      Разместить объявление
+    </button>
+
+    <button
+      [routerLink]="['/personal-cabinet']"
+      mat-button
+      class="small-header-hide"
+    >
+      <span
+        ><svg
+          width="20"
+          height="30"
+          viewBox="0 0 20 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M9.73096 15C13.8731 15 17.231 11.6421 17.231 7.5C17.231 3.35786 13.8731 0 9.73096 0C5.58883 0 2.23096 3.35786 2.23096 7.5C2.23096 11.6421 5.58883 15 9.73096 15ZM4.2527 14.0303C1.82664 13.5326 -0.347532 15.616 0.0464301 18.0611L0.955668 23.7041C1.54029 27.3325 4.67203 30 8.34718 30H11.7163C15.5205 30 18.7129 27.1322 19.1192 23.3497L19.7311 17.6533C19.9762 15.3713 17.9045 13.525 15.6657 14.0303L15.4434 14.254C12.3318 17.3839 7.23679 17.2821 4.2527 14.0303Z"
+            fill="#174449"
+          /></svg
+      ></span>
+      {{ this.getName() }}
+    </button>
+  </mat-toolbar>
+  <!--  <div class="title-menu"><br/>    <div class="newbuild nav-a" (mouseenter)="showSubmenu('newbuild')" (mouseleave)="hideSubmenu('newbuild')"><br/>        Новостройки<br/>        <div class="submenu" *ngIf="isSubmenuVisible.newbuild"><br/>            <div class="header_drop_down_new_buildings"><br/>                <div class="row"><br/>                    <div class="col-md-4"><br/>                        <ul><br/>                            <li><a href="#">Студии</a></li><br/>                            <li><a href="#">1-комнатные</a></li><br/>                            <li><a href="#">2-комнатные</a></li><br/>                            <li><a href="#">3-комнатные</a></li><br/>                            <li><a href="#">Многокомнатные</a></li><br/>                        </ul><br/>                    </div><br/>                    <div class="col-md-4"><br/>                        <ul><br/>                            <li><a href="#">Каталог жилых комплексов</a></li><br/>                            <li><a href="#">Сданные объекты</a></li><br/>                        </ul><br/>                    </div><br/>                    <div class="col-md-4"><br/>                        <ul><br/>                            <li><a href="gk.html"><img class="header_nav_column_img" src="./img/card_box_img.svg" alt=""></a></li><br/>                        </ul><br/>                    </div><br/>                </div><br/>            </div><br/>        </div><br/>    </div><br/>    <div class="ipot nav-a" (mouseenter)="showSubmenu('ipot')" (mouseleave)="hideSubmenu('ipot')"><br/>        Ипотека<br/>        <div class="submenu" *ngIf="isSubmenuVisible.ipot"><br/>            <div class="header_drop_down_mortgage"><br/>                <div class="row"><br/>                    <div class="col-md-12"><br/>                        <ul><br/>                            <li><a href="#">Как получить выгодную ипотеку</a></li><br/>                        </ul><br/>                    </div><br/>                </div><br/>            </div><br/>        </div><br/>    </div><br/></div>-->
+</header>
