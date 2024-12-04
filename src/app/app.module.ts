@@ -32,6 +32,7 @@ import { HomeComponent } from './main/pages/home/home.component';
 import { RComplexComponent } from './main/pages/residential-complex/r-complex.component';
 import { SearchComponent } from './main/pages/smart-search/search.component';
 import { PricePipe } from './main/pipes/price.pipe';
+import {NotFoundComponent} from "./main/pages/not-found/not-found.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PricePipe } from './main/pipes/price.pipe';
     PricePipe,
     LoginDialogComponent,
     RegistrationDialogComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

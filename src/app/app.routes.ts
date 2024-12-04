@@ -35,14 +35,6 @@ export const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'business-cabinet',
-    loadChildren: () =>
-      import('./features/business/business.module').then(
-        (m) => m.BusinessModule
-      ),
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'personal-cabinet',
     loadChildren: () =>
       import('./features/personal/personal.module').then(
@@ -50,13 +42,11 @@ export const routes: Routes = [
       ),
     // canActivate: [AuthGuard],
   },
-  //admin --route admin --module app.routes
   {
     path: 'admin',
     loadChildren: () =>
       import('./features/admin/admin.module').then((m) => m.AdminModule),
   },
-  //dashboard --route dashboard --module app.routes
   {
     path: '**',
     component: NotFoundComponent,
