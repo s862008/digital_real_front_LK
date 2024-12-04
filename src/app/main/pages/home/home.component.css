@@ -1,3 +1,6 @@
+.row{
+  margin: auto;
+}
 /*  - ----prepear-search---- - */
 .prepare-search {
   margin-top: 5%;
@@ -462,4 +465,354 @@
   font-weight: 800;
   font-size: 30px;
   color: #fff;
+}
+@media (max-width: 1800px) {
+  .prepare-search {
+    padding: 0 30px 0 70px; /* Уменьшение отступов */
+  }
+
+  .title-section {
+    font-size: 2.2vw; /* Уменьшение размера шрифта */
+  }
+
+  .title-section ~ p {
+    font-size: 1.4vw; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter > label {
+    width: 200px; /* Уменьшение ширины */
+  }
+
+  .phone-btn {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    width: 280px; /* Уменьшение ширины */
+  }
+
+  .cards {
+    max-width: 90vw; /* Увеличение ширины для адаптации */
+  }
+
+  .brdr {
+    width: 300px; /* Уменьшение ширины */
+  }
+
+  .send-form {
+    width: 100%; /* Ширина на 100% */
+  }
+
+  .send-form__header {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .button-wanted{
+    font-size: 1.8vw;
+  }
+  .send-form__header{
+    font-size: 28px; /* Уменьшение размера шрифта */
+    margin: 30px;
+  }
+  .prepare-search {
+    padding: 0 20px; /* Уменьшение отступов */
+  }
+
+  .title-section {
+    font-size: 2vw; /* Уменьшение размера шрифта */
+  }
+
+  .title-section ~ p {
+    font-size: 1.2vw; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .phone-btn {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    width: 100%; /* Ширина на 100% */
+  }
+
+  .send-section {
+    padding-left: 10px; /* Уменьшение отступов */
+    padding-right: 10px; /* Уменьшение отступов */
+  }
+
+
+}
+
+@media (max-width: 992px) {
+  .send-form__header{
+    width: 80%;
+    right: -150px;
+  }
+  .col-lg-6 p{
+    right: -1px;
+  }
+  .send-form{
+    height: 650px;
+  }
+  .vertical-center{
+    width: 100%;
+  }
+
+  .send-form__header{
+    font-size: 24px; /* Уменьшение размера шрифта */
+    right: -0px;
+  }
+  .col-lg-6 p{
+    right: -1px;
+  }
+  .send-form{
+    height: 750px;
+  }
+  .vertical-center{
+    width: 100%;
+  }
+
+  .extended-filter{
+    margin-bottom: 200px;
+  }
+  .card__show-button{
+    margin-top: 190px;
+  }
+  .cards-side {
+    display: flex;
+    flex-direction: column; /* Стекание карточек вертикально */
+    align-items: center; /* Центрирование карточек */
+    padding: 0; /* Удаление отступов, если необходимо */
+    margin: auto;
+  }
+
+  .cards {
+    flex-direction: column; /* Убедитесь, что карточки располагаются вертикально */
+    width: 100%; /* Сделать карточки на всю ширину */
+    max-width: none; /* Удалить ограничение по максимальной ширине */
+  }
+
+  .card {
+    width: 100%; /* Убедитесь, что каждая карточка занимает всю ширину */
+    margin-bottom: 30px; /* Добавить пространство между карточками */
+  }
+  .prepare-search {
+    padding: 0 10px; /* Уменьшение отступов */
+  }
+
+  .title-section {
+    font-size: 2.8vw; /* Уменьшение размера шрифта */
+  }
+
+  .title-section ~ p {
+    font-size: 2.2vw; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .phone-btn {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    width: 100%; /* Ширина на 100% */
+  }
+
+
+  .brdr {
+    width: 100%; /* Ширина на 100% */
+    height: 60%;
+    margin-left: 100px;
+  }
+
+  .send-section {
+    margin-top: 200px;
+    padding-left: 5px; /* Уменьшение отступов */
+    padding-right: 5px; /* Уменьшение отступов */
+  }
+
+
+}
+
+@media (max-width: 768px) {
+
+  .send-form__header{
+    font-size: 24px; /* Уменьшение размера шрифта */
+    right: 0px;
+  }
+  .col-lg-6 p{
+    right: -1px;
+  }
+  .send-form{
+    height: 750px;
+  }
+  .vertical-center{
+    width: 100%;
+  }
+
+  .extended-filter{
+    margin-bottom: 200px;
+  }
+  .card__show-button{
+    margin-left: 340px;
+    margin-top: 190px;
+  }
+  .cards-side {
+    display: block;
+    flex-direction: column; /* Стекание карточек вертикально */
+    align-items: center; /* Центрирование карточек */
+    padding: 0; /* Удаление отступов, если необходимо */
+    margin: auto;
+    width: 70%;
+  }
+
+  .cards {
+    flex-direction: column; /* Убедитесь, что карточки располагаются вертикально */
+    width: 100%; /* Сделать карточки на всю ширину */
+    max-width: none; /* Удалить ограничение по максимальной ширине */
+  }
+
+  .card {
+    width: 100%; /* Убедитесь, что каждая карточка занимает всю ширину */
+    margin-bottom: 30px; /* Добавить пространство между карточками */
+  }
+  .prepare-search {
+    padding: 0 10px; /* Уменьшение отступов */
+  }
+
+  .title-section {
+    font-size: 2.8vw; /* Уменьшение размера шрифта */
+  }
+
+  .title-section ~ p {
+    font-size: 2.2vw; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .phone-btn {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    width: 100%; /* Ширина на 100% */
+  }
+
+
+  .brdr {
+    width: 100%; /* Ширина на 100% */
+    margin-left: 0;
+    height: 100%;
+  }
+
+  .send-section {
+    margin-top: 200px;
+    padding-left: 5px; /* Уменьшение отступов */
+    padding-right: 5px; /* Уменьшение отступов */
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .cards-side {
+    display: flex;
+    width: 100%;
+  }
+
+  .vertical-center {
+    margin-top: 15px;
+  }
+
+  .prepare-search {
+    padding: 0 5px; /* Уменьшение отступов */
+  }
+
+  .title-section {
+    font-size: 2.9vw; /* Уменьшение размера шрифта */
+  }
+
+  .title-section ~ p {
+    font-size: 2.4vw; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .block-filter > label {
+    width: 100%; /* Ширина на 100% */
+  }
+
+  .phone-btn {
+    font-size: 12px; /* Уменьшение размера шрифта */
+    padding: 10px; /* Уменьшение отступов */
+  }
+
+  .img-block {
+    width: 100%; /* Ширина на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .cards {
+    flex-direction: column; /* Изменение направления на колонку */
+    padding: 0; /* Уменьшение отступов */
+  }
+
+  .brdr {
+    width: 100%; /* Ширина на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .send-section {
+    padding-left: 5px; /* Уменьшение отступов */
+    padding-right: 5px; /* Уменьшение отступов */
+  }
+
+  .send-form {
+    width: 100%; /* Ширина на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .send-form__header {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .send-form__under-text {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .send-in input {
+    font-size: 1.5rem; /* Уменьшение размера шрифта */
+    padding-left: 20px; /* Уменьшение отступов */
+  }
+
+  .send-form__select {
+    font-size: 20px; /* Уменьшение размера шрифта */
+    height: 50px; /* Уменьшение высоты */
+  }
+
+  .button-wanted {
+    font-size: 2.5vw; /* Уменьшение размера шрифта */
+    height: 60px; /* Уменьшение высоты */
+  }
+
+  .card__show-button {
+    margin-left: 230px;
+    margin-top: 190px;
+  }
 }

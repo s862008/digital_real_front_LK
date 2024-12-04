@@ -49,11 +49,13 @@ a {
 h1, h2, h3, h4, .h1 {
   color: #000;
   font-family: var(--font-family-bold);
+  max-width: 100%;
 }
 
 img {
   width: 100%;
   max-width: 100%;
+  height: auto;
 }
 
 body {
@@ -87,7 +89,8 @@ ul, li {
 
 .my-container, .container-main {
   margin: 0 auto;
-  max-width: 1156px;
+  max-width: 1400px;
+  padding: 0 15px; /* Добавление отступов */
 }
 
 .my-input-lg {
@@ -110,12 +113,12 @@ ul, li {
 
 
 .my-form-range {
-/*  width: 100%;*/
-/*  height: 1.5rem;*/
-/*  padding: 28px;*/
+  /*  width: 100%;*/
+  /*  height: 1.5rem;*/
+  /*  padding: 28px;*/
   appearance: auto;
-/*  background-color: transparent;*/
-/*  z-index: 999;*/
+  /*  background-color: transparent;*/
+  /*  z-index: 999;*/
   position: relative;
 
 }
@@ -301,7 +304,13 @@ ul, li {
 }
 
 
+.mat-mdc-dialog-container {
+  border-radius: 25px 25px 0 0;
+  border: 1px solid darkgray;
+  top: 10px;
+  position: absolute;
 
+}
 
 .bageSoon {
   padding: 0;
@@ -328,6 +337,19 @@ ul, li {
 }
 
 
+/*.mdc-dialog--open .mat-mdc-dialog-surface, .mdc-dialog--closing .mat-mdc-dialog-surface {*/
+/*  transform: none;*/
+
+/*}*/
+
+.mat-mdc-dialog-container{
+  height: 96% !important;
+}
+.mat-mdc-dialog-surface {
+
+  transform: scale(0.7);
+  border-radius: var(--mdc-dialog-container-shape, 8px);
+}
 
 .fp-input--main {
   border: 1px solid #999;
@@ -497,6 +519,7 @@ main {
 
   .brdr:hover .card__extended-block {
     display: block;
+    width: 200px;
   }
 
   .brdr:empty {
@@ -520,7 +543,159 @@ main {
 
   .nav-a:hover .submenu {
     display: block;
-
   }
 
+}
+@media (min-width: 1400px) {
+  .container {
+    padding: 0; /* Убираем отступы для экранов шире 1400px */
+  }
+}
+@media (max-width: 1200px) {
+  .my-container, .container-main {
+    max-width: 100%; /* Установка ширины на 100% */
+    padding: 0 15px; /* Добавление отступов */
+  }
+
+  .my-input-lg {
+    font-size: 1.2rem; /* Уменьшение размера шрифта */
+  }
+
+  .my-btn-long {
+    width: 100%; /* Установка ширины на 100% */
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .show-button {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .title {
+    font-size: 32px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h1 {
+    font-size: 36px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h2 {
+    font-size: 40px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h3 {
+    font-size: 36px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h4 {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .text {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+  .block-inputs {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+    justify-content: space-between; /* Распределяет пространство между элементами */
+    gap: 10px; /* Отступы между элементами */
+  }
+
+}
+
+@media (max-width: 768px) {
+  .my-input-lg {
+    font-size: 1rem; /* Уменьшение размера шрифта */
+    height: 36px; /* Уменьшение высоты */
+  }
+
+  .my-btn-long {
+    width: 100%; /* Установка ширины на 100% */
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .show-button {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .title {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h1 {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h2 {
+    font-size: 32px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h3 {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h4 {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .text {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .block-inputs {
+    flex-direction: column; /* Изменение направления на колонку */
+    grid-gap: 10%; /* Увеличение отступов */
+  }
+}
+
+@media (max-width: 480px) {
+  .my-input-lg {
+    font-size: 0.9rem; /* Уменьшение размера шрифта */
+    height: 30px; /* Уменьшение высоты */
+  }
+
+  .my-btn-long {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .show-button {
+    position: relative;
+    max-width: 10%;
+    width: 10%;
+    left: 65px;
+    margin-left: 20px;
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .title {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h1 {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h2 {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h3 {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .title--h4 {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .text {
+    font-size: 10px; /* Уменьшение размера шрифта */
+  }
+
+  .my-listdown, .my-select {
+    width: 100%; /* Установка ширины на 100% */
+  }
+
+  .bageLogo {
+    width: 80px; /* Уменьшение ширины */
+    height: 60px; /* Уменьшение высоты */
+  }
 }

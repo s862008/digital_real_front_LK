@@ -201,8 +201,8 @@ mat-slider {
 }
 
 .r-item-info {
-   width: 60%;
- }
+  width: 60%;
+}
 
 .cards-block__price {
   font-family: var(--font-family);
@@ -232,4 +232,242 @@ mat-slider {
   color: #fff;
   z-index: 999;
 
+}
+@media (max-width: 1800px) {
+  .search-section {
+    padding: 30px 40px; /* Уменьшение отступов */
+    min-height: 800px; /* Уменьшение минимальной высоты */
+  }
+
+  .search-section__inner {
+    padding: 30px 15px; /* Уменьшение отступов */
+  }
+
+  .search-section__filter-side .fp-filter__item {
+    min-width: 85%; /* Уменьшение минимальной ширины */
+  }
+
+  .cards-block__item {
+    margin: 15px 0 0 10px; /* Уменьшение отступов */
+    padding: 12px 0px 25px 15px; /* Уменьшение отступов */
+  }
+
+  .fp-input {
+    font-size: 22px; /* Уменьшение размера шрифта */
+  }
+
+  .fp-reset {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    height: 280px; /* Уменьшение высоты */
+    width: 250px; /* Уменьшение ширины */
+  }
+
+  .cards-block__price {
+    font-size: 32px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-section {
+    padding: 20px 30px; /* Уменьшение отступов */
+    min-height: 700px; /* Уменьшение минимальной высоты */
+  }
+
+  .search-section__inner {
+    padding: 20px 10px; /* Уменьшение отступов */
+  }
+
+  .search-section__filter-side .fp-filter__item {
+    min-width: 80%; /* Уменьшение минимальной ширины */
+  }
+
+  .cards-block__item {
+    margin: 10px 0 0 5px; /* Уменьшение отступов */
+    padding: 10px 0px 20px 10px; /* Уменьшение отступов */
+  }
+
+  .fp-input {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .fp-reset {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    height: 240px; /* Уменьшение высоты */
+    width: 220px; /* Уменьшение ширины */
+  }
+
+  .cards-block__price {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 22px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    padding: 15px 20px; /* Уменьшение отступов */
+    min-height: 600px; /* Уменьшение минимальной высоты */
+  }
+
+  .search-section__inner {
+    padding: 15px 5px; /* Уменьшение отступов */
+  }
+
+  .search-section__filter-side .fp-filter__item {
+    min-width: 75%; /* Уменьшение минимальной ширины */
+  }
+
+  .cards-block__item {
+    margin: 5px 0 0 0; /* Уменьшение отступов */
+    padding: 8px 0px 15px 5px; /* Уменьшение отступов */
+  }
+
+  .fp-input {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .fp-reset {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    height: 200px; /* Уменьшение высоты */
+    width: 180px; /* Уменьшение ширины */
+  }
+
+  .cards-block__price {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  @media (max-width: 480px) {
+    .search-section {
+      padding: 10px 15px; /* Уменьшение отступов */
+      min-height: 500px; /* Уменьшение минимальной высоты */
+    }
+
+    .search-section__inner {
+      padding: 10px 5px; /* Уменьшение отступов */
+    }
+
+    .search-section__filter-side .fp-filter__item {
+      min-width: 100%; /* Установка ширины на 100% */
+    }
+
+    .cards-block__item {
+      margin: 5px 0; /* Уменьшение отступов */
+      padding: 5px 0px 10px 5px; /* Уменьшение отступов */
+    }
+
+    .fp-input {
+      font-size: 16px; /* Уменьшение размера шрифта */
+    }
+
+    .fp-reset {
+      font-size: 12px; /* Уменьшение размера шрифта */
+    }
+
+    .img-block {
+      height: 150px; /* Уменьшение высоты */
+      width: 150px; /* Уменьшение ширины */
+    }
+
+    .cards-block__price {
+      font-size: 20px; /* Уменьшение размера шрифта */
+    }
+
+    .cards-block__price-sqr {
+      font-size: 18px; /* Уменьшение размера шрифта */
+    }
+
+    .r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+      font-size: 12px; /* Уменьшение размера шрифта */
+    }
+
+    .r-item__title-info, .price {
+      font-size: 18px; /* Уменьшение размера шрифта */
+    }
+
+    .r-item__company {
+      font-size: 14px; /* Уменьшение размера шрифта */
+    }
+
+    .phone-btn {
+      font-size: 12px; /* Уменьшение размера шрифта */
+      padding: 10px; /* Уменьшение отступов */
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .search-section {
+    padding: 10px 15px; /* Уменьшение отступов */
+    min-height: 500px; /* Уменьшение минимальной высоты */
+  }
+
+  .search-section__inner {
+    padding: 10px 5px; /* Уменьшение отступов */
+  }
+
+  .search-section__filter-side .fp-filter__item {
+    min-width: 100%; /* Установка ширины на 100% */
+  }
+
+  .cards-block__item {
+    margin: 5px 0; /* Уменьшение отступов */
+    padding: 5px 0px 10px 5px; /* Уменьшение отступов */
+  }
+
+  .fp-input {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .fp-reset {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .img-block {
+    height: 150px; /* Уменьшение высоты */
+    width: 150px; /* Уменьшение ширины */
+  }
+
+  .cards-block__price {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__title-info, .price {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__company {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .phone-btn {
+    font-size: 12px; /* Уменьшение размера шрифта */
+    padding: 10px; /* Уменьшение отступов */
+  }
 }

@@ -7,7 +7,14 @@
   background: rgba(23, 68, 73, 0.05);
   padding: 10px;
 }
-
+.filter-section__header .row {
+  display: flex; /* Убедитесь, что ряд является flex-контейнером */
+  align-items: flex-start; /* Выравнивание элементов по верхнему краю */
+}
+.block-filter {
+  flex: 1; /* Позволяет block-filter расти и заполнять доступное пространство */
+  margin-right: 10px; /* Необязательно: добавьте отступ между фильтрами */
+}
 .filter-section__header .row:nth-child(1) {
   padding-left: 1vw;
   padding-right: 1vw;
@@ -272,17 +279,23 @@
 }
 
 
+@media (max-width: 1850px) {
+  .btn-group{
+    margin-top: 28px;
+  }
+  label[for="cnt-room-input"]{
+    position: relative;
+    top: 15px;
+  }
+}
 
-@media (max-width: 1800px) {
-
-
+@media (max-width: 1200px) {
   .as__toogle {
     width: 18.6rem;
   }
 
   .filter-side, .cards-side {
     width: 100%;
-    height: auto;
     padding: 50px;
   }
 
@@ -293,5 +306,116 @@
 
   .filter-section__header .block-filter {
     transform: scale(1);
+  }
+
+  .filter-section__header {
+    flex-direction: column; /* Изменение направления на колонку */
+    align-items: center; /* Центрирование элементов */
+  }
+
+  .filter-section_content {
+    padding: 20px; /* Уменьшение отступов */
+  }
+
+  .filter-button {
+    width: 100%; /* Ширина кнопки на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .filter-banner {
+    flex-direction: column; /* Изменение направления на колонку */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .filter-banner .info_section {
+    padding: 20px; /* Уменьшение отступов */
+  }
+
+  .result-search__item {
+    flex-direction: column; /* Изменение направления на колонку */
+    align-items: center; /* Центрирование элементов */
+  }
+
+  .r-item-img {
+    width: 100%; /* Ширина изображения на 100% */
+  }
+
+  .r-item-info {
+    width: 100%; /* Ширина информации на 100% */
+  }
+  .filter-section__header .row {
+    flex-direction: column; /* Упорядочите элементы вертикально на меньших экранах */
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-section__header .row {
+    margin-top: 2vh; /* Уменьшение отступов */
+  }
+
+  .filter-button {
+    margin-bottom: 30px;
+  }
+
+  .filter-banner {
+    height: auto; /* Автоматическая высота */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(1) {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(2) {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(3) {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .result-search__items {
+    grid-gap: 50px; /* Уменьшение промежутков между элементами */
+  }
+}
+
+@media (max-width: 480px) {
+  .title_img{
+    max-width: 100%;
+    width: 90%;
+  }
+  .filter-button {
+    margin-bottom: 0px;
+    max-width: 200%;
+    width: 200%; /* Ширина кнопки на 100% */
+    height: 40px; /* Уменьшение высоты кнопки */
+  }
+
+  .filter-banner .info_section {
+    padding: 15px; /* Уменьшение отступов */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(1) {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(2) {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .filter-banner .info_section > div:nth-of-type(3) {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .result-search__item {
+    padding: 5px; /* Уменьшение отступов */
+  }
+
+  .r-item-img {
+    width: 100%; /* Ширина изображения на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .r-item-info {
+    width: 100%; /* Ширина информации на 100% */
   }
 }

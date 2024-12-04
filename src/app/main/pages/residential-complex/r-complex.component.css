@@ -253,3 +253,221 @@
   line-height: 100%;
   font-size: 13px;
 }
+@media (max-width: 1800px) {
+  .gk-title__company {
+    font-size: 70px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-title__district, .gk-title__address {
+    font-size: 35px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__content {
+    font-size: 22px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__rate {
+    width: 400px; /* Уменьшение ширины */
+    height: 350px; /* Уменьшение высоты */
+  }
+
+  .features__list .nav-pills .nav-link {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .details__item {
+    min-height: 350px; /* Уменьшение минимальной высоты */
+  }
+
+  .result-search__items {
+    grid-template-columns: repeat(2, 1fr); /* Две колонки */
+    grid-gap: 80px 70px; /* Уменьшение отступов */
+  }
+
+  .r-item-img {
+    width: 150px; /* Уменьшение ширины */
+    height: 180px; /* Уменьшение высоты */
+  }
+
+  .cards-block__price {
+    font-size: 32px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 1200px) {
+  .gk-title__company {
+    font-size: 60px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-title__district, .gk-title__address {
+    font-size: 30px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__content {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__rate {
+    width: 350px; /* Уменьшение ширины */
+    height: 300px; /* Уменьшение высоты */
+  }
+
+  .features__list .nav-pills .nav-link {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .details__item {
+    min-height: 300px; /* Уменьшение минимальной высоты */
+  }
+
+  .result-search__items {
+    grid-template-columns: repeat(1, 1fr); /* Одна колонка */
+    grid-gap: 60px 50px; /* Уменьшение отступов */
+  }
+
+  .r-item-img {
+    width: 130px; /* Уменьшение ширины */
+    height: 160px; /* Уменьшение высоты */
+  }
+
+  .cards-block__price {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 22px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 768px) {
+  .gk-title__company {
+    font-size: 50px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-title__district, .gk-title__address {
+    font-size: 25px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__content {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__rate {
+    width: 300px; /* Уменьшение ширины */
+    height: 250px; /* Уменьшение высоты */
+  }
+
+  .features__list .nav-pills .nav-link {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .details__item {
+    min-height: 250px; /* Уменьшение минимальной высоты */
+  }
+
+  .result-search__items {
+    grid-template-columns: 1fr; /* Одна колонка */
+    grid-gap: 40px 30px; /* Уменьшение отступов */
+  }
+  .r-item-img {
+    width: 100px;
+    width: 100px; /* Уменьшение ширины */
+    height: 120px; /* Уменьшение высоты */
+  }
+  .cards-block__price {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__title-info, .price {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__company {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .price-squad {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__categories {
+    grid-template-columns: 1fr; /* Одна колонка */
+  }
+}
+
+@media (max-width: 480px) {
+  .gk-title__company {
+    font-size: 40px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-title__district, .gk-title__address {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__content {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .gk-project__rate {
+    width: 100%; /* Ширина на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .features__list .nav-pills .nav-link {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .details__item {
+    min-height: 200px; /* Уменьшение минимальной высоты */
+  }
+
+  .result-search__items {
+    grid-template-columns: 1fr; /* Одна колонка */
+    grid-gap: 20px 15px; /* Уменьшение отступов */
+  }
+
+  .r-item-img {
+    width: 80px; /* Уменьшение ширины */
+    height: 100px; /* Уменьшение высоты */
+  }
+
+  .cards-block__price {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__title-info, .price {
+    font-size: 16px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__company {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .price-squad {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__type-build, .r-item__address, .r-item__categories.price-squad {
+    font-size: 10px; /* Уменьшение размера шрифта */
+  }
+
+  .r-item__categories {
+    grid-template-columns: 1fr; /* Одна колонка */
+  }
+}

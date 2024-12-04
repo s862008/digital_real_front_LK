@@ -12,6 +12,7 @@
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
   background: #fff;
   padding: 40px 30px;
+  max-width: 93%;
 
 }
 
@@ -60,8 +61,15 @@
 .as__group-imgs img {
   cursor: pointer;
   height: 100%;
-  width: 100%;
+  width: 90%;
 
+}
+
+.btn-group, .btn-group-vertical{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 100%;
 }
 
 .btn-check:checked + .btn.as__toogle {
@@ -165,10 +173,7 @@
   min-height: 250px;
 }
 
-.apartment-similar {
 
-
-}
 
 .apartment-similar > div:nth-of-type(1) {
   height: 1200px;
@@ -225,4 +230,181 @@
   margin-bottom: 15px; /* Отступ снизу от изображения */
   width: 447px;
   height: 395px;
+}
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1200px) {
+  .as__gallery-side {
+    padding: 30px 20px; /* Уменьшение отступов */
+  }
+
+  .as__toogle {
+    max-width: 47%;
+  }
+
+  .as__info-side {
+    max-width: 100%; /* Увеличение ширины для мобильных устройств */
+    padding: 30px 15px; /* Уменьшение отступов */
+  }
+
+
+
+  .as__group-imgs {
+    grid-template-columns: repeat(3, 1fr); /* Уменьшение количества колонок */
+  }
+
+  .ab-info__content {
+    padding: 20px; /* Уменьшение отступов */
+  }
+
+  .percent-h2 {
+    font-size: 36px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price {
+    font-size: 28px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+}
+
+@media (max-width: 992px) {
+  .as__toogle {
+    max-width: 75%;
+  }
+  .ab-info__text{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    color: #333;
+    max-height: 600px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    display: flex; /* Включение flexbox для строки */
+    flex-direction: column; /* Расположение элементов вертикально */
+    align-items: center; /* Центрирование элементов по горизонтали */
+  }
+  .apartment-section {
+    margin-bottom: 50px; /* Уменьшение отступа снизу */
+  }
+  .btn-group, .btn-group-vertical{
+    width: 180%;
+  }
+  .as__gallery-side {
+    max-width: 100%; /* Задаем боковой галерее полную ширину */
+  }
+  .ab-info__content {
+    max-width: 100%; /* Задаем контенту полную ширину */
+  }
+
+  .as__main-img {
+    height: 200px; /* Уменьшение высоты изображения */
+  }
+
+  .as__group-imgs {
+    grid-template-columns: repeat(2, 1fr); /* Уменьшение количества колонок */
+  }
+  .as__info-side {
+    margin-top: 20px;
+    max-width: 200%; /* Увеличение ширины для мобильных устройств */
+    width: 150%;
+    padding: 30px 15px; /* Уменьшение отступов */
+    position: relative;
+    left: -50px;
+  }
+  .as__toogle {
+    max-width: 60%;
+  }
+  .cards-block__item img {
+    height: 100%;
+  }
+  .apartment-similar{
+    flex-direction: column; /* Расположение элементов вертикально */
+    align-items: center; /* Центрирование элементов по горизонтали */
+    width: 100%; /* Задаем карточке полную ширину */
+  }
+
+  .img-block {
+    width: 100%; /* Ширина блока изображений на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+
+  .float-img {
+    width: 50%; /* Ширина изображения на 100% */
+    height: auto; /* Автоматическая высота */
+  }
+}
+@media (max-width: 590px) {
+  .as__info-side {
+    margin-top: 20px;
+    max-width: 200%; /* Увеличение ширины для мобильных устройств */
+    width: 200%;
+    padding: 30px 15px; /* Уменьшение отступов */
+    position: relative;
+    left: -50px;
+    font-size: 14px;
+  }
+  .as__toogle {
+    max-width: 48%;
+  }
+}
+@media (max-width: 480px) {
+  .as__toogle {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+  .r-item__title-info, .price {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .as__info-side {
+    padding: 20px 10px; /* Уменьшение отступов */
+  }
+
+  .as-item__type-build {
+    font-size: 14px; /* Уменьшение размера шрифта */
+  }
+
+  .as-item__address {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .as-item__categories {
+    grid-template-columns: 1fr; /* Уменьшение количества колонок */
+  }
+
+  .as-item__categories span {
+    font-size: 12px; /* Уменьшение размера шрифта */
+  }
+
+  .ab-info__content {
+    min-height: 500px; /* Уменьшение минимальной высоты */
+  }
+
+  .ab-info__text {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__item {
+    flex-direction: column; /* Изменение направления на колонку */
+    align-items: center; /* Центрирование элементов */
+    padding: 10px; /* Уменьшение отступов */
+  }
+
+  .cards-block__price {
+    font-size: 24px; /* Уменьшение размера шрифта */
+  }
+
+  .cards-block__price-sqr {
+    font-size: 18px; /* Уменьшение размера шрифта */
+  }
+
+  .percent-h2 {
+    font-size: 32px; /* Уменьшение размера шрифта */
+  }
 }

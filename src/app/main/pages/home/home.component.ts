@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       due: [],
     });
 
-    this.testFillData();
+
   }
 
   ngAfterViewInit() {
@@ -64,7 +64,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.testFillData();
+
+     this.testFillData();
+
   }
 
   nextSlide(): void {
@@ -95,23 +97,7 @@ export class HomeComponent implements OnInit {
   loadPrepearInfo() {
     this.isLoadingVariants = true;
 
-    this.dataservice
-      .loadPrepearInfo(
-        (this.toSearch = {
-          numberOfRooms: this.numberOfRooms(),
-          priceMin: this.formFilter.controls['priceMin'].value,
-          priceMax: this.formFilter.controls['priceMax'].value,
-          areaTotalMin: this.formFilter.controls['areaTotalMin'].value,
-          areaTotalMax: this.formFilter.controls['areaTotalMax'].value,
-        })
-      )
-      .subscribe({
-        next: (data: any): void => {
-          this.isLoadingVariants = false;
-          this.apartmentCount = data[0];
-          this.rcomplexCount = data[1];
-        },
-      });
+
   }
 
   public filterSearch(): void {
@@ -129,7 +115,6 @@ export class HomeComponent implements OnInit {
     };
 
     this.filterservice.setFilterData(filter);
-    // sessionStorage.setItem('toFilterSearch', JSON.stringify(this.toSearch));
     sessionStorage.setItem('toFilterSearch', 'submit');
     this.router.navigate(['/filter-search']);
   }
@@ -181,50 +166,7 @@ export class HomeComponent implements OnInit {
   }
 
   private loadSuggest() {
-    this.dataservice
-      .getRComplex({
-        method: 'popular',
-        id: 0,
-        limit: 0,
-      })
-      .subscribe({
-        next: (data: any): void => {
-          let iterationCount = 0;
-          const maxIterations = 2;
-          for (const dataKey in data) {
-            if (iterationCount >= maxIterations) {
-              break;
-            }
 
-            const dataValue = data[dataKey];
-            console.log(dataValue);
-            const r: RComplexPopular = {
-              address: dataValue.address,
-              company: dataValue.company,
-              id: dataValue.id,
-              name: dataValue.name,
-              orderByRooms: dataValue.orderByRooms,
-              phone: dataValue.phone,
-              countApartments: dataValue.countApartments,
-              priceMax: 0,
-              priceMin: 0,
-              logo:
-                dataValue.logo == null
-                  ? '/assets/img/logo.png'
-                  : dataValue.logo,
-              titlePicture:
-                dataValue.titlePicture == null
-                  ? '/assets/img/стел жк 7.png'
-                  : dataValue.titlePicture,
-              dueYear: dataValue.dueYear,
-              dueQuart: dataValue.dueQuart,
-            };
-            this.rcomplexPopulars.push(r);
-            iterationCount++;
-          }
-          console.log(this.rcomplexPopulars);
-        },
-      });
   }
 
   private testFillData() {

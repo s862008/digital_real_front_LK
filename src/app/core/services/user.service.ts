@@ -11,15 +11,15 @@ export class UserService {
   }
 
   public getProfile(username: string): Observable<Object> {
-    return this.http.get(`/api/v1/users/find-by-username/${username}`);
+    return this.http.get(`/test/find-by-username/${username}`);
   }
 
   public updateProfile(toUpdate: ProfileForm): Observable<Object> {
-    return this.http.put(`/api/v1/users/`, toUpdate);
+    return this.http.put(`/test/users/`, toUpdate);
   }
 
   public deleteProfile(username: string): Observable<Object> {
-    return this.http.delete(`/api/v1/users/delete-by-username/${username}`);
+    return this.http.delete(`/test/users/delete-by-username/${username}`);
   }
 
 }

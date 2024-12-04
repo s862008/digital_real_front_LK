@@ -25,37 +25,7 @@ export class RComplexComponent {
       this.id = params.get('id') || '';
     });
 
-
-    // this.testFillData()
-
-    if (this.id) {
-      this.dataservice.getRComplex({
-        method: "findByid",
-        id: Number(this.id),
-        limit: 0
-      }).subscribe({
-        next: (dataValue: any): void => {
-          if (dataValue != null) {
-            this.rcomplex = dataValue;
-
-            console.error(this.rcomplex);
-
-            if(!this.rcomplex.logo)
-              this.rcomplex.logo = "/assets/img/logo.png"
-            if(!this.rcomplex.map)
-              this.rcomplex.map = ""
-
-          }
-
-          this.loading = false;
-        },
-        error: (err) => {
-          console.error(err);
-          this.loading = false;
-        }
-      })
-
-    }
+    this.testFillData()
 
   }
 

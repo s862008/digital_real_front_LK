@@ -8,7 +8,7 @@ import {SmartSearch} from "../../../core/models/search";
 import {Company} from "../../../core/models/company";
 import {SmartParametersComponent} from "../../components/smart-parameters/smart-parameters.component";
 import {MatDialog} from "@angular/material/dialog";
-import {RComplexPopular} from "../../../core/models/rcomplex";
+
 
 @Component({
   selector: 'app-search',
@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
       this.smartParameters = navigation && navigation.extras && navigation.extras.state ? navigation.extras?.state['smartParam'] : undefined;
     }
 
-    // this.testFillData();
+    this.testFillData();
 
     this.searching();
 
@@ -230,15 +230,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
         companyExcp: this.smartParameters.companyExcp,
       }
 
-      this.dataservice.smartSearch(toSearch, this.limit, this.offset).subscribe({
-        next: (data: any): void => {
-          if (data != null) {
-            this.apartments = [...this.apartments, ...data?.content];
-            this.offset++;
-          }
-          this.loading = false;
-        }
-      })
 
     }
 

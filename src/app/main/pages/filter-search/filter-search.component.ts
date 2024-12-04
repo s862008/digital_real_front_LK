@@ -38,7 +38,7 @@ export class FilterSearchComponent {
     this.filter = this.filterservice.getFilterData()
     if (sessionStorage.getItem("toFilterSearch") == 'submit') {
       this.filterSearch()
-      //this.testFillData()
+      this.testFillData()
     } else {
       window.scroll({
         top: 300,
@@ -73,33 +73,17 @@ export class FilterSearchComponent {
       }
     }
 
-    this.dataservice.search(this.toSearch, this.size, this.page).subscribe({
-      next: (data: any): void => {
-
-        this.apartments = data?.body.content
-        this.totalPages = data?.body.totalPages
-        this.totalElements = data?.body.totalElements
-        this.isApartmen = false;
-
-
-        if (this.apartments != null && this.apartments.length > 0) {
-          this.isApartmen = true
-          window.scroll({
-            top: 900,
-            left: 0,
-            behavior: "smooth",
-          });
-        } else {
-          window.scroll({
-            top: 250,
-            left: 0,
-            behavior: "smooth",
-          });
-        }
-
-        this.loading = false;
-      }
-    })
+    // this.dataservice.search(this.toSearch, this.size, this.page).subscribe({
+    //   next: (data: any): void => {
+    //
+    //     this.apartments = data?.body.content
+    //     this.totalPages = data?.body.totalPages
+    //     this.totalElements = data?.body.totalElements
+    //     this.isApartmen = false;
+    //
+    //     this.loading = false;
+    //   }
+    // })
 
   }
 

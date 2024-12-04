@@ -1,4 +1,3 @@
-
 .banner {
   background-color: #032f30;
   height: 563px;
@@ -28,17 +27,19 @@
 }
 
 .info-banner--small {
-
   padding-top: 10%;
   color: white;
   width: 50vh;
   font-size: 35px;
 }
-
+.row{
+  position: relative;
+  z-index: 1;
+}
 .banner__img-part {
   background-image: url("/assets/img/фото ЖК (сменное до 5 шт).png");
   background-size: cover;
-  height: 588px;
+  height: 598px;
   width: 841px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 15px;
@@ -75,6 +76,7 @@
   line-height: 1;
   font-family: var(--font-family-bold);
   margin-top: 5vh;
+  top: 0;
 }
 
 .banner-info {
@@ -113,4 +115,154 @@
   line-height: 1.2;
   color: #ffffff;
   font-size: 10px;
+}
+/* Добавление медиа-запросов */
+@media (max-width: 1400px) {
+  .banner-title {
+    font-size: 46px; /* Уменьшение размера шрифта заголовка */
+    width: 140%;
+    top: calc(-10px);
+    padding: 25px 46px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .banner-title {
+    font-size: 27px; /* Уменьшение размера шрифта заголовка */
+    width: 90%;
+    top: calc(-10px);
+    padding: 30px 46px;
+  }
+
+  .banner-info {
+    max-width: 40%;
+    left: 0;
+    font-size: 23px; /* Уменьшение размера шрифта информации */
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .banner {
+    height: 380px; /* Автоматическая высота для мобильных устройств */
+    padding: 20px; /* Добавление отступов */
+  }
+
+  .banner__back-logo {
+    height: 500px; /* Уменьшаем высоту изображения */
+    width: 100%; /* Устанавливаем ширину на 100% */
+    top: 10%; /* Изменение позиции */
+    right: 5vw; /* Изменение позиции */
+  }
+
+  .banner-inner {
+    padding: 50px; /* Уменьшение отступов */
+  }
+
+  .banner-title {
+    font-size: 40px; /* Уменьшение размера шрифта заголовка */
+    width: 50%;
+    top: calc(-10px);
+    padding: 25px 46px;
+  }
+
+  .banner-info {
+    max-width: 40%;
+    left: 0;
+    font-size: 23px; /* Уменьшение размера шрифта информации */
+  }
+
+  .banner__img-part {
+    top: -25px;
+    width: 60%;
+    height: 390px;
+  }
+  .banner__text-part {
+    order: 1; /* Устанавливаем текст под изображением */
+    margin-left: 0; /* Убираем отступ слева */
+    width: 100%; /* Ширина текстовой части на 100% */
+  }
+
+
+  .banner__smart-part button {
+    font-size: 20px; /* Уменьшаем размер шрифта кнопки */
+  }
+}
+@media (max-width: 999px) {
+  .banner-title {
+    font-size: 40px; /* Уменьшение размера шрифта заголовка */
+    width: 70%;
+    top: calc(-10px);
+    padding: 25px 46px;
+  }
+}
+@media (max-width: 900px) {
+  .banner-title {
+    font-size: 34px; /* Уменьшение размера шрифта заголовка */
+    width: 60%;
+    padding: 30px 50px;
+  }
+  .banner-inner {
+    padding: 50px; /* Уменьшение отступов */
+  }
+}
+
+@media (max-width: 768px) {
+
+  .banner {
+    height: 380px; /* Автоматическая высота для мобильных устройств */
+    padding: 20px; /* Добавление отступов */
+  }
+
+  .banner-info {
+    max-width: 70%;
+  }
+
+  .banner__back-logo {
+    height: 300px; /* Уменьшаем высоту изображения */
+    width: 100%; /* Устанавливаем ширину на 100% */
+    top: 10%; /* Изменение позиции */
+    right: 5vw; /* Изменение позиции */
+  }
+
+  .banner-inner {
+    padding: 50px; /* Уменьшение отступов */
+  }
+  .banner-title {
+    font-size: 24px; /* Уменьшение размера шрифта заголовка */
+    width: 60%;
+    padding: 30px 20px;
+  }
+  .banner__smart-part button {
+    width: 40%;
+    font-size: 18px;
+  }
+  .smart-part__info{
+    width: 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner__smart-part button {
+    width: 40%;
+    font-size: 18px;
+  }
+  .banner-title {
+    width: 60%;
+    padding: 34px 12px;
+    font-size: 18px; /* Дополнительное уменьшение размера шрифта заголовка */
+  }
+
+  .banner-info {
+    font-size: 14px; /* Дополнительное уменьшение размера шрифта информации */
+  }
+
+  .banner__back-logo {
+    height: 200px; /* Уменьшение высоты логотипа для очень маленьких экранов */
+    width: 200px; /* Уменьшение ширины логотипа для очень маленьких экранов */
+  }
+
+  .banner-inner {
+    padding: 20px; /* Уменьшение отступов для маленьких экранов */
+  }
 }

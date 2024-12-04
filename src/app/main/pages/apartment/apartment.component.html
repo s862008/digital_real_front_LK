@@ -1,89 +1,89 @@
 <main class="apartment-page">
   <div class="wrapper-back-banner">
   </div>
-    <div class="container-main">
-      <section class="apartment-section">
-        <div class="row">
-          <div class="col-8">
+  <div class="container-main">
+    <section class="apartment-section">
+      <div class="row">
+        <div class="col-8">
 
-            <div class="as__gallery-side" data-id="{{id}}">
-              <div *ngIf="loading">Загрузка...</div>
-              <div *ngIf="!loading">
-                <h2 class="r-item__title-info px-3" style="margin-bottom: 30px ">{{rooms}}</h2>
-              </div>
-              <div class="btn-group" style="margin-bottom: 10px " role="group"
-                   aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
-                       autocomplete="off"
-                       checked>
-                <label class="btn btn-outline-primary as__toogle" for="btnradio1">Планировка</label>
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
-                       autocomplete="off">
-                <label class="btn btn-outline-primary as__toogle" for="btnradio2">План этажа</label>
-              </div>
-              <div class="as__main-img" style="margin-bottom: 30px ">
-                <img [src]="imgPathMain" alt="picture">
-              </div>
-
-              <div class="as__group-imgs ">
-                <img class="p-2" id="pic-n1" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(1)">
-                <img class="p-2" id="pic-n2" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(2)">
-                <img class="p-2" id="pic-n3" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(3)">
-                <img class="p-2" id="pic-n4" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(4)">
-                <img class="p-2" id="pic-n5" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(5)">
-              </div>
+          <div class="as__gallery-side" data-id="{{id}}">
+            <div *ngIf="loading">Загрузка...</div>
+            <div *ngIf="!loading">
+              <h2 class="r-item__title-info px-3" style="margin-bottom: 30px ">{{rooms}}</h2>
             </div>
-          </div>
-          <div class="col-4">
-            <div class="as__info-side">
-              <div *ngIf="loading">Загрузка...</div>
-              <div *ngIf="!loading">
-                <div class="as__price-block">
+            <div class="btn-group" style="margin-bottom: 10px " role="group"
+                 aria-label="Basic radio toggle button group">
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                     autocomplete="off"
+                     checked>
+              <label class="btn btn-outline-primary as__toogle" for="btnradio1">Планировка</label>
+              <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                     autocomplete="off">
+              <label class="btn btn-outline-primary as__toogle" for="btnradio2">План этажа</label>
+            </div>
+            <div class="as__main-img" style="margin-bottom: 30px ">
+              <img [src]="imgPathMain" alt="picture">
+            </div>
 
-                  <div *ngIf="apartment.price !=null; else noprice" class="price">{{ apartment.price | pricePipe }} ₽</div>
-                  <ng-template #noprice > <div class="price-squad">Цена не указана</div> </ng-template>
-                  <div *ngIf="apartment.priceSqmt!=null; else nopricesqmt" class="price-squad">{{apartment.priceSqmt | pricePipe}} <span> р/м<sup>2</sup></span></div>
-                  <ng-template #nopricesqmt > <div class="price-squad">Цена за кв.м. не указана</div></ng-template>
-                </div>
-              </div>
-              <div class="as-info__items">
-                <div *ngIf="loading">Загрузка...</div>
-                <div *ngIf="!loading">
-                  <div class="as-item__type-build"*ngIf="apartment.rcomplexDto.houseType">Тип дома: {{apartment.rcomplexDto.type_build}}</div>
-                  <div class="as-item__address">{{apartment.rcomplexDto.address}}</div>
-                  <div class="as-item__categories">
-                    <div>Тип: . . . . . . . . . . . . . . . . . . . .</div>
-                    <span>{{apartment.apartmentType}} </span>
-                    <div>Площадь: . . . . . . . . . . . . . .</div>
-                    <span>{{apartment.areaTotal}} м²</span>
-                    <div>Кухня: . . . . . . . . . . . . . . . . .</div>
-                    <span>{{apartment.areaKitchen}} м²</span>
-                    <div>Этаж: . . . . . . . . . . . . . . . . . .</div>
-                    <span>{{apartment.floor}}</span>
-                    <div>Высота потолков: . . . . . . . .</div>
-                    <span>{{apartment.rcomplexDto.ceilingHeight}}</span>
-                    <div>Наименование ЖК: . . . . . .</div>
-                    <span>{{apartment.rcomplexDto.name}}</span>
-                    <div>Срок сдачи: . . . . . . . . . . . . .</div>
-                    <span>{{apartment.rcomplexDto.dueYear}}</span>
-                    <div *ngIf="apartment.rcomplexDto.parking">Парковка: . . . . . . . . . . . . . . .</div>
-                    <span *ngIf="apartment.rcomplexDto.parking">{{apartment.rcomplexDto.parking}}</span>
-
-                  </div>
-                </div>
-              </div>
-
+            <div class="as__group-imgs ">
+              <img class="p-2" id="pic-n1" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(1)">
+              <img class="p-2" id="pic-n2" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(2)">
+              <img class="p-2" id="pic-n3" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(3)">
+              <img class="p-2" id="pic-n4" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(4)">
+              <img class="p-2" id="pic-n5" src="./assets/img/Group%2048.png" alt="picture" onclick="handleClick(5)">
             </div>
           </div>
         </div>
-      </section>
+        <div class="col-4">
+          <div class="as__info-side">
+            <div *ngIf="loading">Загрузка...</div>
+            <div *ngIf="!loading">
+              <div class="as__price-block">
 
-      <section class="apartment-build-info">
-        <h2 class="title">
-          Особенности дома
-        </h2>
-        <div *ngIf="loading">Загрузка...</div>
-        <div *ngIf="!loading">
+                <div *ngIf="apartment.price !=null; else noprice" class="price">{{ apartment.price | pricePipe }} ₽</div>
+                <ng-template #noprice > <div class="price-squad">Цена не указана</div> </ng-template>
+                <div *ngIf="apartment.priceSqmt!=null; else nopricesqmt" class="price-squad">{{apartment.priceSqmt | pricePipe}} <span> р/м<sup>2</sup></span></div>
+                <ng-template #nopricesqmt > <div class="price-squad">Цена за кв.м. не указана</div></ng-template>
+              </div>
+            </div>
+            <div class="as-info__items">
+              <div *ngIf="loading">Загрузка...</div>
+              <div *ngIf="!loading">
+                <div class="as-item__type-build"*ngIf="apartment.rcomplexDto.houseType">Тип дома: {{apartment.rcomplexDto.type_build}}</div>
+                <div class="as-item__address">{{apartment.rcomplexDto.address}}</div>
+                <div class="as-item__categories">
+                  <div>Тип: . . . . . . . . . . . . . . . . . . . .</div>
+                  <span>{{apartment.apartmentType}} </span>
+                  <div>Площадь: . . . . . . . . . . . . . .</div>
+                  <span>{{apartment.areaTotal}} м²</span>
+                  <div>Кухня: . . . . . . . . . . . . . . . . .</div>
+                  <span>{{apartment.areaKitchen}} м²</span>
+                  <div>Этаж: . . . . . . . . . . . . . . . . . .</div>
+                  <span>{{apartment.floor}}</span>
+                  <div>Высота потолков: . . . . . . . .</div>
+                  <span>{{apartment.rcomplexDto.ceilingHeight}}</span>
+                  <div>Наименование ЖК: . . . . . .</div>
+                  <span>{{apartment.rcomplexDto.name}}</span>
+                  <div>Срок сдачи: . . . . . . . . . . . . .</div>
+                  <span>{{apartment.rcomplexDto.dueYear}}</span>
+                  <div *ngIf="apartment.rcomplexDto.parking">Парковка: . . . . . . . . . . . . . . .</div>
+                  <span *ngIf="apartment.rcomplexDto.parking">{{apartment.rcomplexDto.parking}}</span>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apartment-build-info">
+      <h2 class="title">
+        Особенности дома
+      </h2>
+      <div *ngIf="loading">Загрузка...</div>
+      <div *ngIf="!loading">
         <div class="ab-info__content">
           <div class="row">
             <div class="col-12 d-flex flex-column justify-content-between">
@@ -95,93 +95,80 @@
                 <a href="#" [routerLink]="['/r-complex', apartment.rcomplexDto.id]"> Подробнее </a>
               </div>
             </div>
-<!--            <div class="col-6">-->
-<!--              <div class="ab-info__img"></div>-->
-<!--            </div>-->
+            <!--            <div class="col-6">-->
+            <!--              <div class="ab-info__img"></div>-->
+            <!--            </div>-->
           </div>
           <div class="row px-3">
             <div id="map" style="margin:0 auto; max-width: 634px; height: 250px;"></div>
           </div>
         </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="apartment-similar">
-        <h2 class="title"> Похожие квартиры  </h2>
-        <div class="d-flex flex-column">
-          <div class="cards-block__item" *ngFor="let item of cards" [routerLink]="['/apartment', item.id] ">
-            <div class="img-block">
-              <img alt="img" style="cursor: pointer;" [src]="item.photoMainPath">
+    <section class="apartment-similar">
+      <h2 class="title"> Похожие квартиры  </h2>
+      <div class="d-flex flex-column">
+        <div class="cards-block__item" *ngFor="let item of cards" [routerLink]="['/apartment', item.id] ">
+          <div class="img-block">
+            <img alt="img" style="cursor: pointer;" [src]="item.photoMainPath">
+          </div>
+
+          <div class="col r-item-info d-flex flex-column justify-content-between ">
+
+            <h2 class="r-item__title-info">{{item.numberOfRooms}},  {{item.areaTotal}} м² </h2>
+
+            <div class="d-flex flex-column">
+              <div class="r-item__type-build">{{item.houseType}}</div>
+              <div class="r-item__address">{{item.address}}</div>
+            </div>
+            <div class="r-item__categories">
+              <div>Кухня: . . . . . . . . . . . . . .</div>
+              <span>{{item.areaKitchen}} </span>
+              <div>Этаж . . . . . . . . . . . . . . .</div>
+              <span>{{item.floor}}</span>
+              <div>Срок сдачи . . . . . . . . . .</div>
+              <span>{{item.dueYear}}</span>
+            </div>
+            <div class="r-item__company">
+              {{item.company}}
+            </div>
+          </div>
+
+          <div class="col-3  d-flex flex-column justify-content-between ">
+            <div class="d-flex justify-content-center">
+              <h2 class="percent-h2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M22.25 5C19.6688 5 17.4088 6.11 16 7.98625C14.5912 6.11 12.3313 5 9.75 5C7.69528 5.00232 5.72539 5.81958 4.27248 7.27248C2.81958 8.72539 2.00232 10.6953 2 12.75C2 21.5 14.9738 28.5825 15.5262 28.875C15.6719 28.9533 15.8346 28.9943 16 28.9943C16.1654 28.9943 16.3281 28.9533 16.4737 28.875C17.0262 28.5825 30 21.5 30 12.75C29.9977 10.6953 29.1804 8.72539 27.7275 7.27248C26.2746 5.81958 24.3047 5.00232 22.25 5ZM16 26.85C13.7175 25.52 4 19.4613 4 12.75C4.00198 11.2256 4.60842 9.76423 5.68633 8.68633C6.76423 7.60842 8.22561 7.00198 9.75 7C12.1812 7 14.2225 8.295 15.075 10.375C15.1503 10.5584 15.2785 10.7153 15.4432 10.8257C15.6079 10.9361 15.8017 10.995 16 10.995C16.1983 10.995 16.3921 10.9361 16.5568 10.8257C16.7215 10.7153 16.8497 10.5584 16.925 10.375C17.7775 8.29125 19.8188 7 22.25 7C23.7744 7.00198 25.2358 7.60842 26.3137 8.68633C27.3916 9.76423 27.998 11.2256 28 12.75C28 19.4513 18.28 25.5188 16 26.85Z"
+                    fill="#106681"/>
+                </svg>
+                98%
+              </h2>
             </div>
 
-            <div class="col r-item-info d-flex flex-column justify-content-between ">
+            <div class="d-flex flex-column px-2">
+              <div class="cards-block__price">Не указана</div>
+              <div class="cards-block__price-sqr">Не указана</div>
+              <button mat-raised-button (click)="showPhone()"
+                      class="phone-btn">
+                Показать телефон
+              </button>
 
-              <h2 class="r-item__title-info">{{item.numberOfRooms}},  {{item.areaTotal}} м² </h2>
-
-              <div class="d-flex flex-column">
-                <div class="r-item__type-build">{{item.houseType}}</div>
-                <div class="r-item__address">{{item.address}}</div>
-              </div>
-              <div class="r-item__categories">
-                <div>Кухня: . . . . . . . . . . . . . .</div>
-                <span>{{item.areaKitchen}} </span>
-                <div>Этаж . . . . . . . . . . . . . . .</div>
-                <span>{{item.floor}}</span>
-                <div>Срок сдачи . . . . . . . . . .</div>
-                <span>{{item.dueYear}}</span>
-              </div>
-              <div class="r-item__company">
-                {{item.company}}
-              </div>
             </div>
-
-            <div class="col-3  d-flex flex-column justify-content-between ">
-              <div class="d-flex justify-content-center">
-                <h2 class="percent-h2">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M22.25 5C19.6688 5 17.4088 6.11 16 7.98625C14.5912 6.11 12.3313 5 9.75 5C7.69528 5.00232 5.72539 5.81958 4.27248 7.27248C2.81958 8.72539 2.00232 10.6953 2 12.75C2 21.5 14.9738 28.5825 15.5262 28.875C15.6719 28.9533 15.8346 28.9943 16 28.9943C16.1654 28.9943 16.3281 28.9533 16.4737 28.875C17.0262 28.5825 30 21.5 30 12.75C29.9977 10.6953 29.1804 8.72539 27.7275 7.27248C26.2746 5.81958 24.3047 5.00232 22.25 5ZM16 26.85C13.7175 25.52 4 19.4613 4 12.75C4.00198 11.2256 4.60842 9.76423 5.68633 8.68633C6.76423 7.60842 8.22561 7.00198 9.75 7C12.1812 7 14.2225 8.295 15.075 10.375C15.1503 10.5584 15.2785 10.7153 15.4432 10.8257C15.6079 10.9361 15.8017 10.995 16 10.995C16.1983 10.995 16.3921 10.9361 16.5568 10.8257C16.7215 10.7153 16.8497 10.5584 16.925 10.375C17.7775 8.29125 19.8188 7 22.25 7C23.7744 7.00198 25.2358 7.60842 26.3137 8.68633C27.3916 9.76423 27.998 11.2256 28 12.75C28 19.4513 18.28 25.5188 16 26.85Z"
-                      fill="#106681"/>
-                  </svg>
-                  98%
-                </h2>
-              </div>
-
-              <div class="d-flex flex-column px-2">
-                <div class="cards-block__price">Не указана</div>
-                <div class="cards-block__price-sqr">Не указана</div>
-                <button mat-raised-button (click)="showPhone()"
-                        class="phone-btn">
-                  Показать телефон
-                </button>
-
-              </div>
-            </div>
-
           </div>
 
         </div>
-        <div class="row justify-content-end mx-auto my-5 show-all">
-          <button class="my-btn-long"> Показать все</button>
-        </div>
-      </section>
 
-    </div>
+      </div>
+      <div class="row justify-content-end mx-auto my-5 show-all">
+        <button class="my-btn-long"> Показать все</button>
+      </div>
+    </section>
 
-
+  </div>
 
 </main>
 
-<script>
-  function handleClick(item) {
 
-    let image = document.getElementById('pic-n' + item);
-    let main_img = document.querySelector('.as__main-img img');
-
-    let temp = image.src;
-    image.src = main_img.src;
-    main_img.src = temp;
-
-  }
-</script>

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DataService} from "../../../core/services/data.service";
-import {Apartment, ApartmentFull, ApartmentShortCard} from "../../../core/models/apartment";
+import {ApartmentFull, ApartmentShortCard} from "../../../core/models/apartment";
 import {Gallery} from "../../../core/models/gallery";
 
 @Component({
@@ -12,7 +12,7 @@ import {Gallery} from "../../../core/models/gallery";
 
 
 export class ApartmentComponent implements OnInit, AfterViewInit {
-  id: string = ""; // Переменная для хранения параметра
+  id: string = "";
 
   imgPathMain!: string;
 
@@ -31,99 +31,11 @@ export class ApartmentComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id') || '';
-      // this.testFillData()
-
-      this.loadApartmentData();
-      this.loadApartmentGallery();
-      this.loadRComplexMap();
-      this.loadSimilarApartments();
-    });
-  }
-
-  private loadApartmentData(): void {
-// через резолвер
-    this.route.data.subscribe(data => {
-      this.apartment = data['data']['apartment'];
-      this.rooms = this.getRoomDescription(this.apartment.numberOfRooms) + `${this.apartment.areaTotal} м²`;
-      this.apartment.apartmentType = this.getApartmentType(this.apartment.apartmentType);
-      this.apartment.rcomplexDto.type_build = this.getHouseTypeName(this.apartment.rcomplexDto.houseType);
-      this.loading = false;
-    });
-
-// прямая загрузка
-    // this.dataService.getApartmentFull(this.id).subscribe({
-    //   next: (data: any): void => {
-    //     this.apartment = data;
-    //     this.rooms = this.getRoomDescription(this.apartment.numberOfRooms) + `${this.apartment.areaTotal} м²`;
-    //     this.apartment.apartmentType = this.getApartmentType(this.apartment.apartmentType);
-    //     this.apartment.rcomplexDto.type_build = this.getHouseTypeName(this.apartment.rcomplexDto.houseType);
-    //     this.loading = false;
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //     this.loading = false;
-    //   }
-    // });
-  }
-
-  private getRoomDescription(numberOfRooms: number): string {
-    if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(numberOfRooms)) {
-      return `${numberOfRooms}-ком. квартира, `;
-    } else if (numberOfRooms === 0) {
-      return "Свободная планировка, ";
-    } else if (numberOfRooms === 0.5) {
-      return "Студия, ";
-    } else if (numberOfRooms !== Math.floor(numberOfRooms)) {
-      return `${numberOfRooms}-евро, `;
-    } else {
-      return "Многокомнатная квартира, ";
-    }
-  }
-
-  private getApartmentType(type: string): string {
-    return type === '1' ? 'квартира' : 'апартаменты';
-  }
-
-  private loadApartmentGallery(): void {
-// через резолвер
-    this.route.data.subscribe(data => {
-      if (data) {
-        this.gallery = data['data']['gallery'];
-        this.imgPathMain = this.gallery.length > 0 ?
-          (this.gallery[0].photoPath || this.gallery[0].planningPath || "") : "";
-      }
-    });
-
-//прямая загрузка
-    // this.dataService.getApartmentGallery(this.id).subscribe(data => {
-    //   if (data) {
-    //     this.gallery = data;
-    //     this.imgPathMain = this.gallery.length > 0 ?
-    //       (this.gallery[0].photoPath || this.gallery[0].planningPath || "") : "";
-    //   }
-    // });
-  }
-
-  private loadRComplexMap(): void {
-    this.dataService.getRComplexMap(this.id).subscribe(data => {
-      this.map = data || 'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A283ed7ea9cee5f0e727420e71e009a734674a95319ada07b9054a2a4e9db6a04&width=634&height=250&lang=ru_RU&scroll=true';
-    });
-  }
-
-  private loadSimilarApartments(): void {
-    this.dataService.searchSimillarApartments(this.id).subscribe({
-      next: (data: any): void => {
-        this.cards = data;
-        this.correctStyleIndicators();
-      }
+      this.testFillData()
     });
   }
 
   ngAfterViewInit() {
-
-    setTimeout(() => {
-      //  this.loadScript();
-    }, 1000);
 
   }
 
@@ -131,39 +43,6 @@ export class ApartmentComponent implements OnInit, AfterViewInit {
     alert("Phone-number");
   }
 
-  getHouseTypeName(houseType: number): string {
-    if (this.houseTypes != null && this.houseTypes.length >= houseType) {
-      return this.houseTypes[houseType - 1];
-    }
-    return "";
-
-  }
-
-  private correctStyleIndicators() {
-    // const carouselIndicators = document.getElementsByClassName("carousel-indicators ng-star-inserted")[0] as HTMLElement;
-    // carouselIndicators.style.left = "35%";
-  }
-
-  loadScript() {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-    script.src = this.map;
-    script.async = true;
-
-    const mapblock = document.getElementById("map");
-    if (mapblock != null) {
-      mapblock.innerHTML = '';
-      mapblock.appendChild(script);
-      script.onload = () => {
-        console.log("Script loaded successfully");
-      };
-
-      script.onerror = () => {
-        console.error("Error loading script");
-      };
-    }
-  }
 
   private testFillData() {
 

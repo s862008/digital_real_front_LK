@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/auth/guard/auth-guard';
-import { ApartmentDataResolver } from './core/services/apartment-data-resolver.service';
 import { ApartmentComponent } from './main/pages/apartment/apartment.component';
 import { FilterSearchComponent } from './main/pages/filter-search/filter-search.component';
 import { HomeComponent } from './main/pages/home/home.component';
@@ -22,9 +21,6 @@ export const routes: Routes = [
   {
     path: 'apartment/:id',
     component: ApartmentComponent,
-    resolve: {
-      data: ApartmentDataResolver,
-    },
   },
   {
     path: 'r-complex/:id',

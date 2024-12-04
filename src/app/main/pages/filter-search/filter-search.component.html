@@ -184,15 +184,15 @@
 
           <div class="row">
             <div class="mx-auto " *ngIf="!isApartmen">
-            <p class="alert alert-dark text-center">По вашему запросу ничего не найдено!</p>
-           </div>
+              <p class="alert alert-dark text-center">По вашему запросу ничего не найдено!</p>
+            </div>
             <div *ngIf="loading">Загрузка...</div>
             <div class="result-search__items" *ngIf="!loading">
 
               <div class="result-search__item" *ngFor="let  item of apartments; let i=index"
                    [routerLink]="['/apartment', item.id]">
                 <div class="r-item-img">
-                  <img [src]="item.photoDefaultPath ? item.photoDefaultPath : item.photoMainPath">
+                  <img [src]="item.photoMainPath">
                 </div>
                 <div class="r-item-info">
                   <h2 class="r-item__title-info">{{formatRoom(item.numberOfRooms)}} {{item.areaTotal}} м² </h2>

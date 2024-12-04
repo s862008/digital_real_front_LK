@@ -206,3 +206,98 @@ iframe {
 .iframe-header-min {
   min-height: 300px;
 }
+@media (max-width: 1200px){
+  .footer__block-links{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer_geo{
+    top: 600px;
+  }
+  footer{
+    height: 1000px;
+  }
+}
+
+@media (max-width: 992px){
+  .footer_geo{
+    left: 50%;
+    top: 650px;
+  }
+  .footer__block-info{
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .footer_geo{
+    width: 150px; /* Уменьшение ширины */
+    left: 60%;
+    top: 600px;
+  }
+  .footer__block-info{
+    width: 100%;
+  }
+  footer {
+    height: auto; /* Автоматическая высота для мобильных устройств */
+    padding: 20px; /* Добавление отступов */
+  }
+
+  .footer__block-info {
+    flex-direction: column; /* Изменение направления для мобильных */
+    width: 100%; /* Ширина блока на 100% */
+    margin: 0; /* Убираем отступы */
+  }
+
+  .footer__block-links {
+    grid-template-columns: 1fr; /* Один столбец для мобильных */
+    grid-gap: 10px; /* Уменьшение промежутков между элементами */
+  }
+
+  .footer_text_left {
+    margin-top: 20px; /* Уменьшение отступа сверху */
+    margin-left: 0; /* Убираем отступ слева */
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .footer__block-info span {
+    font-size: 24px; /* Уменьшение размера шрифта */
+    width: auto; /* Автоматическая ширина */
+  }
+
+
+
+  .footer_geo_location {
+    font-size: 20px; /* Уменьшение размера шрифта */
+  }
+
+  .footer__copyright {
+    top: 2rem; /* Уменьшение отступа сверху */
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 10px; /* Уменьшение отступов для очень маленьких экранов */
+  }
+
+  .footer__block-info {
+    width: 100%; /* Ширина блока на 100% */
+  }
+
+  .footer_text_left {
+    font-size: 18px; /* Дополнительное уменьшение размера шрифта */
+  }
+
+  .footer__block-info span {
+    font-size: 20px; /* Дополнительное уменьшение размера шрифта */
+  }
+  .footer_geo{
+    width: 120px; /* Уменьшение ширины */
+    left: 55%;
+    top: 700px;
+  }
+
+
+  .footer_geo_location {
+    font-size: 18px; /* Дополнительное уменьшение размера шрифта */
+  }
+}
