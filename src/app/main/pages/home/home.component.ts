@@ -10,6 +10,11 @@ import {
 import { DataService } from '../../../core/services/data.service';
 import { FilterService } from '../../../core/services/filter.service';
 import { SmartParametersComponent } from '../../components/smart-parameters/smart-parameters.component';
+import {
+  Statement,
+  StatementService,
+} from '../../../core/services/statement.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +39,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private filterservice: FilterService,
-    private readonly dataservice: DataService
+    private readonly dataservice: DataService,
+    private statementService: StatementService
   ) {
     this.formFilter = this.fb.group({
       isTwo: [false],
@@ -49,8 +55,6 @@ export class HomeComponent implements OnInit {
       areaTotalMax: '',
       due: [],
     });
-
-
   }
 
   ngAfterViewInit() {
@@ -64,9 +68,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-     this.testFillData();
-
+    this.testFillData();
   }
 
   nextSlide(): void {
@@ -96,8 +98,6 @@ export class HomeComponent implements OnInit {
 
   loadPrepearInfo() {
     this.isLoadingVariants = true;
-
-
   }
 
   public filterSearch(): void {
@@ -117,6 +117,13 @@ export class HomeComponent implements OnInit {
     this.filterservice.setFilterData(filter);
     sessionStorage.setItem('toFilterSearch', 'submit');
     this.router.navigate(['/filter-search']);
+  }
+
+  public submitStatementForm(statement: Statement) {
+    this.statementService
+      .createStatement(statement)
+      .pipe(take(1))
+      .subscribe((item) => console.log(item));
   }
 
   private numberOfRooms(): string[] | null {
@@ -165,9 +172,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private loadSuggest() {
-
-  }
+  private loadSuggest() {}
 
   private testFillData() {
     const randomNames = [
