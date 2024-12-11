@@ -18,9 +18,9 @@ import { AppRoutingModule } from './app.routes';
 import { AuthService } from './core/auth/auth-service';
 import { authInterceptorProvider } from './core/auth/interseptors/auth-interceptor';
 import { DataService } from './core/services/data.service';
-import { BannerComponent } from './main/components/banner/banner.component';
+import { BannerModule } from './main/components/banner/banner.module';
 import { ChosenParametersComponent } from './main/components/choosed-parameters/chosen-parameters.component';
-import { ContainerComponent } from './main/components/container/container.component';
+import { ContainerModule } from './main/components/container/container.module';
 import { FooterComponent } from './main/components/footer/footer.component';
 import { HeaderComponent } from './main/components/header/header.component';
 import { LoginDialogComponent } from './main/components/login-dialog/login-dialog.component';
@@ -28,20 +28,16 @@ import { RegistrationDialogComponent } from './main/components/registration-dial
 import { SmartParametersComponent } from './main/components/smart-parameters/smart-parameters.component';
 import { ApartmentComponent } from './main/pages/apartment/apartment.component';
 import { FilterSearchComponent } from './main/pages/filter-search/filter-search.component';
-import { HomeComponent } from './main/pages/home/home.component';
+import { NotFoundComponent } from './main/pages/not-found/not-found.component';
 import { RComplexComponent } from './main/pages/residential-complex/r-complex.component';
 import { SearchComponent } from './main/pages/smart-search/search.component';
 import { PricePipe } from './main/pipes/price.pipe';
-import {NotFoundComponent} from "./main/pages/not-found/not-found.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ContainerComponent,
-    BannerComponent,
     FilterSearchComponent,
     SearchComponent,
     ApartmentComponent,
@@ -51,7 +47,6 @@ import {NotFoundComponent} from "./main/pages/not-found/not-found.component";
     PricePipe,
     LoginDialogComponent,
     RegistrationDialogComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +65,9 @@ import {NotFoundComponent} from "./main/pages/not-found/not-found.component";
     MatToolbarModule,
     TooltipModule.forRoot(),
     HttpClientModule,
+    NotFoundComponent,
+    BannerModule,
+    ContainerModule,
   ],
   providers: [DataService, AuthService, authInterceptorProvider],
   bootstrap: [AppComponent],
