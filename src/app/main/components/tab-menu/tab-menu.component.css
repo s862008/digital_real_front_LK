@@ -1,0 +1,15 @@
+:host {
+  position: relative;
+}
+
+.tabs__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs__body {
+  top: -1;
+  background-color: #f5f5f5;
+  position: absolute;
+  min-width: 100%;
+}
