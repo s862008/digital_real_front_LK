@@ -1,0 +1,21 @@
+<div class="tabs__header">
+  <ng-container *ngFor="let item of tabs; let i = index">
+    <app-tab-header-item
+      [title]="item.title"
+      [num]="i"
+      [class.active]="i == activeNum"
+      (mouseOver)="changeActiveNum($event)"
+    ></app-tab-header-item>
+  </ng-container>
+</div>
+
+<div class="tabs__body">
+  <ng-container *ngFor="let item of tabs; let i = index">
+    <app-tab-body-item
+      [groups]="item.groups"
+      [class.active]="i == activeNum"
+      [num]="i"
+      (mouseOver)="changeActiveNum($event)"
+    ></app-tab-body-item>
+  </ng-container>
+</div>

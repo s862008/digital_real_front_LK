@@ -22,7 +22,7 @@ import { BannerModule } from './main/components/banner/banner.module';
 import { ChosenParametersComponent } from './main/components/choosed-parameters/chosen-parameters.component';
 import { ContainerModule } from './main/components/container/container.module';
 import { FooterComponent } from './main/components/footer/footer.component';
-import { HeaderComponent } from './main/components/header/header.component';
+import { HeaderModule } from './main/components/header/header.module';
 import { LoginDialogComponent } from './main/components/login-dialog/login-dialog.component';
 import { RegistrationDialogComponent } from './main/components/registration-dialog/registration-dialog.component';
 import { SmartParametersComponent } from './main/components/smart-parameters/smart-parameters.component';
@@ -36,7 +36,6 @@ import { PricePipe } from './main/pipes/price.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     FilterSearchComponent,
     SearchComponent,
@@ -49,6 +48,7 @@ import { PricePipe } from './main/pipes/price.pipe';
     RegistrationDialogComponent,
   ],
   imports: [
+    HeaderModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
