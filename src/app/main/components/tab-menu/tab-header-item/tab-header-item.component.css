@@ -1,8 +1,6 @@
 :host {
-  padding-left: 38px;
-  padding-right: 38px;
-  padding-bottom: 27px;
   position: relative;
+  padding: 20px 40px 16px;
 }
 
 .tab-header-item__title {

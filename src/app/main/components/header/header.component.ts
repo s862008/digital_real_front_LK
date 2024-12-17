@@ -17,7 +17,7 @@ import { MenuButtonService } from '../../../core/services/menu-button.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   public tabItems: TabItem[] = [
     {
-      title: 'новостройки',
+      title: 'Новостройки',
       groups: [
         {
           group: [
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       ],
     },
     {
-      title: 'ипотека',
+      title: 'Ипотека',
       groups: [{ group: [{ title: 'Ипотека', link: '' }] }],
     },
     {
