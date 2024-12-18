@@ -43,7 +43,7 @@
   transition: bottom 0.3s, transform 0.3s 0.15s;
 }
 
-@media (width<= 768px) {
+@media (width: 768px) {
   .burger {
     width: 28px;
     height: 18px;
