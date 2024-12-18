@@ -27,6 +27,11 @@ export class TabMenuComponent implements OnInit {
 
   @HostListener('mouseout')
   resetActiveNum() {
+      this.activeNum = -1;
+  }
+
+  @HostListener('click')
+  resetActiveNum2() {
     this.activeNum = -1;
   }
 
