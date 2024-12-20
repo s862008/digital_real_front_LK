@@ -17,6 +17,8 @@ export class TabBodyItemComponent implements OnInit {
   @Input() groups: TabLinkGroup[] = [];
   @Input() num: number | undefined;
   @Output() mouseOver = new EventEmitter<number>();
+  @Output() mouseReturn = new EventEmitter<number>();
+
   constructor() {}
 
   ngOnInit() {}
@@ -24,6 +26,7 @@ export class TabBodyItemComponent implements OnInit {
   @HostListener('mouseover')
   onMouseOver() {
     console.log(this.num);
+    this.mouseReturn.emit(this.num);
     this.mouseOver.emit(this.num);
   }
 }

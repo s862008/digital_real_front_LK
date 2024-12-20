@@ -5,17 +5,19 @@
       [num]="i"
       [class.active]="i == activeNum"
       (mouseOver)="changeActiveNum($event)"
+      (mouseReturn)="changeTempNum($event)"
     ></app-tab-header-item>
   </ng-container>
 </div>
 
 <div class="tabs__body">
-  <ng-container  *ngFor="let item of tabs; let i = index">
+  <ng-container *ngFor="let item of tabs; let i = index">
     <app-tab-body-item class="container"
-      [groups]="item.groups"
-      [class.active]="i == activeNum"
-      [num]="i"
-      (mouseOver)="changeActiveNum($event)"
+                       [groups]="item.groups"
+                       [class.active]="i == activeNum"
+                       [num]="i"
+                       (mouseOver)="changeActiveNum($event)"
+                       (mouseReturn)="changeTempNum($event)"
     ></app-tab-body-item>
   </ng-container>
 </div>

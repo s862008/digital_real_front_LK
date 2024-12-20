@@ -21,21 +21,34 @@ export interface TabLink {
 export class TabMenuComponent implements OnInit {
   @Input() public tabs: TabItem[] = [];
   public activeNum = -1;
+  public tempNum = -1;
   constructor() {}
 
   public ngOnInit() {}
 
-  @HostListener('mouseout')
+  @HostListener('mouseleave')
   resetActiveNum() {
-      this.activeNum = -1;
+    this.tempNum =  -1
+
+    setTimeout(() => {
+      if(this.tempNum == -1)
+        this.activeNum = -1;
+    }, 300);
+
   }
 
   @HostListener('click')
   resetActiveNum2() {
+
     this.activeNum = -1;
+
   }
 
   public changeActiveNum(num: number) {
     this.activeNum = num;
+  }
+
+  public changeTempNum(num: number) {
+    this.tempNum = num;
   }
 }
