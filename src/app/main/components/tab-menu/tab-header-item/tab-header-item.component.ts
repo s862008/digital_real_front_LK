@@ -17,7 +17,7 @@ export class TabHeaderItemComponent implements OnInit {
   @Input() title = '';
   @Input() num: number | undefined;
   @Output() mouseOver = new EventEmitter<number>();
-  @Output() mouseReturn = new EventEmitter<number>();
+
 
 
   constructor() {}
@@ -27,7 +27,7 @@ export class TabHeaderItemComponent implements OnInit {
   @HostListener('mouseover')
   onMouseOver() {
     console.log(this.num);
-    this.mouseReturn.emit(this.num);
+
     this.mouseOver.emit(this.num);
   }
 }

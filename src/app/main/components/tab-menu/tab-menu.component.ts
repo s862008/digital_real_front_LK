@@ -46,9 +46,8 @@ export class TabMenuComponent implements OnInit {
 
   public changeActiveNum(num: number) {
     this.activeNum = num;
-  }
-
-  public changeTempNum(num: number) {
     this.tempNum = num;
   }
+
+
 }
