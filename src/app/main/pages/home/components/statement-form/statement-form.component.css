@@ -1,0 +1,137 @@
+.row {
+  margin: auto;
+}
+
+.send-section {
+  top: -60px;
+  margin-bottom: 0;
+  position: relative;
+  min-height: 600px;
+  padding-left: 45px;
+  padding-right: 20px;
+  align-content: center;
+}
+
+.send-form {
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgba(37, 110, 118, 0.10000000149011612);
+  height: 568px;
+  width: 1835px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 25px;
+  padding: 10px 20px 10px 20px;
+}
+.send-form__under-text {
+  font-family: var(--font-family-bold);
+  font-weight: 700;
+  font-size: 35px;
+  text-align: right;
+  width: 20rem;
+  color: #000;
+  line-height: 120%;
+  margin: 0 0 10px auto;
+}
+
+.send-section__logo {
+  position: absolute;
+  top: -40px;
+  margin-left: 43px;
+  width: 20%;
+  height: 20%;
+}
+
+.send-form__header {
+  font-family: var(--font-family-bold);
+  position: relative;
+  top: 30px;
+  right: 82px;
+  color: rgba(0, 0, 0, 1);
+  height: 85px;
+  width: 600px;
+  font-size: 37px;
+  line-height: 1.5;
+}
+
+.send-form__header + p {
+  position: relative;
+  right: 80px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-family: "Lato Light", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.08rem;
+}
+
+.send-form .row p {
+  font-family: var(--font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: #18454a;
+}
+
+.my-input-group {
+  padding: 70px 10px 10px 10px;
+  justify-content: space-between;
+}
+.send-in {
+  display: flex;
+  flex-flow: row wrap;
+  grid-gap: 15px;
+}
+.send-in input {
+  max-width: 390px;
+  min-width: 230px;
+  font-size: 2rem;
+  border: 0;
+  background: #fff;
+  border-radius: 23px;
+  padding-left: 40px;
+}
+.send-in input:nth-child(1) {
+  flex: 3;
+}
+
+.send-in input:nth-child(2) {
+  flex: 3;
+}
+.send-in div {
+  flex: 3;
+}
+
+.send-form__select {
+  border: 0 solid #999;
+  border-radius: 25px;
+  max-width: 400px;
+  min-width: 230px;
+  /*box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);*/
+  background: #fff;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 23px;
+  color: #032f30;
+  height: 57px;
+}
+.select-svg {
+  font-size: 16px;
+  line-height: 10px;
+  font-weight: 900;
+  color: black;
+  top: 24px;
+  left: 19.5rem;
+  position: absolute;
+}
+.button-wanted {
+  margin: 30px auto;
+  cursor: pointer;
+  background-color: #174449;
+  height: 80px;
+  max-width: 1000px;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+  color: #fff;
+  display: block;
+  width: 100%;
+}

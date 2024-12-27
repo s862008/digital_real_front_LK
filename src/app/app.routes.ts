@@ -11,12 +11,12 @@ import { SearchComponent } from './main/pages/smart-search/search.component';
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadChildren: () =>
+      import('./main/pages/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'home',
     redirectTo: '',
-    component: HomeComponent,
   },
   {
     path: 'apartment/:id',

@@ -4,10 +4,10 @@
     "secure": false
   },
   "/test": {
-    "target": "http://localhost:8080",
+    "target": "http://localhost:4444",
     "secure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/test": ""
     }
   }
 }

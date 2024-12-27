@@ -1,0 +1,24 @@
+:host {
+  position: relative;
+  padding: 20px 40px 16px;
+}
+
+.tab-header-item__title {
+  font-size: 24px;
+  color: #8c8c8c;
+}
+
+.tab-header-item__bottom-border {
+  position: absolute;
+  display: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #174449;
+}
+
+:host(.active) .tab-header-item__bottom-border {
+  display: block;
+}

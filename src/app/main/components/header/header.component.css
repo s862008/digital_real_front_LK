@@ -6,14 +6,48 @@ header {
   z-index: 100;
   background-color: white;
 }
-.logo{
-  width: 7%;
+
+.toolbar {
+  justify-content: center;
 }
-.header-text-main{
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  width: 100%;
+}
+
+.top__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.bottom__header {
+  justify-content: space-between;
+  display: flex;
+}
+
+.logo {
+  width: 103px;
+  height: 75px;
+}
+
+.logo__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.header-text-main {
   padding: 10px;
 }
-.header-spacer {
-  flex: 1 1 auto;
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mat-button-gps-margin {
@@ -33,14 +67,11 @@ header {
 }
 
 .mat-toolbar {
-
   padding: 0 20px 0 20px !important;
-  height: 100px;
+  height: 100%;
   background-color: var(--mat-app-background-color);
   box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 }
-
-
 
 @media (min-width: 1400px) {
   .small-header-hide {
@@ -60,7 +91,6 @@ header {
     display: block !important;
   }
 
-
   .small-header {
     display: none !important;
   }
@@ -70,11 +100,9 @@ header {
   }
 }
 @media (min-width: 992px) {
-
   .small-header-hide {
     display: block !important;
   }
-
 
   .small-header {
     display: none !important;
@@ -84,8 +112,6 @@ header {
     padding: 0 50px 0 50px !important;
   }
 }
-
-
 
 @media (max-width: 768px) {
   .small-header-hide {
@@ -111,13 +137,11 @@ header {
   .mat-button-gps-margin {
     margin: 0 10px; /* Уменьшение отступов для кнопок */
   }
-  .small-header-hide b{
+  .small-header-hide b {
     display: none;
   }
-
 }
 @media (min-width: 576px) {
-
   .small-header-hide {
     display: block !important;
   }
@@ -131,7 +155,6 @@ header {
   }
 }
 @media (max-width: 480px) {
-
   .header-text-main {
     font-size: 16px; /* Дополнительное уменьшение размера шрифта */
   }
@@ -141,7 +164,7 @@ header {
   }
 }
 @media (max-width: 399px) {
-  .header-text-main{
+  .header-text-main {
     display: none;
   }
 }

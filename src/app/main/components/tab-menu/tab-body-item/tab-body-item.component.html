@@ -1,0 +1,11 @@
+<ng-container *ngFor="let group of groups">
+  <ul class="group">
+    <ng-container *ngFor="let item of group.group">
+      <li>
+        <a [routerLink]="item.link">
+          {{ item.title }}
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</ng-container>

@@ -1,23 +1,97 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth-service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { RegistrationDialogComponent } from '../registration-dialog/registration-dialog.component';
+import { TabItem } from '../tab-menu/tab-menu.component';
+import { Subject, takeUntil } from 'rxjs';
+import { ResizeService } from '../../../core/services/resize.service';
+import { MenuButtonService } from '../../../core/services/menu-button.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
+  public tabItems: TabItem[] = [
+    {
+      title: 'Новостройки',
+      groups: [
+        {
+          group: [
+            {
+              title: 'Студии',
+              link: '',
+            },
+            {
+              title: '1-комнатные',
+              link: '',
+            },
+            {
+              title: '2-комнатные',
+              link: '',
+            },
+            {
+              title: 'многокомнатные',
+              link: '',
+            },
+          ],
+        },
+        {
+          group: [
+            { title: 'Каталог жиых комплексов', link: '' },
+            { title: 'Сданные объекты', link: '' },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Ипотека',
+      groups: [{ group: [{ title: 'Ипотека', link: '' }] }],
+    },
+    {
+      title: 'Полезное',
+      groups: [
+        {
+          group: [
+            { title: 'Полезные документы', link: '' },
+            { title: 'Акции и скидки', link: '' },
+          ],
+        },
+        {
+          group: [
+            { title: 'Вакансии', link: '' },
+            { title: 'Новости', link: '' },
+            { title: 'Справочный центр', link: '' },
+          ],
+        },
+        {
+          group: [
+            { title: 'Каталог застройщиков', link: '' },
+            { title: 'Вопросы риелтору', link: '' },
+          ],
+        },
+      ],
+    },
+  ];
+
   temp_location: string = '';
+
+  public windowWidth: number | undefined;
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly authService: AuthService
-  ) {}
+    private readonly authService: AuthService,
+    private readonly resizeService: ResizeService,
+    private readonly menuButtonService: MenuButtonService
+  ) {
+    this.changeWindow();
+  }
 
   isSubmenuVisible: { newbuild: boolean; ipot: boolean } = {
     newbuild: false,
@@ -32,7 +106,18 @@ export class HeaderComponent implements OnInit {
     this.isSubmenuVisible[menu] = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.resizeService.onResize$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.changeWindow();
+      });
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   getName(): string {
     if (this.authService.isAuthorized()) return this.authService.getUsername();
@@ -78,5 +163,10 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) this.openLoginDialog();
     });
+  }
+
+  private changeWindow() {
+    this.windowWidth = window.innerWidth;
+    console.log(this.windowWidth);
   }
 }
