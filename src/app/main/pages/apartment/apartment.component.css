@@ -2,9 +2,7 @@
   top: 40px;
   position: relative;
   margin-bottom: 100px;
-
 }
-
 
 .as__gallery-side {
   border-radius: 25px;
@@ -13,7 +11,6 @@
   background: #fff;
   padding: 40px 30px;
   max-width: 93%;
-
 }
 
 .as__toogle {
@@ -28,8 +25,9 @@
   color: #707070;
 }
 
-.r-item__title-info, .price {
-  font-family: 'Lato SemiBold', sans-serif;
+.r-item__title-info,
+.price {
+  font-family: "Lato SemiBold", sans-serif;
   font-weight: 500;
   font-size: 23px;
   color: #000;
@@ -37,10 +35,8 @@
   margin-bottom: 10px;
 }
 
-
 .as__main-img {
-
-  border: 0.50px solid #999;
+  border: 0.5px solid #999;
   border-radius: 7px;
   max-width: 700px;
   height: 310px;
@@ -62,10 +58,10 @@
   cursor: pointer;
   height: 100%;
   width: 90%;
-
 }
 
-.btn-group, .btn-group-vertical{
+.btn-group,
+.btn-group-vertical {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -130,7 +126,8 @@
   color: #000;
 }
 
-.apartment-build-info, .ab-info {
+.apartment-build-info,
+.ab-info {
   margin-bottom: 100px;
   height: 100%;
 }
@@ -173,12 +170,9 @@
   min-height: 250px;
 }
 
-
-
 .apartment-similar > div:nth-of-type(1) {
   height: 1200px;
   overflow-y: scroll;
-
 }
 
 .img-block {
@@ -188,42 +182,10 @@
   display: flex;
   justify-content: center; /*центрируем элемент по горизонтали */
   align-items: center; /* и вертикали */
-  border: 0.50px solid #999;
+  border: 0.5px solid #999;
   border-radius: 5px;
 }
-.percent-h2 {
-  font-family: var(--font-family-bold);
-  font-weight: 800;
-  font-size: 48px;
-  color: #106681 !important;
-}
-.cards-block__price {
-  font-family: var(--font-family);
-  font-weight: 600;
-  font-size: 36px;
-  color: #000;
 
-}
-
-.cards-block__price-sqr {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 26px;
-  color: #999;
-}
-.cards-block__item {
-  display: flex;
-  flex-flow: row nowrap;
-  margin: 20px 0 0 17px;
-  padding: 16px 0px 31px 20px;
-  grid-gap: 52px;
-  justify-content: space-evenly;
-  border: 1px solid rgba(153, 153, 153, 0.01);
-  border-radius: 10px;
-  box-shadow: -1px 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background: rgba(217, 217, 217, 0);
-  cursor: pointer;
-}
 .float-img {
   float: right; /* Или right, если хотите, чтобы текст обтекал справа */
   margin-right: 15px; /* Отступ справа от изображения */
@@ -231,6 +193,7 @@
   width: 447px;
   height: 395px;
 }
+
 /* Медиа-запросы для адаптивности */
 @media (max-width: 1200px) {
   .as__gallery-side {
@@ -246,8 +209,6 @@
     padding: 30px 15px; /* Уменьшение отступов */
   }
 
-
-
   .as__group-imgs {
     grid-template-columns: repeat(3, 1fr); /* Уменьшение количества колонок */
   }
@@ -255,25 +216,13 @@
   .ab-info__content {
     padding: 20px; /* Уменьшение отступов */
   }
-
-  .percent-h2 {
-    font-size: 36px; /* Уменьшение размера шрифта */
-  }
-
-  .cards-block__price {
-    font-size: 28px; /* Уменьшение размера шрифта */
-  }
-
-  .cards-block__price-sqr {
-    font-size: 20px; /* Уменьшение размера шрифта */
-  }
 }
 
 @media (max-width: 992px) {
   .as__toogle {
     max-width: 75%;
   }
-  .ab-info__text{
+  .ab-info__text {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
@@ -293,7 +242,8 @@
   .apartment-section {
     margin-bottom: 50px; /* Уменьшение отступа снизу */
   }
-  .btn-group, .btn-group-vertical{
+  .btn-group,
+  .btn-group-vertical {
     width: 180%;
   }
   .as__gallery-side {
@@ -321,18 +271,10 @@
   .as__toogle {
     max-width: 60%;
   }
-  .cards-block__item img {
-    height: 100%;
-  }
-  .apartment-similar{
+  .apartment-similar {
     flex-direction: column; /* Расположение элементов вертикально */
     align-items: center; /* Центрирование элементов по горизонтали */
     width: 100%; /* Задаем карточке полную ширину */
-  }
-
-  .img-block {
-    width: 100%; /* Ширина блока изображений на 100% */
-    height: auto; /* Автоматическая высота */
   }
 
   .float-img {
@@ -358,7 +300,8 @@
   .as__toogle {
     font-size: 12px; /* Уменьшение размера шрифта */
   }
-  .r-item__title-info, .price {
+  .r-item__title-info,
+  .price {
     font-size: 18px; /* Уменьшение размера шрифта */
   }
 
@@ -388,23 +331,5 @@
 
   .ab-info__text {
     font-size: 18px; /* Уменьшение размера шрифта */
-  }
-
-  .cards-block__item {
-    flex-direction: column; /* Изменение направления на колонку */
-    align-items: center; /* Центрирование элементов */
-    padding: 10px; /* Уменьшение отступов */
-  }
-
-  .cards-block__price {
-    font-size: 24px; /* Уменьшение размера шрифта */
-  }
-
-  .cards-block__price-sqr {
-    font-size: 18px; /* Уменьшение размера шрифта */
-  }
-
-  .percent-h2 {
-    font-size: 32px; /* Уменьшение размера шрифта */
   }
 }

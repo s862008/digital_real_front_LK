@@ -11,8 +11,6 @@ import { Subject, takeUntil } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
-  // тестовый коментарий
-
   constructor(
     private windowScrollBlockService: WindowScrollBlockService,
     private menuButtonService: MenuButtonService

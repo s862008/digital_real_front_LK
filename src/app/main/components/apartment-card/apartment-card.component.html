@@ -1,0 +1,38 @@
+<ng-container *ngIf="apartmentItem">
+  <div
+    class="result-search__item"
+    [routerLink]="['/apartment', apartmentItem.id]"
+  >
+    <div class="r-item-img">
+      <img [src]="apartmentItem.photoMainPath" />
+    </div>
+    <div class="r-item-info">
+      <h2 class="r-item__title-info">
+        {{ apartmentItem.numberOfRooms | numberOfRooms }}
+        {{ apartmentItem.areaTotal }} м²
+      </h2>
+      <div class="r-item__type-build">
+        {{ apartmentItem.apartmentType | apartmentType }}
+      </div>
+      <div class="r-item__address">{{ apartmentItem.address }}</div>
+      <div class="r-item__categories">
+        <p class="r-item__categories_row">
+          <span>Кухня: </span><span>{{ apartmentItem.areaKitchen }} м²</span>
+        </p>
+        <p class="r-item__categories_row">
+          <span>Этаж: </span><span>{{ apartmentItem.floor }}</span>
+        </p>
+        <p class="r-item__categories_row">
+          <span>Срок сдачи: </span><span>{{ apartmentItem.dueYear }}</span>
+        </p>
+      </div>
+
+      <div class="r-item__price-block">
+        <div class="price">{{ apartmentItem.priceAfterFormat }}</div>
+        <div class="price-squad">
+          {{ apartmentItem.priceSqmtAfterFormat }} <span> р/м<sup>2</sup></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

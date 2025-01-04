@@ -7,6 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +18,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { AuthService } from './core/auth/auth-service';
 import { authInterceptorProvider } from './core/auth/interseptors/auth-interceptor';
+import { fakeBackendProvider } from './core/mock-backend/fake-backend.interceptor';
 import { DataService } from './core/services/data.service';
+import { ApartmentCardModule } from './main/components/apartment-card/apartment-card.module';
 import { BannerModule } from './main/components/banner/banner.module';
 import { ChosenParametersComponent } from './main/components/choosed-parameters/chosen-parameters.component';
 import { ContainerModule } from './main/components/container/container.module';
@@ -68,8 +71,15 @@ import { PricePipe } from './main/pipes/price.pipe';
     NotFoundComponent,
     BannerModule,
     ContainerModule,
+    ApartmentCardModule,
+    MatPaginatorModule,
   ],
-  providers: [DataService, AuthService, authInterceptorProvider],
+  providers: [
+    DataService,
+    AuthService,
+    authInterceptorProvider,
+    fakeBackendProvider,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
