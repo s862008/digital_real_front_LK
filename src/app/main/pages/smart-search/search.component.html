@@ -1,18 +1,17 @@
 <main class="search-page">
-  <div class="wrapper-back-banner">
-  </div>
+  <div class="wrapper-back-banner"></div>
   <div class="container-fluid">
     <section class="search-section">
       <div class="search-section__header">
         <h1 class="title--h1">ПОДБОРКА КВАРТИР</h1>
-
       </div>
       <div class="search-section__inner">
         <div class="row">
           <div class="col-xxl-3 search-section__filter-side">
             <div class="row text-center align-items-center">
               <div class="col-6 px-0">
-                <h2 class="title--h2">Фильтры</h2></div>
+                <h2 class="title--h2">Фильтры</h2>
+              </div>
               <div class="col-6 px-4">
                 <a class="fp-reset" (click)="clearFilter()">Очистить</a>
               </div>
@@ -24,221 +23,459 @@
                   <div class="fp-main__cost">
                     <h4 class="title--h4">Стоимость, P</h4>
                     <div class="slider">
-
-                      <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete>
-                        <input matSliderThumb [(ngModel)]="smartParameters.priceWeight"
-                               [ngModelOptions]="{standalone: true}">
+                      <mat-slider
+                        *ngIf="smart"
+                        min="1"
+                        max="10"
+                        step="1"
+                        discrete
+                      >
+                        <input
+                          matSliderThumb
+                          [(ngModel)]="smartParameters.priceWeight"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </mat-slider>
-                      <img class="slider__help" *ngIf="smart"
-                           src="./assets/img/ant-design_info-circle-outlined.svg"
-                           alt="help"
-                           containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
-
+                      <img
+                        class="slider__help"
+                        *ngIf="smart"
+                        src="./assets/img/ant-design_info-circle-outlined.svg"
+                        alt="help"
+                        containerClass="custom-tooltip"
+                        tooltip="Это подсказка!"
+                        tooltipPlacement="top"
+                      />
                     </div>
 
                     <div class="d-flex flex-row justify-content-start gx-1">
-                      <input *ngIf="!smart" type="text" id="tern" class="d-block fp-input fp-input--base "
-                             placeholder="от" [(ngModel)]="smartParameters.priceMin"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="!smart" type="text" id="ty48" class="d-block fp-input fp-input--base "
-                             placeholder="до" [(ngModel)]="smartParameters.priceMax"
-                             [ngModelOptions]="{standalone: true}">
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="tern"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="от"
+                        [(ngModel)]="smartParameters.priceMin"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="ty48"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="до"
+                        [(ngModel)]="smartParameters.priceMax"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
                       <div *ngIf="smart" class="flex-column flex-fill mx-5">
-                        <input type="number" id="о6b6h" class="d-block fp-input fp-input--long"
-                               [(ngModel)]="smartParameters.pricePreference" [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="number"
+                          id="о6b6h"
+                          class="d-block fp-input fp-input--long"
+                          [(ngModel)]="smartParameters.pricePreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
 
                         <div class="flex-row justify-content-between my-3">
-                          <span class="mx-2">{{ smartParameters.priceMin }} руб.</span>
+                          <span class="mx-2"
+                            >{{ smartParameters.priceMin }} руб.</span
+                          >
                           -
-                          <span class="mx-2">{{ smartParameters.priceMax }} руб.</span>
+                          <span class="mx-2"
+                            >{{ smartParameters.priceMax }} руб.</span
+                          >
                         </div>
-                        <input type="range" class="form-range my-form-range"  [max]="smartParameters.priceMax"
-                               [min]="smartParameters.priceMin" step="100000" id="tne7m534"
-                               [(ngModel)]="smartParameters.pricePreference" [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="range"
+                          class="form-range my-form-range"
+                          [max]="smartParameters.priceMax"
+                          [min]="smartParameters.priceMin"
+                          step="100000"
+                          id="tne7m534"
+                          [(ngModel)]="smartParameters.pricePreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="fp-cmn-gray__square">
                     <h4 class="title--h4">Площадь</h4>
                     <div class="slider">
-                      <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete>
-                        <input matSliderThumb [(ngModel)]="smartParameters.areaWeight">
+                      <mat-slider
+                        *ngIf="smart"
+                        min="1"
+                        max="10"
+                        step="1"
+                        discrete
+                      >
+                        <input
+                          matSliderThumb
+                          [(ngModel)]="smartParameters.areaWeight"
+                        />
                       </mat-slider>
-                      <img class="slider__help" *ngIf="smart"
-                           src="./assets/img/ant-design_info-circle-outlined.svg"
-                           alt="help"
-                           containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                      <img
+                        class="slider__help"
+                        *ngIf="smart"
+                        src="./assets/img/ant-design_info-circle-outlined.svg"
+                        alt="help"
+                        containerClass="custom-tooltip"
+                        tooltip="Это подсказка!"
+                        tooltipPlacement="top"
+                      />
                     </div>
                     <p class="fp-label--tx">Общая</p>
                     <div class="d-flex flex-row justify-content-between my-2">
-                      <input *ngIf="!smart" type="text" id="он" class="d-block fp-input fp-input--base "
-                             placeholder="от" [(ngModel)]="smartParameters.areaTotalMin"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="!smart" type="text" id="гше" class="d-block fp-input fp-input--base "
-                             placeholder="до" [(ngModel)]="smartParameters.areaTotalMax"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="smart" type="number" id="онbh" class="d-block fp-input fp-input--sm"
-                             [(ngModel)]="smartParameters.areaTotalPreference" [ngModelOptions]="{standalone: true}">
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="он"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="от"
+                        [(ngModel)]="smartParameters.areaTotalMin"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="гше"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="до"
+                        [(ngModel)]="smartParameters.areaTotalMax"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="smart"
+                        type="number"
+                        id="онbh"
+                        class="d-block fp-input fp-input--sm"
+                        [(ngModel)]="smartParameters.areaTotalPreference"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
                       <div *ngIf="smart" class="flex-column flex-fill mx-5">
                         <div class="flex-row justify-content-between">
-                          <span class="mx-2">{{ smartParameters.areaTotalMin }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaTotalMin }}м<sup
+                              >2</sup
+                            ></span
+                          >
                           -
-                          <span class="mx-2">{{ smartParameters.areaTotalMax }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaTotalMax }}м<sup
+                              >2</sup
+                            ></span
+                          >
                         </div>
-                        <input type="range" class="form-range my-form-range" #slider
-                               [max]="smartParameters.areaTotalMax"
-                               [min]="smartParameters.areaTotalMin" step="10" id="tn5em54"
-                               [(ngModel)]="smartParameters.areaTotalPreference"
-                               [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="range"
+                          class="form-range my-form-range"
+                          #slider
+                          [max]="smartParameters.areaTotalMax"
+                          [min]="smartParameters.areaTotalMin"
+                          step="10"
+                          id="tn5em54"
+                          [(ngModel)]="smartParameters.areaTotalPreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </div>
                     </div>
                     <p class="fp-label--tx">Жилая</p>
                     <div class="d-flex flex-row justify-content-between my-2">
-                      <input *ngIf="!smart" type="text" id="гнур7" class="d-block fp-input fp-input--base "
-                             placeholder="от" [(ngModel)]="smartParameters.areaLivingMin"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="!smart" type="text" id="4ny" class="d-block fp-input fp-input--base "
-                             placeholder="до" [(ngModel)]="smartParameters.areaLivingMax"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="smart" type="number" id="онb6h" class="d-block fp-input fp-input--sm"
-                             [(ngModel)]="smartParameters.areaLivingPreference" [ngModelOptions]="{standalone: true}">
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="гнур7"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="от"
+                        [(ngModel)]="smartParameters.areaLivingMin"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="4ny"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="до"
+                        [(ngModel)]="smartParameters.areaLivingMax"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="smart"
+                        type="number"
+                        id="онb6h"
+                        class="d-block fp-input fp-input--sm"
+                        [(ngModel)]="smartParameters.areaLivingPreference"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
                       <div *ngIf="smart" class="flex-column flex-fill mx-5">
                         <div class="flex-row justify-content-between">
-                          <span class="mx-2">{{ smartParameters.areaLivingMin }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaLivingMin }}м<sup
+                              >2</sup
+                            ></span
+                          >
                           -
-                          <span class="mx-2">{{ smartParameters.areaLivingMax }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaLivingMax }}м<sup
+                              >2</sup
+                            ></span
+                          >
                         </div>
-                        <input type="range" class="form-range my-form-range" #slider
-                               [max]="smartParameters.areaLivingMax"
-                               [min]="smartParameters.areaLivingMin" step="10" id="tn4em54"
-                               [(ngModel)]="smartParameters.areaLivingPreference"
-                               [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="range"
+                          class="form-range my-form-range"
+                          #slider
+                          [max]="smartParameters.areaLivingMax"
+                          [min]="smartParameters.areaLivingMin"
+                          step="10"
+                          id="tn4em54"
+                          [(ngModel)]="smartParameters.areaLivingPreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </div>
                     </div>
                     <p class="fp-label--tx">Кухня</p>
                     <div class="d-flex flex-row justify-content-between my-2">
-                      <input *ngIf="!smart" type="text" id="е5но" class="d-block fp-input fp-input--base "
-                             placeholder="от" [(ngModel)]="smartParameters.areaKitchenMin"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="!smart" type="text" id="е5" class="d-block fp-input fp-input--base "
-                             placeholder="до" [(ngModel)]="smartParameters.areaKitchenMax"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="smart" type="number" id="о67нb6h" class="d-block fp-input fp-input--sm"
-                             [(ngModel)]="smartParameters.areaKitchenPreference"
-                             [ngModelOptions]="{standalone: true}">
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="е5но"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="от"
+                        [(ngModel)]="smartParameters.areaKitchenMin"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="е5"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="до"
+                        [(ngModel)]="smartParameters.areaKitchenMax"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="smart"
+                        type="number"
+                        id="о67нb6h"
+                        class="d-block fp-input fp-input--sm"
+                        [(ngModel)]="smartParameters.areaKitchenPreference"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
                       <div *ngIf="smart" class="flex-column flex-fill mx-5">
                         <div class="flex-row justify-content-between">
-                          <span class="mx-2">{{ smartParameters.areaKitchenMin }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaKitchenMin }}м<sup
+                              >2</sup
+                            ></span
+                          >
                           -
-                          <span class="mx-2">{{ smartParameters.areaKitchenMax }}м<sup>2</sup></span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaKitchenMax }}м<sup
+                              >2</sup
+                            ></span
+                          >
                         </div>
-                        <input type="range" class="form-range my-form-range" #slider
-                               [max]="smartParameters.areaKitchenMax"
-                               [min]="smartParameters.areaKitchenMin" step="10" id="tnem534"
-                               [(ngModel)]="smartParameters.areaKitchenPreference"
-                               [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="range"
+                          class="form-range my-form-range"
+                          #slider
+                          [max]="smartParameters.areaKitchenMax"
+                          [min]="smartParameters.areaKitchenMin"
+                          step="10"
+                          id="tnem534"
+                          [(ngModel)]="smartParameters.areaKitchenPreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="fp-cmn-gray__price">
                     <h4 class="title--h4">Цена за, м<sup>2</sup></h4>
                     <div class="slider">
-                      <mat-slider *ngIf="smart" min="1" max="10" step="1" discrete>
-                        <input matSliderThumb [(ngModel)]="smartParameters.areaPriceWeight"
-                               [ngModelOptions]="{standalone: true}">
+                      <mat-slider
+                        *ngIf="smart"
+                        min="1"
+                        max="10"
+                        step="1"
+                        discrete
+                      >
+                        <input
+                          matSliderThumb
+                          [(ngModel)]="smartParameters.areaPriceWeight"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </mat-slider>
-                      <img class="slider__help" *ngIf="smart" src="./assets/img/ant-design_info-circle-outlined.svg"
-                           alt="help"
-                           containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                      <img
+                        class="slider__help"
+                        *ngIf="smart"
+                        src="./assets/img/ant-design_info-circle-outlined.svg"
+                        alt="help"
+                        containerClass="custom-tooltip"
+                        tooltip="Это подсказка!"
+                        tooltipPlacement="top"
+                      />
                     </div>
                     <div class="d-flex flex-row justify-content-between">
-                      <input *ngIf="!smart" type="text" id="m6r7" class="d-block fp-input fp-input--base "
-                             placeholder="от" [(ngModel)]="smartParameters.areaPriceMin"
-                             [ngModelOptions]="{standalone: true}">
-                      <input *ngIf="!smart" type="text" id="eyue47y" class="d-block fp-input fp-input--base "
-                             placeholder="до" [(ngModel)]="smartParameters.areaPriceMax"
-                             [ngModelOptions]="{standalone: true}">
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="m6r7"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="от"
+                        [(ngModel)]="smartParameters.areaPriceMin"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                      <input
+                        *ngIf="!smart"
+                        type="text"
+                        id="eyue47y"
+                        class="d-block fp-input fp-input--base"
+                        placeholder="до"
+                        [(ngModel)]="smartParameters.areaPriceMax"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
 
                       <div *ngIf="smart" class="flex-column flex-fill mx-5">
-                        <input type="number" id="о67b6h" class="d-block fp-input fp-input--long"
-                               [(ngModel)]="smartParameters.areaPricePreference"
-                               [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="number"
+                          id="о67b6h"
+                          class="d-block fp-input fp-input--long"
+                          [(ngModel)]="smartParameters.areaPricePreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
 
                         <div class="flex-row justify-content-between my-3">
-                          <span class="mx-2">{{ smartParameters.areaPriceMin }} руб.</span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaPriceMin }} руб.</span
+                          >
                           -
-                          <span class="mx-2">{{ smartParameters.areaPriceMax }} руб.</span>
+                          <span class="mx-2"
+                            >{{ smartParameters.areaPriceMax }} руб.</span
+                          >
                         </div>
-                        <input type="range" class="form-range my-form-range" #slider
-                               [max]="smartParameters.areaPriceMax"
-                               [min]="smartParameters.areaPriceMin" step="1000" id="tn534"
-                               [(ngModel)]="smartParameters.areaPricePreference"
-                               [ngModelOptions]="{standalone: true}">
+                        <input
+                          type="range"
+                          class="form-range my-form-range"
+                          #slider
+                          [max]="smartParameters.areaPriceMax"
+                          [min]="smartParameters.areaPriceMin"
+                          step="1000"
+                          id="tn534"
+                          [(ngModel)]="smartParameters.areaPricePreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
               <div class="fp-filter__item fp-common">
-                <h3 class="fp-filter-item__title title--h3" data-bs-toggle="collapse"
-                    data-bs-target="#collapseCommon" aria-expanded="true"
-                    aria-controls="collapseCommon">
+                <h3
+                  class="fp-filter-item__title title--h3"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseCommon"
+                  aria-expanded="true"
+                  aria-controls="collapseCommon"
+                >
                   Общие
-                  <svg width="19" height="12" viewBox="0 0 19 12" fill="none"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L5.25 5.5L9.5 10L13.75 5.5L18 1" stroke="black"
-                          stroke-width="2.5"/>
+                  <svg
+                    width="19"
+                    height="12"
+                    viewBox="0 0 19 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L5.25 5.5L9.5 10L13.75 5.5L18 1"
+                      stroke="black"
+                      stroke-width="2.5"
+                    />
                   </svg>
                 </h3>
-                <div class="collapse collapse-horizontal show" id="collapseCommon">
+                <div
+                  class="collapse collapse-horizontal show"
+                  id="collapseCommon"
+                >
                   <div class="fp-filter-item__inner">
                     <div class="fp-common__type-build">
                       <h4 class="title--h4">Тип жилья</h4>
                       <div class="slider slider--temp" *ngIf="smart">
                         <mat-slider min="1" max="10" step="1" discrete>
-                          <input matSliderThumb [(ngModel)]="smartParameters.apartmentTypeWeight"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            matSliderThumb
+                            [(ngModel)]="smartParameters.apartmentTypeWeight"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </mat-slider>
-                        <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
-                             containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
-
+                        <img
+                          class="slider__help"
+                          src="./assets/img/ant-design_info-circle-outlined.svg"
+                          alt="help"
+                          containerClass="custom-tooltip"
+                          tooltip="Это подсказка!"
+                          tooltipPlacement="top"
+                        />
                       </div>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isFlat" class="fp-label--check" type="checkbox"
-                               name=""
-                               id="ccvbfg">
+                        <input
+                          [(ngModel)]="smartParameters.isFlat"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="ccvbfg"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Квартира</span>
                       </label>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isApartments" class="fp-label--check" type="checkbox"
-                               name="" id="fgde">
+                        <input
+                          [(ngModel)]="smartParameters.isApartments"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="fgde"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Апартаменты</span>
                       </label>
-
                     </div>
                     <div class="fp-common__planner">
                       <h4 class="title--h4">Планировка</h4>
                       <div class="slider slider--temp" *ngIf="smart">
                         <mat-slider min="1" max="10" step="1" discrete>
-                          <input matSliderThumb [(ngModel)]="smartParameters.planWeight"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            matSliderThumb
+                            [(ngModel)]="smartParameters.planWeight"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </mat-slider>
-                        <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
-                             containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                        <img
+                          class="slider__help"
+                          src="./assets/img/ant-design_info-circle-outlined.svg"
+                          alt="help"
+                          containerClass="custom-tooltip"
+                          tooltip="Это подсказка!"
+                          tooltipPlacement="top"
+                        />
                       </div>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isBlandPlan" class="fp-label--check"
-                               type="checkbox" name=""
-                               id="uit">
+                        <input
+                          [(ngModel)]="smartParameters.isBlandPlan"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="uit"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Смежная</span>
                       </label>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isIsolatePlan" class="fp-label--check" type="checkbox"
-                               name="" id="gh">
+                        <input
+                          [(ngModel)]="smartParameters.isIsolatePlan"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="gh"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Изолированная</span>
                       </label>
@@ -247,52 +484,104 @@
                       <h4 class="title--h4">Этаж</h4>
                       <div class="slider slider--temp" *ngIf="smart">
                         <mat-slider min="1" max="10" step="1" discrete>
-                          <input matSliderThumb [(ngModel)]="smartParameters.floorWeight"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            matSliderThumb
+                            [(ngModel)]="smartParameters.floorWeight"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </mat-slider>
-                        <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
-                             containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                        <img
+                          class="slider__help"
+                          src="./assets/img/ant-design_info-circle-outlined.svg"
+                          alt="help"
+                          containerClass="custom-tooltip"
+                          tooltip="Это подсказка!"
+                          tooltipPlacement="top"
+                        />
                       </div>
-                      <div class="d-flex flex-row justify-content-start gap-3 my-2">
-                        <input *ngIf="!smart" type="text" id="area-input" class="d-block fp-input fp-input--sm"
-                               placeholder="от" [(ngModel)]="smartParameters.floorMin"
-                               [ngModelOptions]="{standalone: true}">
-                        <input *ngIf="!smart" type="text" class="d-block fp-input fp-input--sm" placeholder="до"
-                               [(ngModel)]="smartParameters.floorMax" [ngModelOptions]="{standalone: true}">
+                      <div
+                        class="d-flex flex-row justify-content-start gap-3 my-2"
+                      >
+                        <input
+                          *ngIf="!smart"
+                          type="text"
+                          id="area-input"
+                          class="d-block fp-input fp-input--sm"
+                          placeholder="от"
+                          [(ngModel)]="smartParameters.floorMin"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                        <input
+                          *ngIf="!smart"
+                          type="text"
+                          class="d-block fp-input fp-input--sm"
+                          placeholder="до"
+                          [(ngModel)]="smartParameters.floorMax"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
 
-                        <input *ngIf="smart" type="number" id="онb6" class="d-block fp-input fp-input--sm"
-                               [(ngModel)]="smartParameters.floorPreference" [ngModelOptions]="{standalone: true}">
+                        <input
+                          *ngIf="smart"
+                          type="number"
+                          id="онb6"
+                          class="d-block fp-input fp-input--sm"
+                          [(ngModel)]="smartParameters.floorPreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
 
                         <div *ngIf="smart" class="flex-column">
                           <div class="flex-row justify-content-between">
-                            <span class="mx-2">{{ smartParameters.floorMin }} </span>
+                            <span class="mx-2"
+                              >{{ smartParameters.floorMin }}
+                            </span>
                             -
-                            <span class="mx-2">{{ smartParameters.floorMax }} </span>
+                            <span class="mx-2"
+                              >{{ smartParameters.floorMax }}
+                            </span>
                           </div>
-                          <input type="range" class="form-range my-form-range" #slider
-                                 [max]="smartParameters.floorMax"
-                                 [min]="smartParameters.floorMin" step="1" id="tn0m"
-                                 [(ngModel)]="smartParameters.floorPreference"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            type="range"
+                            class="form-range my-form-range"
+                            #slider
+                            [max]="smartParameters.floorMax"
+                            [min]="smartParameters.floorMin"
+                            step="1"
+                            id="tn0m"
+                            [(ngModel)]="smartParameters.floorPreference"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </div>
                       </div>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isNotFirstFloor" class="fp-label--check"
-                               type="checkbox" name=""
-                               id="erof">
+                        <input
+                          [(ngModel)]="smartParameters.isNotFirstFloor"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="erof"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Не первый</span>
                       </label>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isNotLastFloor" class="fp-label--check" type="checkbox"
-                               name=""
-                               id="webm">
+                        <input
+                          [(ngModel)]="smartParameters.isNotLastFloor"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="webm"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Не последний</span>
                       </label>
                       <label class="fp-label">
-                        <input [(ngModel)]="smartParameters.isLastFloor" class="fp-label--check" type="checkbox"
-                               name="" id="4rt">
+                        <input
+                          [(ngModel)]="smartParameters.isLastFloor"
+                          class="fp-label--check"
+                          type="checkbox"
+                          name=""
+                          id="4rt"
+                        />
                         <span></span>
                         <span class="fp-label--tx">Только последний</span>
                       </label>
@@ -301,71 +590,114 @@
                       <h4 class="title--h4">Этажей в доме</h4>
                       <div class="slider slider--temp" *ngIf="smart">
                         <mat-slider min="1" max="10" step="1" discrete>
-                          <input matSliderThumb [(ngModel)]="smartParameters.countFloorWeight"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            matSliderThumb
+                            [(ngModel)]="smartParameters.countFloorWeight"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </mat-slider>
-                        <img class="slider__help" src="./assets/img/ant-design_info-circle-outlined.svg" alt="help"
-                             containerClass="custom-tooltip" tooltip="Это подсказка!" tooltipPlacement="top">
+                        <img
+                          class="slider__help"
+                          src="./assets/img/ant-design_info-circle-outlined.svg"
+                          alt="help"
+                          containerClass="custom-tooltip"
+                          tooltip="Это подсказка!"
+                          tooltipPlacement="top"
+                        />
                       </div>
-                      <div class="d-flex flex-row justify-content-between  my-2">
-                        <input *ngIf="!smart" type="text" id="gt5" class="d-block fp-input fp-input--long"
-                               placeholder="от" [(ngModel)]="smartParameters.countFloorMin"
-                               [ngModelOptions]="{standalone: true}">
-                        <input *ngIf="!smart" type="text" id="6yhtr" class="d-block fp-input fp-input--long"
-                               placeholder="до" [(ngModel)]="smartParameters.countFloorMax"
-                               [ngModelOptions]="{standalone: true}">
-                        <input *ngIf="smart" type="number" id="он6" class="d-block fp-input fp-input--sm"
-                               [(ngModel)]="smartParameters.countFloorPreference"
-                               [ngModelOptions]="{standalone: true}">
+                      <div class="d-flex flex-row justify-content-between my-2">
+                        <input
+                          *ngIf="!smart"
+                          type="text"
+                          id="gt5"
+                          class="d-block fp-input fp-input--long"
+                          placeholder="от"
+                          [(ngModel)]="smartParameters.countFloorMin"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                        <input
+                          *ngIf="!smart"
+                          type="text"
+                          id="6yhtr"
+                          class="d-block fp-input fp-input--long"
+                          placeholder="до"
+                          [(ngModel)]="smartParameters.countFloorMax"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                        <input
+                          *ngIf="smart"
+                          type="number"
+                          id="он6"
+                          class="d-block fp-input fp-input--sm"
+                          [(ngModel)]="smartParameters.countFloorPreference"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
 
                         <div *ngIf="smart" class="flex-column">
                           <div class="flex-row justify-content-between">
-                            <span class="mx-2">{{ smartParameters.countFloorMin }} </span>
+                            <span class="mx-2"
+                              >{{ smartParameters.countFloorMin }}
+                            </span>
                             -
-                            <span class="mx-2">{{ smartParameters.countFloorMax }} </span>
+                            <span class="mx-2"
+                              >{{ smartParameters.countFloorMax }}
+                            </span>
                           </div>
-                          <input type="range" class="form-range my-form-range" #slider
-                                 [max]="smartParameters.countFloorMax"
-                                 [min]="smartParameters.countFloorMin" step="1" id="tne0m"
-                                 [(ngModel)]="smartParameters.countFloorPreference"
-                                 [ngModelOptions]="{standalone: true}">
+                          <input
+                            type="range"
+                            class="form-range my-form-range"
+                            #slider
+                            [max]="smartParameters.countFloorMax"
+                            [min]="smartParameters.countFloorMin"
+                            step="1"
+                            id="tne0m"
+                            [(ngModel)]="smartParameters.countFloorPreference"
+                            [ngModelOptions]="{ standalone: true }"
+                          />
                         </div>
                       </div>
                     </div>
                     <div class="fp-common__roof-in-build">
-                      <div class="d-flex flex-row justify-content-between  my-2">
+                      <div class="d-flex flex-row justify-content-between my-2">
                         <div>Выбранные застройщики:</div>
-                        <div>{{getCompany(smartParameters.company)}}</div>
-
+                        <div>{{ getCompany(smartParameters.company) }}</div>
                       </div>
-                      <div class="d-flex flex-row justify-content-between  my-2">
-
+                      <div class="d-flex flex-row justify-content-between my-2">
                         <div>Исключенные застройшики:</div>
-                        <div>{{getCompany(smartParameters.companyExcp) }}</div>
+                        <div>{{ getCompany(smartParameters.companyExcp) }}</div>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-            <app-chosen-parameters [smartParameters]="smartParameters"
-                                   [choosedItems]="choosedItems"></app-chosen-parameters>
+            <app-chosen-parameters
+              [smartParameters]="smartParameters"
+              [choosedItems]="choosedItems"
+            ></app-chosen-parameters>
 
             <div class="row justify-content-center mx-auto my-3 apply">
               <a>
-                <button (click)="reload()" class="my-btn-long">Применить</button>
+                <button (click)="reload()" class="my-btn-long">
+                  Применить
+                </button>
               </a>
             </div>
             <div class="row justify-content-center mx-auto my-3 show-all">
               <a>
-                <button (click)="openDialog()" class="my-btn-long"> Показать все фильтры</button>
+                <button (click)="openDialog()" class="my-btn-long">
+                  Показать все фильтры
+                </button>
               </a>
             </div>
             <div class="row justify-content-center mx-auto my-3 reset">
               <a>
-                <button (click)="clearFilter()" class="my-btn-long my-btn--white">Сбросить</button>
+                <button
+                  (click)="clearFilter()"
+                  class="my-btn-long my-btn--white"
+                >
+                  Сбросить
+                </button>
               </a>
             </div>
           </div>
@@ -373,74 +705,74 @@
           <div class="col-xxl-9 search-section__card-side cards-block">
             <!--              <pre>{{ currentState$ | async | json }}</pre>-->
             <div class="d-flex flex-column overflow-y-scroll">
+              <div
+                class="cards-block__item"
+                *ngFor="let item of apartments; let i = index"
+              >
+                <app-apartment-card [apartmentItem]="item"></app-apartment-card>
 
-              <div class="cards-block__item" *ngFor="let item of apartments; let i=index" >
-                <div class="img-block"  [routerLink]="['/apartment', item.id]">
-                  <img alt="img" style="cursor: pointer;"
-                       [src]="item.photoMainPath">
-                </div>
-
-                <div class="col r-item-info d-flex flex-column justify-content-between "  [routerLink]="['/apartment', item.id]">
-
-                  <h2 class="r-item__title-info">{{ getNumberOfRoomsString(item.numberOfRooms) }}
-                    , {{ item.areaTotal }} м<sup>2</sup></h2>
-
-                  <div class="d-flex flex-column">
-                    <div class="r-item__type-build">{{ getHouseTypeName(item.houseType) }}</div>
-                    <div class="r-item__address">{{ item.address }}</div>
-                  </div>
-                  <div class="r-item__categories">
-                    <div>Кухня: . . . . . . . . . . . . . . .</div>
-                    <span>{{ item.areaKitchen }}</span>
-                    <div>Этаж . . . . . . . . . . . . . . . .</div>
-                    <span>{{ item.floor }}</span>
-                    <div>Срок сдачи . . . . . . . . . . .</div>
-                    <span>{{ item.dueYear }}</span>
-                  </div>
-                  <div class="r-item__company">
-                    {{ getCompany(item.companyId) }}
-                  </div>
-                </div>
-
-                <div class="col-3  d-flex flex-column justify-content-between "[routerLink]="['/apartment', item.id]">
-                  <div class="d-flex justify-content-center"  >
+                <div
+                  class="col-3 d-flex flex-column justify-4-between"
+                  [routerLink]="['/apartment', item.id]"
+                >
+                  <div class="d-flex justify-content-center">
                     <h2 class="percent-h2">
-                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                           xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           d="M22.25 5C19.6688 5 17.4088 6.11 16 7.98625C14.5912 6.11 12.3313 5 9.75 5C7.69528 5.00232 5.72539 5.81958 4.27248 7.27248C2.81958 8.72539 2.00232 10.6953 2 12.75C2 21.5 14.9738 28.5825 15.5262 28.875C15.6719 28.9533 15.8346 28.9943 16 28.9943C16.1654 28.9943 16.3281 28.9533 16.4737 28.875C17.0262 28.5825 30 21.5 30 12.75C29.9977 10.6953 29.1804 8.72539 27.7275 7.27248C26.2746 5.81958 24.3047 5.00232 22.25 5ZM16 26.85C13.7175 25.52 4 19.4613 4 12.75C4.00198 11.2256 4.60842 9.76423 5.68633 8.68633C6.76423 7.60842 8.22561 7.00198 9.75 7C12.1812 7 14.2225 8.295 15.075 10.375C15.1503 10.5584 15.2785 10.7153 15.4432 10.8257C15.6079 10.9361 15.8017 10.995 16 10.995C16.1983 10.995 16.3921 10.9361 16.5568 10.8257C16.7215 10.7153 16.8497 10.5584 16.925 10.375C17.7775 8.29125 19.8188 7 22.25 7C23.7744 7.00198 25.2358 7.60842 26.3137 8.68633C27.3916 9.76423 27.998 11.2256 28 12.75C28 19.4513 18.28 25.5188 16 26.85Z"
-                          fill="#106681"/>
+                          fill="#106681"
+                        />
                       </svg>
                       {{ percentRound(item.percent) }}
                     </h2>
                   </div>
 
                   <div class="d-flex flex-column px-2">
-                    <div class="cards-block__price" >{{ item.priceAfterFormat }}<span *ngIf="item.price !=null;"
-                                                                                      class="price"> ₽</span></div>
-                    <div class="cards-block__price-sqr" >{{ item.priceSqmtAfterFormat }}<span
-                      *ngIf="item.priceSqmt !=null;" class="cards-block__price-sqr"> ₽/м²</span></div>
-                    <button mat-raised-button (click)="showPhone($event, item.phone)"
-                            class="phone-btn">
+                    <div class="cards-block__price">
+                      {{ item.priceAfterFormat
+                      }}<span *ngIf="item.price != null" class="price"> ₽</span>
+                    </div>
+                    <div class="cards-block__price-sqr">
+                      {{ item.priceSqmtAfterFormat
+                      }}<span
+                        *ngIf="item.priceSqmt != null"
+                        class="cards-block__price-sqr"
+                      >
+                        ₽/м²</span
+                      >
+                    </div>
+                    <button
+                      mat-raised-button
+                      (click)="showPhone($event, item.phone)"
+                      class="phone-btn"
+                    >
                       Показать телефон
                     </button>
-
                   </div>
                 </div>
-
               </div>
-
             </div>
             <div class="row justify-content-center mx-auto my-5 show-all">
-              <button (click)="loadMore()" [disabled]="loading"
-                      [ngClass]="{'my-btn-long--disabled': loading, 'my-btn-long': !loading}"> Показать еще
+              <button
+                (click)="loadMore()"
+                [disabled]="loading"
+                [ngClass]="{
+                  'my-btn-long--disabled': loading,
+                  'my-btn-long': !loading
+                }"
+              >
+                Показать еще
               </button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
-
   </div>
 </main>
