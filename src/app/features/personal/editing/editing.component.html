@@ -64,7 +64,9 @@
           </div>
         </div>
         <p class="info">
-          На фото не должно быть людей, животных, алкоголя, табака, оружия.  Не
+          На фото не должно быть людей, животных, алкоголя, табака, оружия. Не
+          html
+
           добавляйте чужие фото, картинки с водяными знаками и рекламу.
         </p>
         <div class="upload-file">
@@ -77,13 +79,17 @@
         <div class="list">
           <div class="sub-list">
             <h5 class="sub-title">Тип жилья</h5>
-            <mat-checkbox class="example-margin">Квартира</mat-checkbox>
-            <mat-checkbox class="example-margin">Апартаменты</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="квартира">Квартира</mat-radio-button>
+              <mat-radio-button class="example-margin" value="апартаменты">Апартаменты</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Планировка</h5>
-            <mat-checkbox class="example-margin">Смежная</mat-checkbox>
-            <mat-checkbox class="example-margin">Изолированная</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="смежная">Смежная</mat-radio-button>
+              <mat-radio-button class="example-margin" value="изолированная">Изолированная</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Этаж</h5>
@@ -105,8 +111,10 @@
             <mat-checkbox class="example-margin">Евротрешка</mat-checkbox>
             <mat-checkbox class="example-margin">4 комнаты</mat-checkbox>
             <mat-checkbox class="example-margin">5 комнат и более</mat-checkbox>
+            html
+
             <mat-checkbox class="example-margin"
-              >Свободная планировка</mat-checkbox
+            >Свободная планировка</mat-checkbox
             >
           </div>
           <div class="sub-list">
@@ -114,14 +122,14 @@
             <mat-checkbox class="example-margin">Во двор</mat-checkbox>
             <mat-checkbox class="example-margin">На улицу</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >На солнечную сторону</mat-checkbox
+            >На солнечную сторону</mat-checkbox
             >
             <mat-checkbox class="example-margin">На две стороны</mat-checkbox>
             <mat-checkbox class="example-margin">Западная сторона</mat-checkbox>
             <mat-checkbox class="example-margin">Северная сторона</mat-checkbox>
             <mat-checkbox class="example-margin">Южная сторона</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Восточная сторона</mat-checkbox
+            >Восточная сторона</mat-checkbox
             >
           </div>
           <div class="sub-list">
@@ -129,17 +137,21 @@
             <mat-checkbox class="example-margin">Балкон</mat-checkbox>
             <mat-checkbox class="example-margin">Лоджия</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Утепленный балкон</mat-checkbox
+            >Утепленный балкон</mat-checkbox
             >
             <h5 class="sub-title" style="margin-top: 20px">Плита на кухне</h5>
-            <mat-checkbox class="example-margin">Газовая</mat-checkbox>
-            <mat-checkbox class="example-margin">Электрическая</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="газовая">Газовая</mat-radio-button>
+              <mat-radio-button class="example-margin" value="электрическая">Электрическая</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Санузел</h5>
-            <mat-checkbox class="example-margin">Совмещённый</mat-checkbox>
-            <mat-checkbox class="example-margin">Раздельный</mat-checkbox>
-            <mat-checkbox class="example-margin">2 и более</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="совмещенный">Совмещённый</mat-radio-button>
+              <mat-radio-button class="example-margin" value="раздельный">Раздельный</mat-radio-button>
+              <mat-radio-button class="example-margin" value="2иболее">2 и более</mat-radio-button>
+            </mat-radio-group>
           </div>
         </div>
         <div class="list">
@@ -156,23 +168,25 @@
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Отделка стен</h5>
-            <mat-checkbox class="example-margin">Обои</mat-checkbox>
-            <mat-checkbox class="example-margin">Краска</mat-checkbox>
-            <mat-checkbox class="example-margin">Панели</mat-checkbox>
-            <mat-checkbox class="example-margin">Линкруст</mat-checkbox>
-            <mat-checkbox class="example-margin">Дек. штукатурка</mat-checkbox>
-            <mat-checkbox class="example-margin">Дек. кирпич</mat-checkbox>
-            <mat-checkbox class="example-margin">Без покрытия</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="обои">Обои</mat-radio-button>
+              <mat-radio-button class="example-margin" value="краска">Краска</mat-radio-button>
+              <mat-radio-button class="example-margin" value="панели">Панели</mat-radio-button>
+              <mat-radio-button class="example-margin" value="линкруст">Линкруст</mat-radio-button>
+              <mat-radio-button class="example-margin" value="дек. штукатурка">Декоративная штукатурка</mat-radio-button>
+              <mat-radio-button class="example-margin" value="дек. кирпич">Декоративный кирпич</mat-radio-button>
+              <mat-radio-button class="example-margin" value="без покрытия">Без покрытия</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Отделка потолка</h5>
             <mat-checkbox class="example-margin">Побелка</mat-checkbox>
             <mat-checkbox class="example-margin">Покраска</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Потолочная плитка</mat-checkbox
+            >Потолочная плитка</mat-checkbox
             >
             <mat-checkbox class="example-margin"
-              >Подвесной потолок</mat-checkbox
+            >Подвесной потолок</mat-checkbox
             >
 
             <mat-checkbox class="example-margin">Натяжной потолок</mat-checkbox>
@@ -201,7 +215,7 @@
             <mat-checkbox class="example-margin">ПВХ</mat-checkbox>
             <mat-checkbox class="example-margin">Алюминий</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Витражное остекление</mat-checkbox
+            >Витражное остекление</mat-checkbox
             >
             <mat-checkbox class="example-margin">Без остекления</mat-checkbox>
           </div>
@@ -212,9 +226,11 @@
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Радиоторы</h5>
-            <mat-checkbox class="example-margin">Биметал</mat-checkbox>
-            <mat-checkbox class="example-margin">Стальные</mat-checkbox>
-            <mat-checkbox class="example-margin">Алюминивые</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="биметал">Биметал</mat-radio-button>
+              <mat-radio-button class="example-margin" value="стальные">Стальные</mat-radio-button>
+              <mat-radio-button class="example-margin" value="алюминивые">Алюминивые</mat-radio-button>
+            </mat-radio-group>
           </div>
         </div>
         <div class="list">
@@ -230,7 +246,7 @@
             <mat-checkbox class="example-margin">ПВХ</mat-checkbox>
             <mat-checkbox class="example-margin">Алюминий</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Витражное остекление</mat-checkbox
+            >Витражное остекление</mat-checkbox
             >
             <mat-checkbox class="example-margin">Без остекления</mat-checkbox>
           </div>
@@ -252,14 +268,16 @@
         <div class="list">
           <div class="sub-list">
             <h5 class="sub-title">Тип жилья</h5>
-            <mat-checkbox class="example-margin">Квартира</mat-checkbox>
-            <mat-checkbox class="example-margin">Монолитный</mat-checkbox>
-            <mat-checkbox class="example-margin">Панельный</mat-checkbox>
-            <mat-checkbox class="example-margin"
-              >Кирпично-монолитный</mat-checkbox
-            >
-            <mat-checkbox class="example-margin">Блочный</mat-checkbox>
-            <mat-checkbox class="example-margin">Другой</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="квартира">Квартира</mat-radio-button>
+              <mat-radio-button class="example-margin" value="монолитный">Монолитный</mat-radio-button>
+              <mat-radio-button class="example-margin" value="панельный">Панельный</mat-radio-button>
+              <mat-radio-button class="example-margin"
+                                value="кирпично-монолитный">Кирпично-монолитный</mat-radio-button>
+              <mat-radio-button class="example-margin" value="блочный">Блочный</mat-radio-button>
+              <mat-radio-button class="example-margin" value="другой">Другой</mat-radio-button>
+            </mat-radio-group>
+
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Класс цифровизации</h5>
@@ -317,8 +335,10 @@
         <div class="list">
           <div class="sub-list">
             <h5 class="sub-title">Лифт</h5>
-            <mat-checkbox class="example-margin">Пассажирский</mat-checkbox>
-            <mat-checkbox class="example-margin">Грузовой</mat-checkbox>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="пассажирский">Пассажирский</mat-radio-button>
+              <mat-radio-button class="example-margin" value="грузовой">Грузовой</mat-radio-button>
+            </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Своя котельная</h5>
@@ -353,13 +373,13 @@
             <h5 class="sub-title">Парковка</h5>
             <mat-checkbox class="example-margin">Подземная</mat-checkbox>
             <mat-checkbox class="example-margin"
-              >Наземная многоуровневая</mat-checkbox
+            >Наземная многоуровневая</mat-checkbox
             >
             <mat-checkbox class="example-margin"
-              >Открытая во дворе</mat-checkbox
+            >Открытая во дворе</mat-checkbox
             >
             <mat-checkbox class="example-margin"
-              >Закрытая территория двора</mat-checkbox
+            >Закрытая территория двора</mat-checkbox
             >
           </div>
         </div>
@@ -398,7 +418,8 @@
           <div class="sub-list">
             <h5 class="sub-title">АКЦИИ</h5>
             <mat-checkbox class="example-margin">Да</mat-checkbox>
-            <mat-checkbox class="example-margin">Нет</mat-checkbox>
+            <mat-checkbox class="example-margin">Нет
+            </mat-checkbox>
             <mat-checkbox class="example-margin">от 3м</mat-checkbox>
             <mat-checkbox class="example-margin">от 3.5м</mat-checkbox>
           </div>

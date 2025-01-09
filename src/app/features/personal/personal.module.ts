@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatCheckbox } from '@angular/material/checkbox';
+import {MatCheckbox, MatCheckboxModule} from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core'; // Импорт MatOptionModule
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,7 @@ import { PersonalCabinetComponent } from './personal-cabinet/personal-cabinet.co
 import { PolititcComponent } from './politic/politic.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticComponent } from './statistic/statistic.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -43,13 +44,13 @@ import { StatisticComponent } from './statistic/statistic.component';
         path: '',
         component: PersonalCabinetComponent,
         children: [
-          { path: '', redirectTo: 'order', pathMatch: 'full' },
-          { path: 'profile', component: ProfileComponent },
-          { path: 'order', component: OrderComponent },
-          { path: 'favorite', component: FavoriteComponent },
-          { path: 'stat', component: StatisticComponent },
-          { path: 'editing', component: EditingComponent },
-          { path: 'politic', component: PolititcComponent },
+          {path: '', redirectTo: 'order', pathMatch: 'full'},
+          {path: 'profile', component: ProfileComponent},
+          {path: 'order', component: OrderComponent},
+          {path: 'favorite', component: FavoriteComponent},
+          {path: 'stat', component: StatisticComponent},
+          {path: 'editing', component: EditingComponent},
+          {path: 'politic', component: PolititcComponent},
         ],
       },
       {
@@ -57,6 +58,8 @@ import { StatisticComponent } from './statistic/statistic.component';
         component: InfoComponent,
       },
     ]),
+    MatRadioModule,
+    MatCheckboxModule,
   ],
   exports: [PersonalCabinetComponent],
 })
