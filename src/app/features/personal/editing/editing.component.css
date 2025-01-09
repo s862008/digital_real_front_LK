@@ -219,6 +219,7 @@
 /* Styles for Angular Material */
 .example-margin {
   margin: 5px;
+  display: block;
 }
 
 /*.edit-section {*/

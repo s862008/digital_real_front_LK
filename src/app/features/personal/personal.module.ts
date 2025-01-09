@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCheckbox, MatCheckboxModule} from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core'; // Импорт MatOptionModule
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -35,7 +35,9 @@ import {MatRadioModule} from "@angular/material/radio";
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckbox,
+    MatRadioModule,
+    MatCheckboxModule,
+    FormsModule,
     MatSelectModule,
     MatOptionModule,
     MatDatepickerModule,
