@@ -407,11 +407,18 @@
   padding: 70px 10px 10px 10px;
   justify-content: space-between;
 }
+
+.my-input-lg {
+  padding-right: .6rem;
+}
+
 .send-in {
   display: flex;
   flex-flow: row wrap;
   grid-gap: 15px;
 }
+
+.
 .send-in input {
   max-width: 390px;
   min-width: 230px;
