@@ -11,10 +11,12 @@ export class PriceFormatterDirective {
   @HostListener('input')
   onInput() {
     const input = this.el.nativeElement;
-    const startPos = input.selectionStart;
-    let value: string = input.value;
+    let startPos = input.selectionStart;
+    let value: string = input.value.replace(/\s+/g, '');
 
-    let formattedValue = value.replace(/\D/g, '').replace(/^0+/, '');
+    let onlyNumberValue = value.replace(/\D/g, '');
+
+    let formattedValue = onlyNumberValue.replace(/^0+/, '');
 
     formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
@@ -88,6 +90,13 @@ export class PriceFormatterDirective {
     if (oldPos === 0) {
       return oldPos;
     }
+
+    const newValueWithoutSpacesAndOnlyNumberValue = oldValue.replace(/\s+/g, '').replace(/\D/g, '');
+
+    if (newValueWithoutSpacesAndOnlyNumberValue !== oldValue) {
+      return oldPos - 1;
+    }
+
 
     const oldSpaces = (oldValue.match(/ /g) || []).length;
     const newSpaces = (newValue.match(/ /g) || []).length;
