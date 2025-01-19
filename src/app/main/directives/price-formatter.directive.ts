@@ -14,10 +14,9 @@ export class PriceFormatterDirective {
     const startPos = input.selectionStart;
     let value: string = input.value;
 
-    value = value.replace(/^0+/, '');
+    let formattedValue = value.replace(/\D/g, '').replace(/^0+/, '');
 
-    let formattedValue = value.replace(/\D/g, ''); // Убираем нецифровые символы
-    formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // Добавляем пробелы для thousands
+    formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
     input.value = formattedValue;
 
@@ -52,9 +51,11 @@ export class PriceFormatterDirective {
     const input = this.el.nativeElement;
     let value = input.value.replace(/\s+/g, '');
 
-    value = value.slice(0, position - 2) + value.slice(position - 1);
+    let formattedValue = value.slice(0, position - 2) + value.slice(position - 1);
 
-    input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    formattedValue.replace(/\D/g, '')
+
+    input.value = formattedValue.replace(/^0+/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
     this.updateCursorAfterRemove(position - 2);
   }
 
@@ -63,7 +64,7 @@ export class PriceFormatterDirective {
     let value = input.value;
 
     if (position < value.length - 1) {
-      value = value.slice(0, position + 1) + value.slice(position + 2); // Удаление символа
+      value = value.slice(0, position + 1) + value.slice(position + 2);
       input.value = value;
       this.updateCursorAfterRemove(position);
     }
@@ -71,7 +72,7 @@ export class PriceFormatterDirective {
 
   private updateCursorAfterRemove(newPos: number) {
     const input = this.el.nativeElement;
-    const value = input.value.replace(/\s+/g, ''); // Получаем новое значение
+    const value = input.value.replace(/\s+/g, '');
 
     let formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
