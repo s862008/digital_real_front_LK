@@ -6,7 +6,8 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 })
 export class PriceFormatterDirective {
 
-  currentValue: string = ''
+  currentValue: string = '';
+  key: string = '';
 
   constructor(private el: ElementRef) {}
 
@@ -20,8 +21,9 @@ export class PriceFormatterDirective {
     const onlyNumberValue = value.replace(/\D/g, '');
     const formattedValue = onlyNumberValue.replace(/^0+/, '');
     const separatedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    const keyPressedDeleteOrBackspace = (this.key === 'Delete' || this.key === 'Backspace')
 
-    const newPos = this.calculateCursorPosition(startPos, oldValue, formattedValue);
+    const newPos = this.calculateCursorPosition(keyPressedDeleteOrBackspace,startPos, oldValue, formattedValue);
 
     this.currentValue = formattedValue;
     input.value = separatedValue;
@@ -36,6 +38,7 @@ export class PriceFormatterDirective {
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
     const input = this.el.nativeElement;
+    this.key = event.key;
 
     if (event.key === 'Backspace') {
       const startPos = input.selectionStart;
@@ -87,7 +90,7 @@ export class PriceFormatterDirective {
     const value = input.value.replace(/\s+/g, '');
     let formattedValue = value.replace(/^0+/, '');
 
-    const updatePos = this.calculateCursorPosition(newPos, oldValue, formattedValue);
+    const updatePos = this.calculateCursorPosition(false, newPos, oldValue, formattedValue);
 
     let separatedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
@@ -95,7 +98,7 @@ export class PriceFormatterDirective {
     input.setSelectionRange(updatePos, updatePos);
   }
 
-  private calculateCursorPosition(oldPos: number, oldValue: string, newValue: string): number {
+  private calculateCursorPosition(isInputMode: boolean, oldPos: number, oldValue: string, newValue: string): number {
     let offset = 0;
 
     if (oldPos === 0) {
@@ -110,7 +113,7 @@ export class PriceFormatterDirective {
 
     offset = separatedValue1 - separatedValue;
 
-    if (oldValuePartFrontOfCursor.slice(-1) === ' ' && offset === -1) {
+    if (oldValuePartFrontOfCursor.slice(-1) === ' ' && offset === -1 && !isInputMode) {
       return oldPos + 1;
     }
 
