@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-editing',
@@ -6,7 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./editing.component.css'],
 })
 export class EditingComponent {
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    //this.listing = this.listingService.getListingById(id); // Загрузите данные карточки товара
+  }
+
+
+
+
   listing = [
     {
       title: '2 комнаты, 61.8 м²',

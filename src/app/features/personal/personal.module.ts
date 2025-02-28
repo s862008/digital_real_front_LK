@@ -51,7 +51,7 @@ import {MatRadioModule} from "@angular/material/radio";
           {path: 'order', component: OrderComponent},
           {path: 'favorite', component: FavoriteComponent},
           {path: 'stat', component: StatisticComponent},
-          {path: 'editing', component: EditingComponent},
+          {path: 'editing/:id', component: EditingComponent},
           {path: 'politic', component: PolititcComponent},
         ],
       },
