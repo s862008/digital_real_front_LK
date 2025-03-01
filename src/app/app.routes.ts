@@ -7,6 +7,7 @@ import { HomeComponent } from './main/pages/home/home.component';
 import { NotFoundComponent } from './main/pages/not-found/not-found.component';
 import { RComplexComponent } from './main/pages/residential-complex/r-complex.component';
 import { SearchComponent } from './main/pages/smart-search/search.component';
+import {SmartParametersComponent} from "./main/components/smart-parameters/smart-parameters.component";
 
 export const routes: Routes = [
   {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: 'r-complex/:id',
     component: RComplexComponent,
+  },
+  {
+    path: 'smart-parameters',
+    component: SmartParametersComponent
   },
   {
     path: 'filter-search',

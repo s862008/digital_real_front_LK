@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {ContainerComponent} from "../container/container.component";
-import {SmartParametersComponent} from "../smart-parameters/smart-parameters.component";
 import {MatDialog} from "@angular/material/dialog";
+import {SmartHellperComponent} from "../smart-hellper/smart-hellper.component";
 
 @Component({
   selector: 'app-banner',
@@ -14,7 +13,7 @@ export class BannerComponent {
 
   openDialog() {
 
-    const dialogRef = this.dialog.open(SmartParametersComponent, {height: '95%', width: '95%'});
+    const dialogRef = this.dialog.open(SmartHellperComponent, {height: '95%', width: '95%'});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

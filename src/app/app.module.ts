@@ -35,6 +35,7 @@ import { NotFoundComponent } from './main/pages/not-found/not-found.component';
 import { RComplexComponent } from './main/pages/residential-complex/r-complex.component';
 import { SearchComponent } from './main/pages/smart-search/search.component';
 import { PricePipe } from './main/pipes/price.pipe';
+import {SmartHellperComponent} from "./main/components/smart-hellper/smart-hellper.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PricePipe } from './main/pipes/price.pipe';
     ApartmentComponent,
     RComplexComponent,
     SmartParametersComponent,
+    SmartHellperComponent,
     ChosenParametersComponent,
     PricePipe,
     LoginDialogComponent,

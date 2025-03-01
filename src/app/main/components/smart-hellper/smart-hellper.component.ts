@@ -4,27 +4,29 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  Inject, Optional
+  Inject
 } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {SmartParameters} from "../../../core/models/parametrs";
 import {Company} from "../../../core/models/company";
+import {FormatterUtils} from "../../../core/util/formatter.utils";
 
 
 @Component({
-  selector: 'app-smart-parameters',
-  templateUrl: './smart-parameters.component.html',
-  styleUrl: './smart-parameters.component.css'
+  selector: 'app-smart-hellper',
+  templateUrl: './smart-hellper.component.html',
+  styleUrl: './smart-hellper.component.css'
 })
 
-export class SmartParametersComponent implements OnInit {
+export class SmartHellperComponent implements OnInit {
 
   companies: Company[] = [];
   choosedItems: any[] = [];
   showElement = false;
   scrolling: number = 100;
   smart = true;
+  data!: SmartParameters | null;
 
 
   @ViewChild('formParam') formParam!: ElementRef;
@@ -34,17 +36,13 @@ export class SmartParametersComponent implements OnInit {
     private el: ElementRef,
     public smartParameters: SmartParameters,
     private router: Router,
-    @Optional()  public dialogRef: MatDialogRef<any> | null,
-    private cdRef: ChangeDetectorRef,
-    @Optional()  @Inject(MAT_DIALOG_DATA) public data: SmartParameters | null) {
+    private dialogRef: MatDialogRef<any>,
+    private cdRef: ChangeDetectorRef)
+    // @Inject(MAT_DIALOG_DATA) public data: SmartParameters | null)
+  {
 
     this.initializeCompanies();
 
-  }
-
-  ngAfterViewInit(): void {
-
-    this.setupListeners();
   }
 
   ngOnInit() {
@@ -54,7 +52,7 @@ export class SmartParametersComponent implements OnInit {
     } else {
       this.clearFilter();
     }
-
+    this.setupListeners();
 
   }
 
@@ -78,19 +76,13 @@ export class SmartParametersComponent implements OnInit {
       select.addEventListener('change', () => this.handleSelectChange(select));
     });
 
-    if (this.dialogRef){
-
+    if (this.formParam) {
       this.formParam.nativeElement.addEventListener('scroll', () => {
         const rect = this.formParam.nativeElement.getBoundingClientRect();
         const scrollTop = this.formParam.nativeElement.scrollTop;
         this.showElement = rect.top < -600 || scrollTop > 300;
-      });}
-    else{
-      window.addEventListener('scroll', () => {
-        const rect = this.formParam.nativeElement.getBoundingClientRect();
-        const scrollTop = this.formParam.nativeElement.scrollTop;
-        this.showElement = rect.top < -600 || scrollTop > 300;
-      });}
+      });
+    }
 
     const inputPrice = document.getElementById('о6b6h') as HTMLInputElement;
     if (inputPrice) {
@@ -182,6 +174,10 @@ export class SmartParametersComponent implements OnInit {
     return `${value}`;
   }
 
+  originalPrice(value: string): string {
+    return value?.replaceAll(" ", "").replace(/\D/g, '').replace(/^0+/, "") || "";
+  }
+
   clearFilter() {
     const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
@@ -195,18 +191,17 @@ export class SmartParametersComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.dialogRef)
-      this.dialogRef.close(this.smartParameters);
+
+    // this.dialogRef.close(this.smartParameters);
     this.router.navigate(['/smart-search', {timestamp: new Date().getTime()}], {
-        state: {smartParam: this.smartParameters}
-      }).then(r => {
-        console.log("to smart " + r)
-      });
+      state: {smartParam: this.smartParameters}
+    }).then(r => {
+      console.log("to smart " + r)
+    });
 
   }
 
   onCancel() {
-    if (this.dialogRef)
     this.dialogRef.close();
   }
 
@@ -407,14 +402,7 @@ export class SmartParametersComponent implements OnInit {
   }
 
   public getCompany(id: number): string | undefined {
-    let lst: string = "";
-    this.companies.forEach((company) => {
-      if (company.id == id) {
-        lst += `${company.name}`;
-      }
-    });
-
-    return lst;
+   return  FormatterUtils.nameCompany(id)
   }
 
 

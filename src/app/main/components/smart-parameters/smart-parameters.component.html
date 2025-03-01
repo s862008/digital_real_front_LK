@@ -3,7 +3,7 @@
     <div class="form-param__title">
       <div class="row row-cols-2">
         <div class="col-11"><h1 class="title--h1">ПРИМЕНЕНИЕ УМНОГО ФИЛЬТРА</h1></div>
-        <div class="col-1">
+        <div class="col-1"  *ngIf="dialogRef">
           <button type="button" class="form__close btn-close" aria-label="Закрыть" (click)="onCancel()"></button>
         </div>
       </div>

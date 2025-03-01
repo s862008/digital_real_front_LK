@@ -14,9 +14,13 @@
           в Воронеже
         </div>
         <div class="banner__smart-part">
-          <a (click)="openDialog()">
+
+          <a [routerLink]="['/smart-parameters']" >
             <button class="smart-part__button">SMART-ПОДБОР</button>
           </a>
+                    <a (click)="openDialog()" >
+                        <div class="d-block btn btn-dark my-2 w-50 mx-2">нужна помощь?</div>
+                    </a>
           <div class="smart-part__info">
             Умный поиск для более точного подбора недвижимости
           </div>
