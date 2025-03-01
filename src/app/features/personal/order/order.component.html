@@ -38,7 +38,8 @@
               <img src="../../../../assets/img/xbtn.png" alt="" />
             </button>
           </div>
-          <button routerLink="/personal-cabinet/editing" class="edit-btn">
+
+          <button [routerLink]="['/personal-cabinet/editing', listing.id]" class="edit-btn">
             Редактировать
           </button>
         </div>
