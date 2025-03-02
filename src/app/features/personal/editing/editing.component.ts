@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {HttpClient, HttpEventType} from "@angular/common/http";
 
 @Component({
   selector: 'app-editing',
@@ -7,7 +9,14 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./editing.component.css'],
 })
 export class EditingComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
+  }
+
+  selectedFile: File | null = null;
+  imageUrl: SafeUrl = '';
+  imageUrl2: SafeUrl = 'test/upload/house.png';
+  uploading: boolean = false;
+  uploadProgress: number = 0;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -15,7 +24,47 @@ export class EditingComponent {
     //this.listing = this.listingService.getListingById(id); // Загрузите данные карточки товара
   }
 
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      // Предварительный просмотр (опционально)
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(e.target.result); // Преобразуем в SafeUrl
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
 
+  onUpload(): void {
+    if (!this.selectedFile) {
+      return;
+    }
+    this.uploading = true;
+    this.uploadProgress = 0;
+
+    const formData = new FormData();
+    formData.append('image', this.selectedFile, this.selectedFile.name);
+
+    this.http.post<ImageUploadResponse>('/test/upload', formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.uploadProgress = Math.round((100 * event.loaded) / (event.total || 100)); // Вычисляем прогресс
+        } else if (event.type === HttpEventType.Response) {
+          this.uploading = false;
+          console.log('Upload successful', event.body);
+          // Обновляем imageUrl (предполагаем, что сервер возвращает URL)
+         if(event.body)
+          this.imageUrl = event.body.imageUrl
+        }
+      }, error => {
+        this.uploading = false;
+        console.error('Upload error', error);
+      });
+
+  }
 
 
   listing = [
@@ -90,4 +139,10 @@ export class EditingComponent {
   hasNotPromo: boolean = false;
   isMortgageAvailable: boolean = false;
   isNotMortgageAvailable: boolean = false;
+}
+
+
+interface ImageUploadResponse {
+  imageUrl: string;
+  // Другие поля, которые возвращает бэкенд
 }
