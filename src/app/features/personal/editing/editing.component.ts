@@ -10,11 +10,15 @@ import {HttpClient, HttpEventType} from "@angular/common/http";
 })
 export class EditingComponent {
   constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
+
+    // this.route.params.subscribe(params => {
+    //   this.apartmentId = params['apartmentId']; // Получаем ID из URL
+    // });
   }
 
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
-  imageUrl2: SafeUrl = 'uploads/3e33847c-b075-48a3-b2d3-fb17ea249525_gorodskoj-ubijca-bloknot-ver-2-0-1.jpg';
+  imageUrl2: SafeUrl = 'uploads/logo.png';
   uploading: boolean = false;
   uploadProgress: number = 0;
 
@@ -45,7 +49,7 @@ export class EditingComponent {
 
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
-
+    formData.append('apartmentId', '234');
     this.http.post<ImageUploadResponse>('/test/upload', formData, {
       reportProgress: true,
       observe: 'events'
@@ -69,7 +73,7 @@ export class EditingComponent {
 
 
   listing = [
-    {
+    { id: '1',
       title: '2 комнаты, 61.8 м²',
       address:
         'Новостройка, ЖК «Шестое чувство», ул. Композитора Ставонина, 55/9к2',
