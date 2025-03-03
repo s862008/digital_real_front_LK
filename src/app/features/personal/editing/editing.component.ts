@@ -14,7 +14,7 @@ export class EditingComponent {
 
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
-  imageUrl2: SafeUrl = 'test/upload/house.png';
+  imageUrl2: SafeUrl = 'uploads/3e33847c-b075-48a3-b2d3-fb17ea249525_gorodskoj-ubijca-bloknot-ver-2-0-1.jpg';
   uploading: boolean = false;
   uploadProgress: number = 0;
 
@@ -61,6 +61,7 @@ export class EditingComponent {
         }
       }, error => {
         this.uploading = false;
+        alert((error as Error).message)
         console.error('Upload error', error);
       });
 
