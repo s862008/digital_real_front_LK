@@ -68,9 +68,15 @@
           html  добавляйте чужие фото, картинки с водяными знаками и рекламу.
         </p>
         <div class="upload-file">
-          <input type="file" />
+          <input type="file"  (change)="onFileSelected($event)" />
           <span>или перетащите сюда JPG, PNG или GIF до 10Мб каждый</span>
         </div>
+        <div>
+          <button (click)="onUpload()" [disabled]="uploading">Upload</button>
+          <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">
+        </div>
+        <div class="container w-25 mx-auto"><img [src]="imageUrl2"  alt="Uploaded Image2"></div>
+
       </div>
       <div class="apartment-parameters">
         <h3 class="title">Параметры квартиры</h3>
