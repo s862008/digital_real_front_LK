@@ -110,15 +110,15 @@
 }
 
 .image-blocks {
-  width: 80px;
-  height: 80px;
+  width: 50vw;
+  height: 50vh;
   overflow: hidden;
   border-radius: 5px;
 }
 
 .image-blocks img {
   width: 100%;
-  height: 100%;
+  height: 80%;
   object-fit: cover;
   display: block;
 }
