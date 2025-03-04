@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {HttpClient, HttpEventType} from "@angular/common/http";
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-editing',
@@ -15,7 +16,9 @@ export class EditingComponent {
     //   this.apartmentId = params['apartmentId']; // Получаем ID из URL
     // });
   }
-
+  @Output() galleryChange = new EventEmitter<any[]>();
+  public gallery: Gallery[] = [];
+  public imgPathMain!: string;
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
   imageUrl2: SafeUrl = 'uploads/logo.png';
@@ -26,6 +29,28 @@ export class EditingComponent {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id)
     //this.listing = this.listingService.getListingById(id); // Загрузите данные карточки товара
+
+    this.http.get<Gallery[]>(`/api/v1/apartments/gallery/207`).subscribe(data => {
+      console.log(data)
+      if (data) {
+        this.gallery = data;
+        this.imgPathMain = this.gallery.length > 0 ?
+          (this.gallery[0].photoPath || this.gallery[0].planningPath || "") : "";
+      }
+    });
+
+
+
+  }
+  removePhoto(index: number) {
+    this.gallery.splice(index, 1);
+    this.galleryChange.emit(this.gallery);
+  }
+
+  movePhoto(fromIndex: number, toIndex: number) {
+    const photo = this.gallery.splice(fromIndex, 1)[0];
+    this.gallery.splice(toIndex, 0, photo);
+    this.galleryChange.emit(this.gallery);
   }
 
   onFileSelected(event: any): void {
@@ -48,8 +73,11 @@ export class EditingComponent {
     this.uploadProgress = 0;
 
     const formData = new FormData();
-    formData.append('image', this.selectedFile, this.selectedFile.name);
-    formData.append('apartmentId', '234');
+
+   // const filename: string = "a"+this.listing[0].id+"__"+uuidv4()+"."+this.selectedFile.type.split("/").pop()
+    const filename: string ="a"+this.listing[0].id
+    formData.append('image', this.selectedFile, filename);
+
     this.http.post<ImageUploadResponse>('/test/upload', formData, {
       reportProgress: true,
       observe: 'events'
@@ -73,7 +101,7 @@ export class EditingComponent {
 
 
   listing = [
-    { id: '1',
+    { id: '207',
       title: '2 комнаты, 61.8 м²',
       address:
         'Новостройка, ЖК «Шестое чувство», ул. Композитора Ставонина, 55/9к2',
@@ -150,4 +178,12 @@ export class EditingComponent {
 interface ImageUploadResponse {
   imageUrl: string;
   // Другие поля, которые возвращает бэкенд
+}
+
+interface Gallery {
+  apartmentsId: bigint
+  id: bigint
+  order:number
+  photoPath: string
+  planningPath: string
 }
