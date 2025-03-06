@@ -10,6 +10,9 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./editing.component.css'],
 })
 export class EditingComponent {
+
+  public  apartmentId: string ='207'
+
   constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
 
     // this.route.params.subscribe(params => {
@@ -54,7 +57,24 @@ export class EditingComponent {
   movePhoto(fromIndex: number, toIndex: number) {
     const photo = this.gallery.splice(fromIndex, 1)[0];
     this.gallery.splice(toIndex, 0, photo);
+    this.updateOrder();
+    this.saveOrderToServer();
+
     this.galleryChange.emit(this.gallery);
+  }
+
+  updateOrder(): void {
+    this.gallery.forEach((item, index) => {
+      item.order = index + 1; // Порядок начинается с 1
+    });
+  }
+
+  saveOrderToServer(): void {
+    const url = `/test/apartment/${this.apartmentId}/gallery/update-order`;
+    this.http.post(url, this.gallery).subscribe(
+      () => console.log('Порядок успешно обновлён'),
+      (error) => console.error('Ошибка при обновлении порядка', error)
+    );
   }
 
   onFileSelected(event: any): void {
