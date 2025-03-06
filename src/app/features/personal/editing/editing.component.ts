@@ -10,6 +10,9 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./editing.component.css'],
 })
 export class EditingComponent {
+
+  public  apartmentId: string ='207'
+
   constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
 
     // this.route.params.subscribe(params => {
@@ -30,6 +33,12 @@ export class EditingComponent {
     console.log(id)
     //this.listing = this.listingService.getListingById(id); // Загрузите данные карточки товара
 
+    this.loadGallery()
+
+
+  }
+
+  loadGallery(){
     this.http.get<Gallery[]>(`/api/v1/apartments/gallery/207`).subscribe(data => {
       console.log(data)
       if (data) {
@@ -38,10 +47,8 @@ export class EditingComponent {
           (this.gallery[0].photoPath || this.gallery[0].planningPath || "") : "";
       }
     });
-
-
-
   }
+
   removePhoto(index: number) {
     this.gallery.splice(index, 1);
     this.galleryChange.emit(this.gallery);
@@ -50,12 +57,34 @@ export class EditingComponent {
   movePhoto(fromIndex: number, toIndex: number) {
     const photo = this.gallery.splice(fromIndex, 1)[0];
     this.gallery.splice(toIndex, 0, photo);
+    this.updateOrder();
+    this.saveOrderToServer();
+
     this.galleryChange.emit(this.gallery);
+  }
+
+  updateOrder(): void {
+    this.gallery.forEach((item, index) => {
+      item.order = index + 1; // Порядок начинается с 1
+    });
+  }
+
+  saveOrderToServer(): void {
+    const url = `/test/apartment/${this.apartmentId}/gallery/update-order`;
+    this.http.post(url, this.gallery).subscribe(
+      () => console.log('Порядок успешно обновлён'),
+      (error) => console.error('Ошибка при обновлении порядка', error)
+    );
   }
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
     if (this.selectedFile) {
+      if (!this.validateFile(this.selectedFile)) {
+        alert('Недопустимый формат файла или размер превышает 10MB');
+        this.selectedFile=null;
+        return;
+      }
       // Предварительный просмотр (опционально)
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -64,7 +93,11 @@ export class EditingComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
-
+  validateFile(file: File): boolean {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    return allowedTypes.includes(file.type) && file.size <= maxSize;
+  }
   onUpload(): void {
     if (!this.selectedFile) {
       return;
@@ -91,6 +124,7 @@ export class EditingComponent {
          if(event.body)
           this.imageUrl = event.body.imageUrl
         }
+          this.loadGallery()
       }, error => {
         this.uploading = false;
         alert((error as Error).message)
