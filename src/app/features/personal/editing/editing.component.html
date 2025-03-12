@@ -63,12 +63,15 @@
 <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
 <!--          </div>-->
 <!--        </div>-->
+        <div><img [src]="this.gallery()[0].photoPath " *ngIf="this.gallery()[0].photoPath " alt="Uploaded MainImage"></div>
+        <div><img [src]="this.gallery2[0].photoPath" *ngIf="this.gallery2[0].photoPath " alt="Uploaded MainImage2"></div>
         <div class="gallery">
-          <div *ngFor="let photo of gallery; let i = index" class="image-blocks photo-item">
+
+          <div *ngFor="let photo of gallery(); let i = index" class="image-blocks photo-item">
             <img [src]="photo.photoPath" alt="Photo">
             <button (click)="removePhoto(i)">Удалить</button>
             <button (click)="movePhoto(i, i - 1)" [disabled]="i === 0">Вверх</button>
-            <button (click)="movePhoto(i, i + 1)" [disabled]="i === gallery.length - 1">Вниз</button>
+            <button (click)="movePhoto(i, i + 1)" [disabled]="i === gallery().length - 1">Вниз</button>
           </div>
         </div>
         <p class="info">
@@ -91,9 +94,9 @@
         <div class="list">
           <div class="sub-list">
             <h5 class="sub-title">Тип жилья</h5>
-            <mat-radio-group [(ngModel)]="apartmentType">
-              <mat-radio-button class="example-margin" value="квартира">Квартира</mat-radio-button>
-              <mat-radio-button class="example-margin" value="апартаменты">Апартаменты</mat-radio-button>
+            <mat-radio-group [(ngModel)]="apartment.apartmentType">
+              <mat-radio-button class="example-margin" value="1">Квартира</mat-radio-button>
+              <mat-radio-button class="example-margin" value="2">Апартаменты</mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
