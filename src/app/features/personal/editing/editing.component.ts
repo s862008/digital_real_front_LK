@@ -5,6 +5,7 @@ import {HttpClient, HttpEventType} from "@angular/common/http";
 import { v4 as uuidv4 } from 'uuid';
 import {ApartmentFull} from "../../../core/models/apartment";
 
+
 @Component({
   selector: 'app-editing',
   templateUrl: './editing.component.html',
@@ -36,7 +37,6 @@ export class EditingComponent {
   }
   @Output() galleryChange = new EventEmitter<any[]>();
   public gallery = signal<Gallery[]>([]);
-  public gallery2:Gallery[] =[]
   public imgPathMain = signal<string>('');
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
@@ -66,7 +66,7 @@ console.log('')
             img: '../../../../assets/img/house.png', // Заглушка для изображения
           },
         ];
-
+        this.numberOfRooms.set(this.apartment.numberOfRooms);
         // this.apartment.apartmentType = FormatterUtils.nameApartType(this.apartment.apartmentType);
         // this.apartment.rcomplexDto.type_build = FormatterUtils.nameHouseType(this.apartment.rcomplexDto.houseType);
         // this.apartment.priceAfterFormat = FormatterUtils.formatPrice(this.apartment.price) || '';
@@ -90,7 +90,6 @@ console.log('')
       console.log(data)
       if (data) {
         this.gallery.set(data);
-        this.gallery2 = data;
 
         this.imgPathMain.set(this.gallery().length > 0 ?
           (this.gallery()[0].photoPath || this.gallery()[0].planningPath || "") : "");
@@ -106,8 +105,8 @@ console.log('')
 
   movePhoto(fromIndex: number, toIndex: number) {
     const photo = this.gallery().splice(fromIndex, 1)[0];
-    // this.gallery().splice(toIndex, 0, photo);
-    this.gallery2.splice(toIndex, 0, photo);
+    this.gallery().splice(toIndex, 0, photo);
+
     this.updateOrder();
  //   this.saveOrderToServer();
     console.log(this.gallery())
@@ -192,12 +191,24 @@ console.log('')
   }
 
 
+  onNumberOfRoomsChange(value: number) {
+    // Если значение больше или равно 5, устанавливаем его равным 5
+    if (value> 5) {
+      this.numberOfRooms.set(5);
+    } else {
+      this.numberOfRooms.set(value);
+
+    }
+
+  }
+
+
 
   apartmentType: string | undefined;
   layoutType: string | undefined;
   floorNumber: string | undefined;
   totalFloors: string | undefined;
-  numberOfRooms: string | undefined;
+  numberOfRooms = signal<number>(1);
   viewFromWindow: string | undefined;
   balconyType: string | undefined;
   stoveType: string | undefined;

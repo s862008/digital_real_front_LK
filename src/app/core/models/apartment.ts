@@ -33,10 +33,12 @@ export interface ApartmentFull {
   balcony: string;
   priceSqmt: bigint;
   floor: number;
-  apartmentType: string;
+  apartmentType: number;
+  layoutType: number;
   roof: string;
   height_roof: string;
   company: string;
+  viewFromWindows:number;
   rcomplexDto: {
     name: string;
     ceilingHeight: number;

@@ -18,14 +18,14 @@
     <div class="results">
       <div class="information">
         <h1>
-          ЖК Композитор <br />
+          ЖК Композитор <br/>
           <span>ул. Независимости, 55л</span>
         </h1>
         <h2>№ 12 456</h2>
       </div>
       <div *ngFor="let listing of listing" class="card">
         <div class="image-block">
-          <img [src]="listing.img" alt="Apartment image" />
+          <img [src]="listing.img" alt="Apartment image"/>
         </div>
         <div class="details">
           <h3>{{ listing.title }}</h3>
@@ -41,30 +41,30 @@
       </div>
       <div class="pictures">
         <h4 class="title">Фото и планировка</h4>
-<!--        <div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--          <div class="image-blocks">-->
-<!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-<!--          </div>-->
-<!--        </div>-->
-        <div><img [src]="this.gallery()[0].photoPath " *ngIf="this.gallery()[0].photoPath " alt="Uploaded MainImage"></div>
-        <div><img [src]="this.gallery2[0].photoPath" *ngIf="this.gallery2[0].photoPath " alt="Uploaded MainImage2"></div>
+        <!--        <div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        <div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--          <div class="image-blocks">-->
+        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <div><img [src]="this.gallery()[0].photoPath " *ngIf="this.gallery()[0].photoPath " alt="Uploaded MainImage">
+        </div>
         <div class="gallery">
 
           <div *ngFor="let photo of gallery(); let i = index" class="image-blocks photo-item">
@@ -76,17 +76,17 @@
         </div>
         <p class="info">
           На фото не должно быть людей, животных, алкоголя, табака, оружия. Не
-          html  добавляйте чужие фото, картинки с водяными знаками и рекламу.
+          html добавляйте чужие фото, картинки с водяными знаками и рекламу.
         </p>
         <div class="upload-file">
-          <input type="file"  (change)="onFileSelected($event)" accept="image/*" />
+          <input type="file" (change)="onFileSelected($event)" accept="image/*"/>
           <span>или перетащите сюда JPG, PNG или GIF до 10Мб каждый</span>
         </div>
         <div>
           <button (click)="onUpload()" [disabled]="uploading">Upload</button>
           <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">
         </div>
-        <div class="container w-25 mx-auto"><img [src]="imageUrl2"  alt="Uploaded Image2"></div>
+        <div class="container w-25 mx-auto"><img [src]="imageUrl2" alt="Uploaded Image2"></div>
 
       </div>
       <div class="apartment-parameters">
@@ -95,52 +95,64 @@
           <div class="sub-list">
             <h5 class="sub-title">Тип жилья</h5>
             <mat-radio-group [(ngModel)]="apartment.apartmentType">
-              <mat-radio-button class="example-margin" value="1">Квартира</mat-radio-button>
-              <mat-radio-button class="example-margin" value="2">Апартаменты</mat-radio-button>
+              <mat-radio-button class="example-margin" value='квартира' [value]="1">Квартира</mat-radio-button>
+              <mat-radio-button class="example-margin" value='апартаменты' [value]="2">Апартаменты</mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Планировка</h5>
-            <mat-radio-group [(ngModel)]="layoutType">
-              <mat-radio-button class="example-margin" value="смежная">Смежная</mat-radio-button>
-              <mat-radio-button class="example-margin" value="изолированная">Изолированная</mat-radio-button>
+            <mat-radio-group [(ngModel)]="apartment.layoutType">
+              <mat-radio-button class="example-margin" value='смежная' [value]="1">Смежная</mat-radio-button>
+              <mat-radio-button class="example-margin" value='изолированная' [value]="2">Изолированная
+              </mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Этаж</h5>
-            <input class="sub-input" type="text" placeholder="5" [(ngModel)]="floorNumber" />
+            <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartment.floor"/>
           </div>
-          <div class="sub-list">
-            <h5 class="sub-title">Этажей в доме</h5>
-            <input class="sub-input" type="text" placeholder="15" [(ngModel)]="totalFloors" />
-          </div>
+          <!--          <div class="sub-list">-->
+          <!--            <h5 class="sub-title">Этажей в доме</h5>-->
+          <!--            <input class="sub-input" type="text" placeholder="15" [(ngModel)]="apartment.rcomplexDto.numberOfFloor" />-->
+          <!--          </div>-->
         </div>
         <div class="list">
           <div class="sub-list">
             <h5 class="sub-title">Количество комнат</h5>
-            <mat-radio-group [(ngModel)]="numberOfRooms">
-              <mat-radio-button class="example-margin" value="студия">Студия</mat-radio-button>
-              <mat-radio-button class="example-margin" value="1 комната">1 комната</mat-radio-button>
-              <mat-radio-button class="example-margin" value="еврооднушка">Еврооднушка</mat-radio-button>
-              <mat-radio-button class="example-margin" value="2 комнаты">2 комнаты</mat-radio-button>
-              <mat-radio-button class="example-margin" value="3 комнаты">3 комнаты</mat-radio-button>
-              <mat-radio-button class="example-margin" value="евротрешка">Евротрешка</mat-radio-button>
-              <mat-radio-button class="example-margin" value="4 комнаты">4 комнаты</mat-radio-button>
-              <mat-radio-button class="example-margin" value="5 комнат и более">5 комнат и более</mat-radio-button>
-              <mat-radio-button class="example-margin" value="свободная планировка">Свободная планировка</mat-radio-button>
+            <mat-radio-group [(ngModel)]="apartment.numberOfRooms">
+              <mat-radio-button class="example-margin" [value]="0.5" value="студия">Студия</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="1" value="1 комната">1 комната</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="1.5" value="еврооднушка">Еврооднушка</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="2" value="2 комнаты">2 комнаты</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="3" value="3 комнаты">3 комнаты</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="3.5" value="евротрешка">Евротрешка</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="4" value="4 комнаты">4 комнаты</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="5" value="5 комнат"
+                                [disabled]="apartment.numberOfRooms >= 5">5 комнат
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="6" value="6 комнат">6 комнат</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="7" value="7 комнат">7 комнат</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="0" value="свободная планировка">Свободная планировка
+              </mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
             <h5 class="sub-title">Вид из окна</h5>
-            <mat-radio-group [(ngModel)]="viewFromWindow">
-              <mat-radio-button class="example-margin" value="Во двор">Во двор</mat-radio-button>
-              <mat-radio-button class="example-margin" value="На улицу">На улицу</mat-radio-button>
-              <mat-radio-button class="example-margin" value="На солнечную сторону">На солнечную сторону</mat-radio-button>
-              <mat-radio-button class="example-margin" value="На две стороны">На две стороны</mat-radio-button>
-              <mat-radio-button class="example-margin" value="Западная сторона">Западная сторона</mat-radio-button>
-              <mat-radio-button class="example-margin" value="Северная сторона">Северная сторона</mat-radio-button>
-              <mat-radio-button class="example-margin" value="Южная сторона">Южная сторона</mat-radio-button>
-              <mat-radio-button class="example-margin" value="Восточная сторона">Восточная сторона</mat-radio-button>
+            <mat-radio-group [(ngModel)]="apartment.viewFromWindows">
+              <mat-radio-button class="example-margin" [value]="1" value="Во двор">Во двор</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="2" value="На улицу">На улицу</mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="3" value="На солнечную сторону">На солнечную сторону
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="4" value="На две стороны">На две стороны
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="5" value="Западная сторона">Западная сторона
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="6" value="Северная сторона">Северная сторона
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="7" value="Южная сторона">Южная сторона
+              </mat-radio-button>
+              <mat-radio-button class="example-margin" [value]="8" value="Восточная сторона">Восточная сторона
+              </mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
@@ -184,10 +196,12 @@
               <mat-radio-button class="example-margin" value="краска">Краска</mat-radio-button>
               <mat-radio-button class="example-margin" value="панели">Панели</mat-radio-button>
               <mat-radio-button class="example-margin" value="линкруст">Линкруст</mat-radio-button>
-              <mat-radio-button class="example-margin" value="дек. штукатурка">Декоративная штукатурка</mat-radio-button>
+              <mat-radio-button class="example-margin" value="дек. штукатурка">Декоративная штукатурка
+              </mat-radio-button>
               <mat-radio-button class="example-margin" value="дек. кирпич">Декоративный кирпич</mat-radio-button>
               <mat-radio-button class="example-margin" value="без покрытия"
-              >Без покрытия</mat-radio-button>
+              >Без покрытия
+              </mat-radio-button>
             </mat-radio-group>
           </div>
           <div class="sub-list">
@@ -228,7 +242,8 @@
             <mat-radio-group [(ngModel)]="balconyGlazing">
               <mat-radio-button class="example-margin" value="пвх">ПВХ</mat-radio-button>
               <mat-radio-button class="example-margin" value="алюминий">Алюминий</mat-radio-button>
-              <mat-radio-button class="example-margin" value="витражное остекление">Витражное остекление</mat-radio-button>
+              <mat-radio-button class="example-margin" value="витражное остекление">Витражное остекление
+              </mat-radio-button>
               <mat-radio-button class="example-margin" value="без остекления">Без остекления</mat-radio-button>
             </mat-radio-group>
           </div>
@@ -263,7 +278,8 @@
             <mat-radio-group [(ngModel)]="balconyGlazing">
               <mat-radio-button class="example-margin" value="пвх">ПВХ</mat-radio-button>
               <mat-radio-button class="example-margin" value="алюминий">Алюминий</mat-radio-button>
-              <mat-radio-button class="example-margin" value="витражное остекление">Витражное остекление</mat-radio-button>
+              <mat-radio-button class="example-margin" value="витражное остекление">Витражное остекление
+              </mat-radio-button>
               <mat-radio-button class="example-margin" value="без остекления">Без остекления</mat-radio-button>
             </mat-radio-group>
           </div>
@@ -293,7 +309,8 @@
               <mat-radio-button class="example-margin" value="квартира">Квартира</mat-radio-button>
               <mat-radio-button class="example-margin" value="монолитный">Монолитный</mat-radio-button>
               <mat-radio-button class="example-margin" value="панельный">Панельный</mat-radio-button>
-              <mat-radio-button class="example-margin" value="кирпично-монолитный">Кирпично-монолитный</mat-radio-button>
+              <mat-radio-button class="example-margin" value="кирпично-монолитный">Кирпично-монолитный
+              </mat-radio-button>
               <mat-radio-button class="example-margin" value="блочный">Блочный</mat-radio-button>
               <mat-radio-button class="example-margin" value="другой">Другой</mat-radio-button>
             </mat-radio-group>
@@ -312,7 +329,8 @@
             <h5 class="sub-title">Сейсмоустойчивость</h5>
             <mat-radio-group [(ngModel)]="seismicResistance">
               <mat-radio-button class="example-margin" value="до 3 баллов">до 3
-                баллов</mat-radio-button>
+                баллов
+              </mat-radio-button>
               <mat-radio-button class="example-margin" value="до 5 баллов">до 5 баллов</mat-radio-button>
               <mat-radio-button class="example-margin" value="до 6 баллов">до 6 баллов</mat-radio-button>
               <mat-radio-button class="example-margin" value="7 и выше">7 и выше</mat-radio-button>
@@ -321,8 +339,8 @@
           <div class="sub-list">
             <h5 class="sub-title">Срок сдачи</h5>
             <div style="display: flex">
-              <input class="sub-input" type="text" placeholder="2024" [(ngModel)]="deliveryYearStart" />
-              <input class="sub-input" type="text" placeholder="2025" [(ngModel)]="deliveryYearEnd" />
+              <input class="sub-input" type="text" placeholder="2024" [(ngModel)]="deliveryYearStart"/>
+              <input class="sub-input" type="text" placeholder="2025" [(ngModel)]="deliveryYearEnd"/>
             </div>
             <mat-checkbox class="example-margin" [(ngModel)]="isHouseDelivered">Дом сдан</mat-checkbox>
           </div>
@@ -353,8 +371,8 @@
           <div class="sub-list">
             <h5 class="sub-title">Квартир на этаже</h5>
             <div style="display: flex">
-              <input class="sub-input" type="text" placeholder="2" [(ngModel)]="apartmentsPerFloorStart" />
-              <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartmentsPerFloorEnd" />
+              <input class="sub-input" type="text" placeholder="2" [(ngModel)]="apartmentsPerFloorStart"/>
+              <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartmentsPerFloorEnd"/>
             </div>
           </div>
         </div>
@@ -398,9 +416,11 @@
           <div class="sub-list">
             <h5 class="sub-title">Парковка</h5>
             <mat-checkbox class="example-margin" [(ngModel)]="isParkingUnderground">Подземная</mat-checkbox>
-            <mat-checkbox class="example-margin" [(ngModel)]="isParkingMultilevel">Наземная многоуровневая</mat-checkbox>
+            <mat-checkbox class="example-margin" [(ngModel)]="isParkingMultilevel">Наземная многоуровневая
+            </mat-checkbox>
             <mat-checkbox class="example-margin" [(ngModel)]="isParkingOpenYard">Открытая во дворе</mat-checkbox>
-            <mat-checkbox class="example-margin" [(ngModel)]="isParkingClosedTerritory">Закрытая территория двора</mat-checkbox>
+            <mat-checkbox class="example-margin" [(ngModel)]="isParkingClosedTerritory">Закрытая территория двора
+            </mat-checkbox>
           </div>
         </div>
       </div>
@@ -450,17 +470,17 @@
         <div class="d-flex">
           <div>
             <label for="lprice">Стоимость квартиры</label>
-            <input type="text" id="lprice" />
+            <input type="text" id="lprice"/>
           </div>
           <div>
             <label for="lpricem">Цена, м2</label>
-            <input type="text" id="lpricem" placeholder="250 000" />
+            <input type="text" id="lpricem" placeholder="250 000"/>
           </div>
         </div>
         <label for="lsertificate"> Использование сертификатов </label>
-        <input type="text" placeholder="Перечислите" id="lsertificate" />
+        <input type="text" placeholder="Перечислите" id="lsertificate"/>
         <label for="lcontacts">Контакты менеджера</label>
-        <input type="text" id="lcontacts" placeholder="+7 " />
+        <input type="text" id="lcontacts" placeholder="+7 "/>
         <input
           type="email"
           style="margin-top: 14px"
