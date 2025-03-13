@@ -1,8 +1,10 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, signal} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {HttpClient, HttpEventType} from "@angular/common/http";
 import { v4 as uuidv4 } from 'uuid';
+import {ApartmentFull} from "../../../core/models/apartment";
+
 
 @Component({
   selector: 'app-editing',
@@ -12,16 +14,30 @@ import { v4 as uuidv4 } from 'uuid';
 export class EditingComponent {
 
   public  apartmentId: string ='207'
-
+  public apartment!: ApartmentFull;
+  public listing ;
   constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {
 
     // this.route.params.subscribe(params => {
     //   this.apartmentId = params['apartmentId']; // Получаем ID из URL
     // });
+
+    this.listing = [
+      { id: '207',
+        title: '',
+        address:
+          'Новостройка, ЖК «Шестое чувство», ул. Композитора Ставонина, 55/9к2',
+        kitchen: 'Кухня: . . . . . . . . . . . . . . . . 13.8 м²',
+        floor: 'Этаж: . . . . . . . . . . . . . . . . 6',
+        deadline: 'Срок сдачи: . . . . . . . . . . сдан',
+        price: 'Не указана',
+        img: '../../../../assets/img/house.png', // Заглушка для изображения
+      },
+    ];
   }
   @Output() galleryChange = new EventEmitter<any[]>();
-  public gallery: Gallery[] = [];
-  public imgPathMain!: string;
+  public gallery = signal<Gallery[]>([]);
+  public imgPathMain = signal<string>('');
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
   imageUrl2: SafeUrl = 'uploads/logo.png';
@@ -31,7 +47,38 @@ export class EditingComponent {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id)
-    //this.listing = this.listingService.getListingById(id); // Загрузите данные карточки товара
+    // Загрузите данные аппартаментов
+    this.http.get(`/api/v1/apartments/full/207`).subscribe({
+
+      next: (data: any): void => {
+console.log('')
+        this.apartment = data;
+        console.log(data)
+        this.listing = [
+          { id: '207',
+            title:  this.apartment.numberOfRooms + `${this.apartment.areaTotal} м²`,
+            address:
+              'Новостройка, ЖК «Шестое чувство», ул. Композитора Ставонина, 55/9к2',
+            kitchen: 'Кухня: . . . . . . . . . . . . . . . . 13.8 м²',
+            floor: 'Этаж: . . . . . . . . . . . . . . . . 6',
+            deadline: 'Срок сдачи: . . . . . . . . . . сдан',
+            price: 'Не указана',
+            img: '../../../../assets/img/house.png', // Заглушка для изображения
+          },
+        ];
+        this.numberOfRooms.set(this.apartment.numberOfRooms);
+        // this.apartment.apartmentType = FormatterUtils.nameApartType(this.apartment.apartmentType);
+        // this.apartment.rcomplexDto.type_build = FormatterUtils.nameHouseType(this.apartment.rcomplexDto.houseType);
+        // this.apartment.priceAfterFormat = FormatterUtils.formatPrice(this.apartment.price) || '';
+        // this.apartment.priceSqmtAfterFormat = FormatterUtils.formatPrice(this.apartment.priceSqmt)|| '';
+
+      },
+      error: (err) => {
+
+        console.error(err);
+
+      }
+    });
 
     this.loadGallery()
 
@@ -42,36 +89,40 @@ export class EditingComponent {
     this.http.get<Gallery[]>(`/api/v1/apartments/gallery/207`).subscribe(data => {
       console.log(data)
       if (data) {
-        this.gallery = data;
-        this.imgPathMain = this.gallery.length > 0 ?
-          (this.gallery[0].photoPath || this.gallery[0].planningPath || "") : "";
+        this.gallery.set(data);
+
+        this.imgPathMain.set(this.gallery().length > 0 ?
+          (this.gallery()[0].photoPath || this.gallery()[0].planningPath || "") : "");
       }
     });
   }
 
   removePhoto(index: number) {
-    this.gallery.splice(index, 1);
-    this.galleryChange.emit(this.gallery);
+    this.gallery().splice(index, 1);
+
+    this.galleryChange.emit(this.gallery());
   }
 
   movePhoto(fromIndex: number, toIndex: number) {
-    const photo = this.gallery.splice(fromIndex, 1)[0];
-    this.gallery.splice(toIndex, 0, photo);
-    this.updateOrder();
-    this.saveOrderToServer();
+    const photo = this.gallery().splice(fromIndex, 1)[0];
+    this.gallery().splice(toIndex, 0, photo);
 
-    this.galleryChange.emit(this.gallery);
+    this.updateOrder();
+ //   this.saveOrderToServer();
+    console.log(this.gallery())
+    console.log(this.imgPathMain())
+    this.galleryChange.emit(this.gallery());
   }
 
   updateOrder(): void {
-    this.gallery.forEach((item, index) => {
+    this.gallery().forEach((item, index) => {
       item.order = index + 1; // Порядок начинается с 1
     });
   }
 
   saveOrderToServer(): void {
     const url = `/test/apartment/${this.apartmentId}/gallery/update-order`;
-    this.http.post(url, this.gallery).subscribe(
+    this.http.post(url, this.gallery()).subscribe(
       () => console.log('Порядок успешно обновлён'),
       (error) => console.error('Ошибка при обновлении порядка', error)
     );
@@ -106,10 +157,16 @@ export class EditingComponent {
     this.uploadProgress = 0;
 
     const formData = new FormData();
+    let filename: string;
+    // const filename: string = "a"+this.listing[0].id+"__"+uuidv4()+"."+this.selectedFile.type.split("/").pop()
 
-   // const filename: string = "a"+this.listing[0].id+"__"+uuidv4()+"."+this.selectedFile.type.split("/").pop()
-    const filename: string ="a"+this.listing[0].id
-    formData.append('image', this.selectedFile, filename);
+    if (this.listing[0].id) {
+      filename = "a" + this.listing[0].id
+
+      formData.append('image', this.selectedFile, filename);
+    }
+
+
 
     this.http.post<ImageUploadResponse>('/test/upload', formData, {
       reportProgress: true,
@@ -134,23 +191,24 @@ export class EditingComponent {
   }
 
 
-  listing = [
-    { id: '207',
-      title: '2 комнаты, 61.8 м²',
-      address:
-        'Новостройка, ЖК «Шестое чувство», ул. Композитора Ставонина, 55/9к2',
-      kitchen: 'Кухня: . . . . . . . . . . . . . . . . 13.8 м²',
-      floor: 'Этаж: . . . . . . . . . . . . . . . . 6',
-      deadline: 'Срок сдачи: . . . . . . . . . . сдан',
-      price: 'Не указана',
-      img: '../../../../assets/img/house.png', // Заглушка для изображения
-    },
-  ];
+  onNumberOfRoomsChange(value: number) {
+    // Если значение больше или равно 5, устанавливаем его равным 5
+    if (value> 5) {
+      this.numberOfRooms.set(5);
+    } else {
+      this.numberOfRooms.set(value);
+
+    }
+
+  }
+
+
+
   apartmentType: string | undefined;
   layoutType: string | undefined;
   floorNumber: string | undefined;
   totalFloors: string | undefined;
-  numberOfRooms: string | undefined;
+  numberOfRooms = signal<number>(1);
   viewFromWindow: string | undefined;
   balconyType: string | undefined;
   stoveType: string | undefined;
