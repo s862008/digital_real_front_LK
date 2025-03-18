@@ -120,6 +120,7 @@ console.log('')
     });
   }
 
+
   saveOrderToServer(): void {
     const url = `/test/apartment/${this.apartmentId}/gallery/update-order`;
     this.http.post(url, this.gallery()).subscribe(

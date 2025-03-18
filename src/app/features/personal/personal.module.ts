@@ -18,6 +18,7 @@ import { PolititcComponent } from './politic/politic.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StatisticComponent } from './statistic/statistic.component';
 import {MatRadioModule} from "@angular/material/radio";
+import {RcomplexParametrsComponent} from "./rcomplex-parametrs/rcomplex-parametrs.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatRadioModule} from "@angular/material/radio";
     OrderComponent,
     EditingComponent,
     PolititcComponent,
+    RcomplexParametrsComponent,
   ],
   imports: [
     CommonModule,
