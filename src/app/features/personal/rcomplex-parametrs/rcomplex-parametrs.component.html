@@ -1,0 +1,125 @@
+<div class="apartment-parameters">
+  <h3 class="title">Параметры дома</h3>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Тип жилья</h5>
+      <mat-radio-group [(ngModel)]="houseType">
+        <mat-radio-button class="example-margin" value="квартира">Квартира</mat-radio-button>
+        <mat-radio-button class="example-margin" value="монолитный">Монолитный</mat-radio-button>
+        <mat-radio-button class="example-margin" value="панельный">Панельный</mat-radio-button>
+        <mat-radio-button class="example-margin" value="кирпично-монолитный">Кирпично-монолитный</mat-radio-button>
+        <mat-radio-button class="example-margin" value="блочный">Блочный</mat-radio-button>
+        <mat-radio-button class="example-margin" value="другой">Другой</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Класс цифровизации</h5>
+      <mat-radio-group [(ngModel)]="digitalizationClass">
+        <mat-radio-button class="example-margin" value="A">A</mat-radio-button>
+        <mat-radio-button class="example-margin" value="B">B</mat-radio-button>
+        <mat-radio-button class="example-margin" value="C">C</mat-radio-button>
+        <mat-radio-button class="example-margin" value="D">D</mat-radio-button>
+        <mat-radio-button class="example-margin" value="E">E</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Сейсмоустойчивость</h5>
+      <mat-radio-group [(ngModel)]="seismicResistance">
+        <mat-radio-button class="example-margin" value="до 3 баллов">до 3
+          баллов
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" value="до 5 баллов">до 5 баллов</mat-radio-button>
+        <mat-radio-button class="example-margin" value="до 6 баллов">до 6 баллов</mat-radio-button>
+        <mat-radio-button class="example-margin" value="7 и выше">7 и выше</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Срок сдачи</h5>
+      <div style="display: flex">
+        <input class="sub-input" type="text" placeholder="2024" [(ngModel)]="deliveryYearStart"/>
+        <input class="sub-input" type="text" placeholder="2025" [(ngModel)]="deliveryYearEnd"/>
+      </div>
+      <mat-checkbox class="example-margin" [(ngModel)]="isHouseDelivered">Дом сдан</mat-checkbox>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Высота потолков</h5>
+      <mat-radio-group [(ngModel)]="ceilingHeight">
+        <mat-radio-button class="example-margin" value="от 2.7м">от 2.7м</mat-radio-button>
+        <mat-radio-button class="example-margin" value="до 2.7м">до 2.7м</mat-radio-button>
+        <mat-radio-button class="example-margin" value="от 3м">от 3м</mat-radio-button>
+        <mat-radio-button class="example-margin" value="от 3.5м">от 3.5м</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Количество лифтов</h5>
+      <mat-radio-group [(ngModel)]="numberOfLifts">
+        <mat-radio-button class="example-margin" value="1">1</mat-radio-button>
+        <mat-radio-button class="example-margin" value="2">2</mat-radio-button>
+        <mat-radio-button class="example-margin" value="3 и более">3 и более</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Умный дом</h5>
+      <mat-checkbox class="example-margin" [(ngModel)]="isSmartHouse">Да</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNotSmartHouse">Нет</mat-checkbox>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Квартир на этаже</h5>
+      <div style="display: flex">
+        <input class="sub-input" type="text" placeholder="2" [(ngModel)]="apartmentsPerFloorStart"/>
+        <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartmentsPerFloorEnd"/>
+      </div>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Лифт</h5>
+      <mat-radio-group [(ngModel)]="liftType">
+        <mat-radio-button class="example-margin" value="пассажирский">Пассажирский</mat-radio-button>
+        <mat-radio-button class="example-margin" value="грузовой">Грузовой</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Своя котельная</h5>
+      <mat-checkbox class="example-margin" [(ngModel)]="hasOwnBoilerRoom">Да</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="hasNotOwnBoilerRoom">Нет</mat-checkbox>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Рядом</h5>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyTC">ТЦ</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyFitness">Фитнес</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyPark">Парк</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbySchool">Школа</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyKindergarten">Детский сад</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyPolyclinic">Поликлинника</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyBusStop">Остановка</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNearbyCarService">Автосервис</mat-checkbox>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Закрытый двор</h5>
+      <mat-checkbox class="example-margin" [(ngModel)]="isClosedYard">Да</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isNotClosedYard">Нет</mat-checkbox>
+    </div>
+    <div class="sub-list">
+                  <h5 class="sub-title">Радиоторы</h5>
+                  <mat-radio-group [(ngModel)]="radiatorType">
+                    <mat-radio-button class="example-margin" value="биметал">Биметал</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="стальные">Стальные</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="алюминивые">Алюминивые</mat-radio-button>
+                  </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Парковка</h5>
+      <mat-checkbox class="example-margin" [(ngModel)]="isParkingUnderground">Подземная</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isParkingMultilevel">Наземная многоуровневая
+      </mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isParkingOpenYard">Открытая во дворе</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="isParkingClosedTerritory">Закрытая территория двора
+      </mat-checkbox>
+    </div>
+  </div>
+</div>
