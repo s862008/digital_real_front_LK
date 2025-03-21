@@ -20,6 +20,7 @@ export class RcomplexParametrsComponent {
   apartmentsPerFloorStart: string | undefined;
   apartmentsPerFloorEnd: string | undefined;
   liftType: string | undefined;
+  stoveType: string | undefined;
   hasOwnBoilerRoom: boolean = false;
   hasNotOwnBoilerRoom: boolean = false;
   isNearbyTC: boolean = false;

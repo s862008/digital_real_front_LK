@@ -1,1 +1,236 @@
-<p>apartment-parametrs works!</p>
+<div class="apartment-parameters">
+  <h3 class="title">Параметры квартиры</h3>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Тип жилья</h5>
+      <mat-radio-group [(ngModel)]="apartment.apartmentType">
+        <mat-radio-button class="example-margin" value='квартира' [value]="1">Квартира</mat-radio-button>
+        <mat-radio-button class="example-margin" value='апартаменты' [value]="2">Апартаменты</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Планировка</h5>
+      <mat-radio-group [(ngModel)]="apartment.layoutType">
+        <mat-radio-button class="example-margin" value='смежная' [value]="1">Смежная</mat-radio-button>
+        <mat-radio-button class="example-margin" value='изолированная' [value]="2">Изолированная
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Этаж</h5>
+      <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartment.floor"/>
+    </div>
+
+    <div class="sub-list">
+      <h5 class="sub-title">Площадь (Общая)</h5>
+      <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartment.areaTotal"/>
+
+      <h5 class="sub-title">Площадь (Жилая)</h5>
+      <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartment.areaLiving"/>
+
+
+      <h5 class="sub-title">Площадь (Кухня)</h5>
+      <input class="sub-input" type="text" placeholder="5" [(ngModel)]="apartment.areaKitchen"/>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Количество комнат</h5>
+      <mat-radio-group [(ngModel)]="apartment.numberOfRooms">
+        <mat-radio-button class="example-margin" [value]="0.5" value="студия">Студия</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="1" value="1 комната">1 комната</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="1.5" value="еврооднушка">Еврооднушка</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="2 комнаты">2 комнаты</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="3 комнаты">3 комнаты</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3.5" value="евротрешка">Евротрешка</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="4 комнаты">4 комнаты</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="5 комнат"
+                          [disabled]="apartment.numberOfRooms >= 5">5 комнат
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="6" value="6 комнат">6 комнат</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="7" value="7 комнат">7 комнат</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="свободная планировка">Свободная планировка
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Вид из окна</h5>
+      <mat-radio-group [(ngModel)]="apartment.viewFromWindows">
+        <mat-radio-button class="example-margin" [value]="1" value="Во двор">Во двор</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="На улицу">На улицу</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="На солнечную сторону">На солнечную сторону
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="На две стороны">На две стороны
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="Западная сторона">Западная сторона
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="6" value="Северная сторона">Северная сторона
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="7" value="Южная сторона">Южная сторона
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="8" value="Восточная сторона">Восточная сторона
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Балкон</h5>
+      <mat-radio-group [(ngModel)]="apartment.balcony">
+        <mat-radio-button class="example-margin" [value]="1" value="Балкон">Балкон</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="Лоджия">Лоджия</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="Утепленный балкон">Утепленный балкон
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Санузел</h5>
+      <mat-radio-group [(ngModel)]="apartment.bathroom">
+        <mat-radio-button class="example-margin" [value]="1" value="совмещенный">Совмещённый</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="раздельный">Раздельный</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="2иболее">2 и более</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Отделка</h5>
+      <mat-radio-group [(ngModel)]="apartment.decoration">
+        <mat-radio-button class="example-margin" [value]="1" value="предчистовая">Предчистовая
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="чистовая">Чистовая</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="эконом-класс">Эконом-класс
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="комфорт-класс">Комфорт-класс
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="бизнес-класс">Бизнес-класс
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без отделки">Без отделки</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Отделка стен</h5>
+      <mat-radio-group [(ngModel)]="apartment.decorationWall">
+        <mat-radio-button class="example-margin" [value]="1" value="обои">Обои</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="краска">Краска</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="панели">Панели</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="линкруст">Линкруст</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="дек. штукатурка">Декоративная штукатурка
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="6" value="дек. кирпич">Декоративный кирпич
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без покрытия"
+        >Без покрытия
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Отделка потолка</h5>
+      <mat-radio-group [(ngModel)]="apartment.decorationCeiling">
+        <mat-radio-button class="example-margin" [value]="1" value="побелка">Побелка</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="покраска">Покраска</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="потолочная плитка">Потолочная плитка
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="подвесной потолок">Подвесной потолок
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="натяжной потолок">Натяжной потолок
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без покрытия">Без покрытия</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Покрытие пола</h5>
+      <mat-radio-group [(ngModel)]="apartment.floorCovering">
+        <mat-radio-button class="example-margin" [value]="1" value="линолеум">Линолеум</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="ламинат">Ламинат</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="паркет">Паркет</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="4" value="керамогранит">Керамогранит</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="5" value="кварцвинил">Кварцвинил</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без покрытия">Без покрытия</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="list">
+    <div class="sub-list">
+      <h5 class="sub-title">Ремонт</h5>
+      <mat-radio-group [(ngModel)]="apartment.repairType">
+        <mat-radio-button class="example-margin" [value]="1" value="косметический">Косметический</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="евро">Евро</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="дизайнерский">Дизайнерский</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без ремонта">Без ремонта</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Остекление балкона</h5>
+      <mat-radio-group [(ngModel)]="apartment.glazing">
+        <mat-radio-button class="example-margin" [value]="1" value="пвх">ПВХ</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2" value="алюминий">Алюминий</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="3" value="витражное остекление">Витражное остекление
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="0" value="без остекления">Без остекления</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Отделка санузла</h5>
+      <mat-radio-group [(ngModel)]="apartment.isDecorationBathroom">
+        <mat-radio-button class="example-margin" [value]="false" value="без отделки">Без отделки</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="true" value="с отделкой">С отделкой</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sub-list">
+      <h5 class="sub-title">Меблировка</h5>
+      <mat-radio-group [(ngModel)]="apartment.furniture">
+        <mat-radio-button class="example-margin" [value]="0">Без мебели</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="1">Мебель на кухне</mat-radio-button>
+        <mat-radio-button class="example-margin" [value]="2">Во всей квартире</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="apartment-parameters">
+    <h3 class="title">Цена и условия сделки</h3>
+    <div class="list">
+      <div class="sub-list">
+        <h5 class="sub-title">Способ продажи</h5>
+        <mat-radio-group [(ngModel)]="apartment.saleType">
+          <mat-radio-button class="example-margin" [value]="1" value="дду">ДДУ</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="2" value="договор жск">Договор ЖСК</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="3" value="переуступка">Переуступка</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="4" value="ДКП">ДКП</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="sub-list">
+        <h5 class="sub-title">Бронирование</h5>
+        <mat-radio-group [(ngModel)]="apartment.isOnlineBooking">
+          <mat-radio-button class="example-margin" [value]="true">Онлайн</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="sub-list">
+        <h5 class="sub-title">Электронная сделка</h5>
+        <mat-radio-group [(ngModel)]="apartment.isElectronReg">
+          <mat-radio-button class="example-margin" [value]="true">Да</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="list">
+      <div class="sub-list">
+        <h5 class="sub-title">АКЦИИ</h5>
+        <mat-radio-group [(ngModel)]="apartment.isStock">
+          <mat-radio-button class="example-margin" [value]="true">Да</mat-radio-button>
+          <mat-radio-button class="example-margin" [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="add-information">
+    <div class="d-flex">
+      <div>
+        <label for="lprice">Стоимость квартиры</label>
+        <input type="text" [(ngModel)]="apartment.price" id="lprice"/>
+      </div>
+      <div>
+        <label for="lpricem">Цена, м2</label>
+        <input type="text" [(ngModel)]="apartment.priceSqmt" id="lpricem" placeholder="250 000"/>
+      </div>
+    </div>
+  </div>
+</div>

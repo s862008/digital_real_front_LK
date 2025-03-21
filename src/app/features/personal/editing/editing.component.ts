@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output, signal} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {HttpClient, HttpEventType} from "@angular/common/http";
+import {HttpClient, HttpEventType, HttpHeaders} from "@angular/common/http";
 import { v4 as uuidv4 } from 'uuid';
 import {ApartmentFull} from "../../../core/models/apartment";
 
@@ -99,7 +99,22 @@ console.log('')
 
   removePhoto(index: number) {
     this.gallery().splice(index, 1);
+    console.log(this.gallery()[index].id);
 
+
+
+    const url = `/test/delete/${this.gallery()[index].photoPath}`;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer your_token_here', // Замените на ваш токен
+      // Вы можете добавить здесь другие заголовки, если нужно
+    });
+    this.http.delete(url,{ headers }).subscribe(
+      () => console.log('файл успешно удален'),
+      (error) => console.error('Ошибка при удалении', error)
+    );
+
+   // this.updateOrder();
     this.galleryChange.emit(this.gallery());
   }
 

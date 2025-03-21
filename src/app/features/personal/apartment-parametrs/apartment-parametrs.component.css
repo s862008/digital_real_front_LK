@@ -1,0 +1,224 @@
+.edit-section {
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.select-option {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 150px; /* Добавлено min-width */
+}
+
+.filters button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #174449;
+  color: #fff;
+  cursor: pointer;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.information {
+  margin-bottom: 20px;
+}
+
+.information h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.information span {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.card {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.image-block {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.image-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.details {
+  flex: 1;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.prices h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.prices h3 {
+  font-size: 16px;
+  color: #777;
+  margin: 0;
+}
+
+
+.pictures {
+  margin-bottom: 20px;
+}
+
+.pictures .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.pictures > div {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.image-blocks {
+  width: 50vw;
+  height: 50vh;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.image-blocks img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  display: block;
+}
+
+.pictures .info {
+  font-size: 14px;
+  color: #555;
+}
+
+.upload-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.upload-file input[type="file"] {
+  margin-bottom: 10px;
+}
+.upload-file span {
+  font-size: 14px;
+  color: #555;
+}
+
+.apartment-parameters {
+  margin-bottom: 20px;
+}
+.apartment-parameters .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+
+.sub-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px; /* Добавил min-width для flex элементов */
+}
+
+.sub-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  max-width: 80px;
+}
+.mat-mdc-radio-button{
+  margin: 5px 0;
+}
+.add-information {
+  display: flex;
+  flex-direction: column;
+}
+.add-information .d-flex {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.add-information label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-information input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.save-change {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #174449;
+  color: #fff;
+  cursor: pointer;
+}
+/* Styles for Angular Material */
+.example-margin {
+  margin: 5px;
+  display: block;
+}
+
