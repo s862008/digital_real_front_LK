@@ -19,6 +19,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { StatisticComponent } from './statistic/statistic.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {RcomplexParametrsComponent} from "./rcomplex-parametrs/rcomplex-parametrs.component";
+import {AddComponent} from "./add/add.component";
+import {ApartmentParametrsComponent} from "./apartment-parametrs/apartment-parametrs.component";
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import {RcomplexParametrsComponent} from "./rcomplex-parametrs/rcomplex-parametr
     EditingComponent,
     PolititcComponent,
     RcomplexParametrsComponent,
+    ApartmentParametrsComponent,
+    AddComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +57,16 @@ import {RcomplexParametrsComponent} from "./rcomplex-parametrs/rcomplex-parametr
           {path: '', redirectTo: 'order', pathMatch: 'full'},
           {path: 'profile', component: ProfileComponent},
           {path: 'order', component: OrderComponent},
+          {
+            path: 'addApart',
+            component: AddComponent,
+            data: { type: 'addApart' }
+          },
+          {
+            path: 'addRComplex',
+            component: AddComponent,
+            data: { type: 'addRC' }
+          },
           {path: 'favorite', component: FavoriteComponent},
           {path: 'stat', component: StatisticComponent},
           {path: 'editing/:id', component: EditingComponent},

@@ -8,6 +8,10 @@ export interface Apartment {
 }
 
 export interface ApartmentFull {
+  isStock: boolean;
+  isElectronReg: boolean;
+  isOnlineBooking: boolean;
+  saleType: number;
   id: bigint;
   photoMainPath: string;
   photoDefaultPath: string;

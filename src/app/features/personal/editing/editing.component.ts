@@ -103,8 +103,8 @@ console.log('')
 
 
 
-   // const url = `/test/delete/${this.gallery()[index].photoPath}`;
-    const url = `/test/delete/errr/rrt`;
+    const url = `/test/delete/${this.gallery()[index].photoPath}`;
+
     const headers = new HttpHeaders({
       'Authorization': 'Bearer your_token_here', // Замените на ваш токен
       // Вы можете добавить здесь другие заголовки, если нужно
