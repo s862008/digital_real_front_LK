@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+img {
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.add-section {
+  padding: 20px 0;
+}
+.save-change {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #174449;
+  color: #fff;
+  cursor: pointer;
+}
+

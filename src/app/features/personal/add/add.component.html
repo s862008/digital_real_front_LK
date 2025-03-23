@@ -1,4 +1,55 @@
-<p>add works!</p>
-<div *ngif="addType=='addApart'">
-  <app-apartment-parametrs></app-apartment-parametrs>
-</div>
+<section class="add-section">
+  <div class="container">
+    <div class="mx-2 my-3">
+      <h2>Новое обявление</h2>
+    </div>
+    <div class="mx-2 my-3">
+      <p> Выберите жилой комплекс</p>
+      <select class="select-option">
+        <option value="Все ЖК">Все ЖК</option>
+        <option value="ЖК Современник">ЖК Современник</option>
+        <option value="ЖК Звезда">ЖК Звезда</option>
+        <option value="ЖК Композитор">ЖК Композитор</option>
+      </select>
+    </div>
+    <div class="gallery">
+      <!-- Загрузка фотографий -->
+      <div>
+        <input type="file" multiple (change)="onFileSelected($event)" />
+        <div *ngFor="let photo of photos">
+          <img [src]="photo.url" alt="Preview" style="max-width: 200px; max-height: 200px;" />
+        </div>
+      </div>
+      <!--  <div *ngFor="let photo of gallery(); let i = index" class="image-blocks photo-item">-->
+      <!--    <img [src]="photo.photoPath" alt="Photo">-->
+      <!--    <button (click)="removePhoto(i)">Удалить</button>-->
+      <!--    <button (click)="movePhoto(i, i - 1)" [disabled]="i === 0">Вверх</button>-->
+      <!--    <button (click)="movePhoto(i, i + 1)" [disabled]="i === gallery().length - 1">Вниз</button>-->
+      <!--  </div>-->
+    </div>
+    <p class="info">
+      На фото не должно быть людей, животных, алкоголя, табака, оружия. Не
+      html добавляйте чужие фото, картинки с водяными знаками и рекламу.
+    </p>
+    <div class="upload-file">
+      <input type="file" (change)="onFileSelected($event)"
+             accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"/>
+      <span>или перетащите сюда JPG, PNG или GIF до 10Мб каждый</span>
+    </div>
+    <div>
+      <!--  <button (click)="onUpload()" [disabled]="uploading">Upload</button>-->
+      <!--  <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">-->
+    </div>
+
+
+
+    <div class="mx-5 my-3" *ngIf="addType == 'addApart'">
+      <form (ngSubmit)="onSubmit()">
+      <app-apartment-parametrs [apartment]="apartment"></app-apartment-parametrs>
+        <button  type="submit"class="save-change">Сохранить</button>
+      </form>
+    </div>
+
+
+  </div>
+</section>
