@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ApartmentFull } from '../../../core/models/apartment';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {RComplex} from "../../../core/models/rcomplex";
 
 
-class ApartmentService {
+class DataService {
   private apiUrl = '/api/apartment';
 
   constructor(private http: HttpClient) {}
@@ -16,6 +17,10 @@ class ApartmentService {
 
   uploadPhotos(files: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/upload-photos`, files);
+  }
+
+  getResidentialComplexes(): Observable<RComplex[]> {
+    return this.http.get<RComplex[]>(this.apiUrl);
   }
 }
 
@@ -28,18 +33,21 @@ export class AddComponent implements OnInit {
   addType: string = '';
   public apartment: ApartmentFull = this.createEmptyApartment();
   public photos: { file: File; url: string }[] = [];
-  public apartmentService : ApartmentService;
+  public dataService : DataService;
+  residentialComplexes: RComplex[] = [];
+  selectedComplex: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient
-  ) {this.apartmentService = new ApartmentService(http);}
+  ) {this.dataService = new DataService(http);}
 
   ngOnInit(): void {
     this.addType = this.route.snapshot.data['type'];
     console.log('Received data:', this.addType);
 
     if (this.addType === 'addApart') {
+      this.loadResidentialComplexes();
       this.apartment = this.createEmptyApartment();
     }
   }
@@ -62,14 +70,25 @@ export class AddComponent implements OnInit {
       formData.append('photos', photo.file);
     });
 
-    this.apartmentService.uploadPhotos(formData).subscribe({
+    this.dataService.uploadPhotos(formData).subscribe({
       next: () => console.log('Фотографии успешно загружены'),
       error: (error) => console.error('Ошибка при загрузке фотографий', error),
     });
   }
 
+  loadResidentialComplexes(): void {
+    this.dataService.getResidentialComplexes().subscribe({
+      next: (data) => {
+        this.residentialComplexes = data;
+      },
+      error: (error) => {
+        console.error('Ошибка при загрузке списка ЖК:', error);
+      },
+    });
+  }
+
   onSubmit(): void {
-    this.apartmentService.createApartment(this.apartment).subscribe({
+    this.dataService.createApartment(this.apartment).subscribe({
       next: (response) => {
         console.log('Квартира успешно создана:', response);
         this.uploadPhotos();

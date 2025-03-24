@@ -51,7 +51,7 @@ export class EditingComponent {
     this.http.get(`/api/v1/apartments/full/207`).subscribe({
 
       next: (data: any): void => {
-console.log('')
+
         this.apartment = data;
         console.log(data)
         this.listing = [
