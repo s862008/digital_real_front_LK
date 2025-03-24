@@ -11,7 +11,7 @@
           <option value="По дате">Не все ЖК</option>
         </select>
       </div>
-      <button class="add-order">Добавить объявление</button>
+      <button class="add-order" [routerLink]="['/personal-cabinet/addApart']">Добавить объявление</button>
     </div>
     <div class="results">
       <div *ngFor="let listing of listings" class="card">

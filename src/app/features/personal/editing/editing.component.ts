@@ -51,7 +51,7 @@ export class EditingComponent {
     this.http.get(`/api/v1/apartments/full/207`).subscribe({
 
       next: (data: any): void => {
-console.log('')
+
         this.apartment = data;
         console.log(data)
         this.listing = [
@@ -66,7 +66,7 @@ console.log('')
             img: '../../../../assets/img/house.png', // Заглушка для изображения
           },
         ];
-        this.numberOfRooms.set(this.apartment.numberOfRooms);
+        this.numberOfRooms.set(this.apartment.numberOfRooms ?? 1);
         // this.apartment.apartmentType = FormatterUtils.nameApartType(this.apartment.apartmentType);
         // this.apartment.rcomplexDto.type_build = FormatterUtils.nameHouseType(this.apartment.rcomplexDto.houseType);
         // this.apartment.priceAfterFormat = FormatterUtils.formatPrice(this.apartment.price) || '';
