@@ -1,7 +1,7 @@
-import { Component, OnInit, signal } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, signal} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApartmentFull } from '../../../core/models/apartment';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {RComplex} from "../../../core/models/rcomplex";
 
@@ -32,11 +32,11 @@ class DataService {
 export class AddComponent implements OnInit {
   addType: string = '';
   public apartment: ApartmentFull = this.createEmptyApartment();
-  public photos: { file: File; url: string }[] = [];
+  public photos: { file: File; url: string; order:number }[] = [];
   public dataService : DataService;
   residentialComplexes: RComplex[] = [];
   selectedComplex: string = '';
-
+  @Output() galleryChange = new EventEmitter<any[]>();
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient
@@ -57,7 +57,7 @@ export class AddComponent implements OnInit {
     for (let file of files) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.photos.push({ file, url: e.target.result });
+        this.photos.push({ file, url: e.target.result,order: this.photos.length+1 });
       };
       reader.readAsDataURL(file);
     }
@@ -87,7 +87,39 @@ export class AddComponent implements OnInit {
     });
   }
 
+  removePhoto(index: number) {
+    this.photos.splice(index, 1);
+    const url = `/test/delete/${this.photos[index].url}`;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer your_token_here', // Замените на ваш токен
+      // Вы можете добавить здесь другие заголовки, если нужно
+    });
+    this.http.delete(url,{ headers }).subscribe(
+      () => console.log('файл успешно удален'),
+      (error) => console.error('Ошибка при удалении', error)
+    );
+
+    // this.updateOrder();
+    this.galleryChange.emit(this.photos);
+  }
+
+  movePhoto(fromIndex: number, toIndex: number) {
+    const photo = this.photos.splice(fromIndex, 1)[0];
+    this.photos.splice(toIndex, 0, photo);
+
+    this.updateOrder();
+    this.galleryChange.emit(this.photos);
+  }
+  updateOrder(): void {
+    this.photos.forEach((item, index) => {
+      item.order = index + 1; // Порядок начинается с 1
+    });
+  }
+
   onSubmit(): void {
+    console.log(this.apartment)
+    console.log(this.photos)
     this.dataService.createApartment(this.apartment).subscribe({
       next: (response) => {
         console.log('Квартира успешно создана:', response);
@@ -140,7 +172,7 @@ export class AddComponent implements OnInit {
       priceSqmt: null,
       floor: null,
       viewFromWindows: null,
-      apartmentType: null,
+      apartmentType: 1,
       roof: null,
       height_roof: null,
       company: null,
