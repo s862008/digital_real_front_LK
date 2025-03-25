@@ -70,11 +70,14 @@
 
 
       </div>
-
+      <form (ngSubmit)="onSubmit()">
       <app-apartment-parametrs [apartment]="apartment"></app-apartment-parametrs>
+        <button type="submit" class="save-change" [disabled]="isSubmitting">
+          <span *ngIf="!isSubmitting">Сохранить изменения</span>
+          <span *ngIf="isSubmitting">Сохранить...</span>
+        </button>
+      </form>
 
-
-      <button class="save-change">Сохранить изменения</button>
     </div>
   </div>
 </section>

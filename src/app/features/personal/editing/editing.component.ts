@@ -41,6 +41,7 @@ export class EditingComponent {
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
   uploading: boolean = false;
+  isSubmitting:boolean = false;
   uploadProgress: number = 0;
 
   ngOnInit(): void {
@@ -207,6 +208,15 @@ export class EditingComponent {
 
   }
 
+  async onSubmit(): Promise<void> {
+
+    this.isSubmitting = true;
+    try {
+
+    } finally {
+      this.isSubmitting = false;
+    }
+  }
 
   onNumberOfRoomsChange(value: number) {
     // Если значение больше или равно 5, устанавливаем его равным 5
