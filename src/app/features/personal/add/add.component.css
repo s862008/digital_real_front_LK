@@ -22,7 +22,10 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 button:hover {
   background-color: #0056b3;
 }
@@ -41,11 +44,10 @@ button:hover {
 
 .image-blocks {
   width: 50vw;
-  height: 35vh;
   overflow: hidden;
   border-radius: 5px;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -58,8 +60,8 @@ button:hover {
 
 .photo-item {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
 }
 
 .photo-item img {
@@ -144,7 +146,7 @@ button:hover {
 
 .gallery > div {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 10px;
 }
 
@@ -160,14 +162,50 @@ button:hover {
   border-radius: 5px;
   min-width: 150px; /* Добавлено min-width */
 }
-.upload-file {
+.upload-container {
+  display: block;
+  /*width: 100%;*/
+  /*margin: 0 auto;*/
+  width: 240px;
+}
+
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.3s;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.upload-area.drag-over {
+  border-color: #2196F3;
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.upload-content {
+  pointer-events: none;
+}
+.info{
+  font-size: 14px;
+}
+
+#fileInput {
+  display: none;
+}
+
+.upload-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px dashed #ccc;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {

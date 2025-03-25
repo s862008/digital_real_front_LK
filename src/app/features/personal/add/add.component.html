@@ -15,6 +15,9 @@
         <div class="gallery">
           <!-- Загрузка фотографий -->
           <h4 class="title">Фото и планировка</h4>
+          <p class="info">
+          На фото не должно быть людей, животных, алкоголя, табака, оружия. Не
+          добавляйте чужие фото, картинки с водяными знаками и рекламу. Ограничение до 10 фотографий. </p>
           <div class="image-blocks">
             <div class="photo-item" *ngFor="let photo of photos; let i = index">
               <img [src]="photo.url" alt="Preview"/>
@@ -24,29 +27,46 @@
                 <button (click)="movePhoto(i, i + 1)" [disabled]="i === photos.length - 1">>></button>
               </div>
             </div>
-          </div>
+            <div class="upload-container">
+              <div class="upload-area"
+                   (drop)="onDrop($event)"
+                   (dragover)="onDragOver($event)"
+                   (dragleave)="onDragLeave($event)"
+                   [class.drag-over]="isDragOver">
+                <div class="upload-content">
 
-          <p class="info">
-            На фото не должно быть людей, животных, алкоголя, табака, оружия. Не
-            html добавляйте чужие фото, картинки с водяными знаками и рекламу.
-            <span>JPG, PNG или GIF до 10Мб каждый</span>
-          </p>
-          <div class="upload-file">
-            <input type="file" class="btn btn-primary" multiple (change)="onFileSelected($event)"
-                   accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"/>
+                <p class="small">JPG, PNG или GIF до 10Мб каждый. </p>
 
-          </div>
-          <div>
-            <!--  <button (click)="onUpload()" [disabled]="uploading">Upload</button>-->
-            <!--  <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">-->
+                  <input type="file" id="fileInput"
+                         class="btn btn-primary"
+                         multiple
+                         (change)="onFileSelected($event)"
+                         accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"/>
+                  <label for="fileInput" class="upload-label">
+                    <i class="upload-icon">📁</i>
+                    <p class="small">Перетащите файлы сюда или кликните для выбора</p>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div>
+          <!--  <button (click)="onUpload()" [disabled]="uploading">Upload</button>-->
+          <!--  <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">-->
+        </div>
+
       </div>
 
       <div class="mx-2 my-3" *ngIf="addType == 'addApart'">
         <form (ngSubmit)="onSubmit()">
           <app-apartment-parametrs [apartment]="apartment"></app-apartment-parametrs>
-          <button type="submit" class="save-change">Сохранить</button>
+
+          <button type="submit" class="save-change" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">Создать квартиру</span>
+            <span *ngIf="isSubmitting">Создание...</span>
+          </button>
         </form>
       </div>
     </div>

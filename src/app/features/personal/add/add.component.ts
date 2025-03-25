@@ -1,26 +1,27 @@
 import {Component, EventEmitter, OnInit, Output, signal} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApartmentFull } from '../../../core/models/apartment';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApartmentFull} from '../../../core/models/apartment';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {RComplex} from "../../../core/models/rcomplex";
 
 
 class DataService {
-  private apiUrl = '/api/apartment';
+  private apiUrl = '/api/v1/apartments';
 
-  constructor(private http: HttpClient) {}
-
-  createApartment(apartment: ApartmentFull): Observable<ApartmentFull> {
-    return this.http.post<ApartmentFull>(`${this.apiUrl}/create`, apartment);
+  constructor(private http: HttpClient) {
   }
 
-  uploadPhotos(files: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/upload-photos`, files);
+  createApartment(apartment: ApartmentFull): Observable<ApartmentFull> {
+    return this.http.post<ApartmentFull>(`${this.apiUrl}/`, apartment);
+  }
+
+  uploadPhotos(apartmentId: bigint, files: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${apartmentId}/upload-photos`, files);
   }
 
   getResidentialComplexes(): Observable<RComplex[]> {
-    return this.http.get<RComplex[]>(this.apiUrl);
+    return this.http.get<RComplex[]>('/api/v1/rcomplex/private/company');
   }
 }
 
@@ -32,15 +33,21 @@ class DataService {
 export class AddComponent implements OnInit {
   addType: string = '';
   public apartment: ApartmentFull = this.createEmptyApartment();
-  public photos: { file: File; url: string; order:number }[] = [];
-  public dataService : DataService;
+  public photos: { file: File; url: string; order: number }[] = [];
+  public dataService: DataService;
+  isSubmitting = false;
   residentialComplexes: RComplex[] = [];
   selectedComplex: string = '';
+  isDragOver = false;
   @Output() galleryChange = new EventEmitter<any[]>();
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private http: HttpClient
-  ) {this.dataService = new DataService(http);}
+  ) {
+    this.dataService = new DataService(http);
+  }
 
   ngOnInit(): void {
     this.addType = this.route.snapshot.data['type'];
@@ -50,30 +57,61 @@ export class AddComponent implements OnInit {
       this.loadResidentialComplexes();
       this.apartment = this.createEmptyApartment();
     }
+
   }
 
-  onFileSelected(event: any): void {
-    const files = event.target.files;
-    for (let file of files) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.photos.push({ file, url: e.target.result,order: this.photos.length+1 });
-      };
-      reader.readAsDataURL(file);
+  onFileSelected(event: any) {
+    this.handleFiles(event.target.files);
+  }
+
+  private handleFiles(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      if (file.type.match('image.*')) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.photos.push({file, url: e.target.result, order: this.photos.length + 1});
+        };
+        reader.readAsDataURL(file);
+      }
     }
-    console.log(this.photos);
   }
 
-  uploadPhotos(): void {
+  // Обработчик перетаскивания файлов
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = false;
+
+    if (event.dataTransfer?.files) {
+      this.handleFiles(event.dataTransfer.files);
+    }
+  }
+
+  // Обработчик события dragover
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = true;
+  }
+
+  // Обработчик события dragleave
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    this.isDragOver = false;
+  }
+
+  uploadPhotos(apartmentId: bigint): void {
+    if (this.photos.length === 0) return;
+
     const formData = new FormData();
     this.photos.forEach((photo) => {
       formData.append('photos', photo.file);
     });
 
-    this.dataService.uploadPhotos(formData).subscribe({
+    this.dataService.uploadPhotos(apartmentId, formData).subscribe({
       next: () => console.log('Фотографии успешно загружены'),
       error: (error) => console.error('Ошибка при загрузке фотографий', error),
     });
+
   }
 
   loadResidentialComplexes(): void {
@@ -89,18 +127,7 @@ export class AddComponent implements OnInit {
 
   removePhoto(index: number) {
     this.photos.splice(index, 1);
-    const url = `/test/delete/${this.photos[index].url}`;
-
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer your_token_here', // Замените на ваш токен
-      // Вы можете добавить здесь другие заголовки, если нужно
-    });
-    this.http.delete(url,{ headers }).subscribe(
-      () => console.log('файл успешно удален'),
-      (error) => console.error('Ошибка при удалении', error)
-    );
-
-    // this.updateOrder();
+    this.updateOrder();
     this.galleryChange.emit(this.photos);
   }
 
@@ -111,24 +138,39 @@ export class AddComponent implements OnInit {
     this.updateOrder();
     this.galleryChange.emit(this.photos);
   }
+
   updateOrder(): void {
     this.photos.forEach((item, index) => {
       item.order = index + 1; // Порядок начинается с 1
     });
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     console.log(this.apartment)
     console.log(this.photos)
-    this.dataService.createApartment(this.apartment).subscribe({
-      next: (response) => {
-        console.log('Квартира успешно создана:', response);
-        this.uploadPhotos();
-      },
-      error: (error) => {
-        console.error('Ошибка при создании квартиры:', error);
-      },
-    });
+    this.isSubmitting = true;
+    try {
+      this.dataService.createApartment(this.apartment).subscribe({
+        next: (response) => {
+
+          if (response.id) {
+            console.log('Квартира успешно создана:', response);
+            this.uploadPhotos(response.id);
+            this.router.navigate(['/editing', response.id])
+              .then(() => {
+                alert('Квартира успешно создана и перенаправляем на страницу редактирования');
+              });
+          }
+
+        },
+        error: (error) => {
+          console.error('Ошибка при создании квартиры:', error);
+          alert('Ошибка при создании квартиры: ' + error.message);
+        },
+      });
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
   private createEmptyApartment(): ApartmentFull {

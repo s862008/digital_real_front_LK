@@ -40,7 +40,6 @@ export class EditingComponent {
   public imgPathMain = signal<string>('');
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
-  imageUrl2: SafeUrl = 'uploads/logo.png';
   uploading: boolean = false;
   uploadProgress: number = 0;
 
@@ -160,11 +159,13 @@ export class EditingComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
+
   validateFile(file: File): boolean {
     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     const maxSize = 10 * 1024 * 1024; // 10MB
     return allowedTypes.includes(file.type) && file.size <= maxSize;
   }
+
   onUpload(): void {
     if (!this.selectedFile) {
       return;
