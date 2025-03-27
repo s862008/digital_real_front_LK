@@ -149,6 +149,7 @@ export class AddComponent implements OnInit {
     console.log(this.apartment)
     console.log(this.photos)
     this.isSubmitting = true;
+    this.apartment.rcomplexDto.id=1;
     try {
       this.dataService.createApartment(this.apartment).subscribe({
         next: (response) => {

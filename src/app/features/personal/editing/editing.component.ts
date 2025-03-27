@@ -44,6 +44,10 @@ export class EditingComponent {
   isSubmitting:boolean = false;
   uploadProgress: number = 0;
 
+  apartmentType: string | undefined;
+  numberOfRooms = signal<number>(1);
+
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     console.log(id)
@@ -100,8 +104,6 @@ export class EditingComponent {
   removePhoto(index: number) {
     this.gallery().splice(index, 1);
     console.log(this.gallery()[index].id);
-
-
 
     const url = `/test/delete/${this.gallery()[index].photoPath}`;
 
@@ -229,68 +231,6 @@ export class EditingComponent {
 
   }
 
-
-
-  apartmentType: string | undefined;
-  layoutType: string | undefined;
-  floorNumber: string | undefined;
-  totalFloors: string | undefined;
-  numberOfRooms = signal<number>(1);
-  viewFromWindow: string | undefined;
-  balconyType: string | undefined;
-  stoveType: string | undefined;
-  bathroomType: string | undefined;
-  finishingType: string | undefined;
-  wallFinishing: string | undefined;
-  ceilingFinishing: string | undefined;
-  floorCovering: string | undefined;
-  repairType: string | undefined;
-  balconyGlazing: string | undefined;
-  bathroomFinishing: string | undefined;
-  radiatorType: string | undefined;
-  houseType: string | undefined;
-  digitalizationClass: string | undefined;
-  seismicResistance: string | undefined;
-  deliveryYearStart: string | undefined;
-  deliveryYearEnd: string | undefined;
-  isHouseDelivered: boolean = false;
-  ceilingHeight: string | undefined;
-  numberOfLifts: string | undefined;
-  isSmartHouse: boolean = false;
-  isNotSmartHouse: boolean = false;
-  apartmentsPerFloorStart: string | undefined;
-  apartmentsPerFloorEnd: string | undefined;
-  liftType: string | undefined;
-  hasOwnBoilerRoom: boolean = false;
-  hasNotOwnBoilerRoom: boolean = false;
-  isNearbyTC: boolean = false;
-  isNearbyFitness: boolean = false;
-  isNearbyPark: boolean = false;
-  isNearbySchool: boolean = false;
-  isNearbyKindergarten: boolean = false;
-  isNearbyPolyclinic: boolean = false;
-  isNearbyBusStop: boolean = false;
-  isNearbyCarService: boolean = false;
-  isClosedYard: boolean = false;
-  isNotClosedYard: boolean = false;
-  isFurnitureWithout: boolean = false;
-  isFurnitureInKitchen: boolean = false;
-  isFurnitureInApartment: boolean = false;
-  isParkingUnderground: boolean = false;
-  isParkingMultilevel: boolean = false;
-  isParkingOpenYard: boolean = false;
-  isParkingClosedTerritory: boolean = false;
-  saleMethod: string | undefined;
-  hasApartmentGuarantee: boolean = false;
-  hasNotApartmentGuarantee: boolean = false;
-  isBookingOnline: boolean = false;
-  isNotBookingOnline: boolean = false;
-  isElectronicDeal: boolean = false;
-  isNotElectronicDeal: boolean = false;
-  hasPromo: boolean = false;
-  hasNotPromo: boolean = false;
-  isMortgageAvailable: boolean = false;
-  isNotMortgageAvailable: boolean = false;
 }
 
 
