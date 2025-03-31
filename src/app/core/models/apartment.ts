@@ -52,10 +52,11 @@ export interface ApartmentFull {
   roof?: string | null;
   height_roof?: string | null;
   company?: string | null;
+  rcomplexId?:number | null;
   rcomplexDto: {
     name?: string | null;
     ceilingHeight?: number | null;
-    id?: bigint | null;
+    id?: number | null;
     address?: string | null;
     type_build?: string | null;
     dueYear?: string | null;

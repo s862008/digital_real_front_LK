@@ -138,7 +138,7 @@ export class ApartmentComponent implements OnInit, AfterViewInit, OnDestroy {
       rcomplexDto: {
         name: "Жилой комплекс 'Солнечный'",
         ceilingHeight: 2.7,
-        id: BigInt(1001),
+        id: 1001,
         address: 'г. Москва, ул. Солнечная, д. 1',
         type_build: 'монолит',
         dueYear: '2023',

@@ -232,5 +232,23 @@
         <input type="text" [(ngModel)]="apartment.priceSqmt" id="lpricem" placeholder="250 000"/>
       </div>
     </div>
+    <div class="d-flex">
+      <div>
+        <label class="form-label"  for="lprice">Номер квартиры</label>
+        <input type="text" [(ngModel)]="apartment.apartmentNumber" id="lprice"/>
+      </div>
+      <div>
+        <label class="form-label" for="lprice">Артикул</label>
+        <input type="text" [(ngModel)]="apartment.article" id="lprice"/>
+      </div>
+<!--      <div>-->
+<!--        <label class="form-label" for="lprice">Тэги</label>-->
+<!--        <input type="text" [(ngModel)]="apartment.tags" id="lprice"/>-->
+<!--      </div>-->
+    </div>
+    <div>
+    <label class="form-label" for="linfo">Описание</label>
+      <textarea class="form-control" type="text" [(ngModel)]="apartment.apartmentInfo" id="linfo"></textarea>
+  </div>
   </div>
 </div>

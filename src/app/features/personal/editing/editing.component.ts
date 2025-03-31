@@ -40,9 +40,13 @@ export class EditingComponent {
   public imgPathMain = signal<string>('');
   selectedFile: File | null = null;
   imageUrl: SafeUrl = '';
-  imageUrl2: SafeUrl = 'uploads/logo.png';
   uploading: boolean = false;
+  isSubmitting:boolean = false;
   uploadProgress: number = 0;
+
+  apartmentType: string | undefined;
+  numberOfRooms = signal<number>(1);
+
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -101,8 +105,6 @@ export class EditingComponent {
     this.gallery().splice(index, 1);
     console.log(this.gallery()[index].id);
 
-
-
     const url = `/test/delete/${this.gallery()[index].photoPath}`;
 
     const headers = new HttpHeaders({
@@ -160,11 +162,13 @@ export class EditingComponent {
       reader.readAsDataURL(this.selectedFile);
     }
   }
+
   validateFile(file: File): boolean {
     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     const maxSize = 10 * 1024 * 1024; // 10MB
     return allowedTypes.includes(file.type) && file.size <= maxSize;
   }
+
   onUpload(): void {
     if (!this.selectedFile) {
       return;
@@ -206,6 +210,15 @@ export class EditingComponent {
 
   }
 
+  async onSubmit(): Promise<void> {
+
+    this.isSubmitting = true;
+    try {
+
+    } finally {
+      this.isSubmitting = false;
+    }
+  }
 
   onNumberOfRoomsChange(value: number) {
     // Если значение больше или равно 5, устанавливаем его равным 5
@@ -218,68 +231,6 @@ export class EditingComponent {
 
   }
 
-
-
-  apartmentType: string | undefined;
-  layoutType: string | undefined;
-  floorNumber: string | undefined;
-  totalFloors: string | undefined;
-  numberOfRooms = signal<number>(1);
-  viewFromWindow: string | undefined;
-  balconyType: string | undefined;
-  stoveType: string | undefined;
-  bathroomType: string | undefined;
-  finishingType: string | undefined;
-  wallFinishing: string | undefined;
-  ceilingFinishing: string | undefined;
-  floorCovering: string | undefined;
-  repairType: string | undefined;
-  balconyGlazing: string | undefined;
-  bathroomFinishing: string | undefined;
-  radiatorType: string | undefined;
-  houseType: string | undefined;
-  digitalizationClass: string | undefined;
-  seismicResistance: string | undefined;
-  deliveryYearStart: string | undefined;
-  deliveryYearEnd: string | undefined;
-  isHouseDelivered: boolean = false;
-  ceilingHeight: string | undefined;
-  numberOfLifts: string | undefined;
-  isSmartHouse: boolean = false;
-  isNotSmartHouse: boolean = false;
-  apartmentsPerFloorStart: string | undefined;
-  apartmentsPerFloorEnd: string | undefined;
-  liftType: string | undefined;
-  hasOwnBoilerRoom: boolean = false;
-  hasNotOwnBoilerRoom: boolean = false;
-  isNearbyTC: boolean = false;
-  isNearbyFitness: boolean = false;
-  isNearbyPark: boolean = false;
-  isNearbySchool: boolean = false;
-  isNearbyKindergarten: boolean = false;
-  isNearbyPolyclinic: boolean = false;
-  isNearbyBusStop: boolean = false;
-  isNearbyCarService: boolean = false;
-  isClosedYard: boolean = false;
-  isNotClosedYard: boolean = false;
-  isFurnitureWithout: boolean = false;
-  isFurnitureInKitchen: boolean = false;
-  isFurnitureInApartment: boolean = false;
-  isParkingUnderground: boolean = false;
-  isParkingMultilevel: boolean = false;
-  isParkingOpenYard: boolean = false;
-  isParkingClosedTerritory: boolean = false;
-  saleMethod: string | undefined;
-  hasApartmentGuarantee: boolean = false;
-  hasNotApartmentGuarantee: boolean = false;
-  isBookingOnline: boolean = false;
-  isNotBookingOnline: boolean = false;
-  isElectronicDeal: boolean = false;
-  isNotElectronicDeal: boolean = false;
-  hasPromo: boolean = false;
-  hasNotPromo: boolean = false;
-  isMortgageAvailable: boolean = false;
-  isNotMortgageAvailable: boolean = false;
 }
 
 

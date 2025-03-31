@@ -35,44 +35,23 @@
           <p>{{ listing.deadline }}</p>
         </div>
         <div class="prices">
-          <h2>5 550 500 ₽</h2>
-          <h3>250 000₽/м2</h3>
+          <h2>{{apartment.priceAfterFormat}} ₽</h2>
+          <h3>{{apartment.priceSqmtAfterFormat}} ₽/м2</h3>
         </div>
       </div>
       <div class="pictures">
         <h4 class="title">Фото и планировка</h4>
-        <!--        <div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <!--        <div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--          <div class="image-blocks">-->
-        <!--            <img src="../../../../assets/img/house.png" alt="Apartment image" />-->
-        <!--          </div>-->
-        <!--        </div>-->
         <div><img [src]="this.gallery()[0].photoPath " *ngIf="this.gallery()[0].photoPath " alt="Uploaded MainImage">
         </div>
         <div class="gallery">
-
-          <div *ngFor="let photo of gallery(); let i = index" class="image-blocks photo-item">
-            <img [src]="photo.photoPath" alt="Photo">
-            <button (click)="removePhoto(i)">Удалить</button>
-            <button (click)="movePhoto(i, i - 1)" [disabled]="i === 0">Вверх</button>
-            <button (click)="movePhoto(i, i + 1)" [disabled]="i === gallery().length - 1">Вниз</button>
-          </div>
+            <div *ngFor="let photo of gallery(); let i = index" class="photo-item">
+              <img [src]="photo.photoPath" alt="Photo">
+              <div class="button-group">
+                <button (click)="removePhoto(i)">Удалить</button>
+                <button (click)="movePhoto(i, i - 1)" [disabled]="i === 0">Вверх</button>
+                <button (click)="movePhoto(i, i + 1)" [disabled]="i === gallery().length - 1">Вниз</button>
+              </div>
+            </div>
 
         </div>
         <p class="info">
@@ -80,22 +59,25 @@
           html добавляйте чужие фото, картинки с водяными знаками и рекламу.
         </p>
         <div class="upload-file">
-          <input type="file" (change)="onFileSelected($event)" accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"/>
+          <input class="btn btn-primary" type="file" (change)="onFileSelected($event)"
+                 accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"/>
           <span>или перетащите сюда JPG, PNG или GIF до 10Мб каждый</span>
         </div>
         <div>
-          <button (click)="onUpload()" [disabled]="uploading">Upload</button>
-          <img [src]="imageUrl" *ngIf="imageUrl" alt="Uploaded Image">
+          <div class="container w-25 mx-auto"*ngIf="imageUrl"><span>Пред. просмотр:</span><img [src]="imageUrl"  alt="Uploaded Image"></div>
+          <button class="btn btn-primary" (click)="onUpload()" [disabled]="uploading">Загрузить на сервер</button>
         </div>
-        <div class="container w-25 mx-auto"><img [src]="imageUrl2" alt="Uploaded Image2"></div>
+
 
       </div>
-
+      <form (ngSubmit)="onSubmit()">
       <app-apartment-parametrs [apartment]="apartment"></app-apartment-parametrs>
+        <button type="submit" class="save-change" [disabled]="isSubmitting">
+          <span *ngIf="!isSubmitting">Сохранить изменения</span>
+          <span *ngIf="isSubmitting">Сохранить...</span>
+        </button>
+      </form>
 
-
-
-      <button class="save-change">Сохранить изменения</button>
     </div>
   </div>
 </section>
