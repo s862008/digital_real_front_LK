@@ -1,0 +1,18 @@
+.upload-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.photo {
+  height: 200px;
+  width: auto;
+}

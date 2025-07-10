@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Удалить новости</h2>
+<mat-dialog-content>
+  Вы действительно хотите удалить этот новост?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Нет</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="dialogRef.close(true)">Да</button>
+</mat-dialog-actions>
