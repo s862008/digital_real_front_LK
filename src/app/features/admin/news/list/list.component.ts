@@ -8,11 +8,11 @@ import {
   MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {NewsService} from "../news.service";
+import {NewsService} from "../../../../../../../digital_real_front_LK_NewsEdit/src/app/features/admin/news/news.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {RouterLink} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
+import {ConfirmDialogComponent} from "../../../../../../../digital_real_front_LK_NewsEdit/src/app/features/admin/news/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-list',
